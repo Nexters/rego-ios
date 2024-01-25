@@ -11,7 +11,8 @@ import SwiftUI
 struct REGOApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            HomeView()
+            GameListView()
         }
     }
 }
