@@ -17,6 +17,7 @@
 		042C40292B6283C90017F9F3 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C40282B6283C90017F9F3 /* FavoriteView.swift */; };
 		042C402C2B62850B0017F9F3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C402B2B62850B0017F9F3 /* NetworkManager.swift */; };
 		042C402F2B6285860017F9F3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C402E2B6285860017F9F3 /* Game.swift */; };
+		ED8D13EC2B64D52A00C4A2A0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = ED8D13EB2B64D52A00C4A2A0 /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		042C40282B6283C90017F9F3 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
 		042C402B2B62850B0017F9F3 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		042C402E2B6285860017F9F3 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		ED8D13EB2B64D52A00C4A2A0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +49,7 @@
 		042C3FFC2B615FFB0017F9F3 = {
 			isa = PBXGroup;
 			children = (
+				ED8D13EB2B64D52A00C4A2A0 /* .swiftlint.yml */,
 				042C40072B615FFB0017F9F3 /* REGO */,
 				042C40062B615FFB0017F9F3 /* Products */,
 			);
@@ -63,7 +66,6 @@
 		042C40072B615FFB0017F9F3 /* REGO */ = {
 			isa = PBXGroup;
 			children = (
-				042C40182B6282E60017F9F3 /* New Group */,
 				042C40172B6282D00017F9F3 /* App */,
 				042C401A2B6283040017F9F3 /* Scene */,
 				042C402D2B6285180017F9F3 /* Model */,
@@ -88,13 +90,6 @@
 				042C40082B615FFB0017F9F3 /* REGOApp.swift */,
 			);
 			path = App;
-			sourceTree = "<group>";
-		};
-		042C40182B6282E60017F9F3 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		042C40192B6282F50017F9F3 /* Resources */ = {
@@ -184,6 +179,7 @@
 				042C40012B615FFB0017F9F3 /* Sources */,
 				042C40022B615FFB0017F9F3 /* Frameworks */,
 				042C40032B615FFB0017F9F3 /* Resources */,
+				ED8D13ED2B64D57900C4A2A0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -232,12 +228,34 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED8D13EC2B64D52A00C4A2A0 /* .swiftlint.yml in Resources */,
 				042C40102B615FFF0017F9F3 /* Preview Assets.xcassets in Resources */,
 				042C400D2B615FFF0017F9F3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		ED8D13ED2B64D57900C4A2A0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Build Phases -> Run script phase for Apple Silicon chips\n# Adds support for Apple Silicon brew directory\nexport PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint; then\n    swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		042C40012B615FFB0017F9F3 /* Sources */ = {
@@ -295,7 +313,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -358,7 +376,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -385,7 +403,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"REGO/Preview Content\"";
-				DEVELOPMENT_TEAM = HQ9MZ38KLH;
+				DEVELOPMENT_TEAM = 3P5HCJBZZ9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = REGO;
@@ -423,7 +441,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"REGO/Preview Content\"";
-				DEVELOPMENT_TEAM = HQ9MZ38KLH;
+				DEVELOPMENT_TEAM = 3P5HCJBZZ9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = REGO;
