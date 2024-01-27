@@ -1,0 +1,18 @@
+disabled_rules:
+    - file_length
+    - type_name
+    - function_body_length
+    - cyclomatic_complexity
+    - identifier_name
+    - shorthand_operator
+    - todo
+    - function_parameter_count
+    - type_body_length
+    - opening_brace
+    - empty_enum_arguments
+
+line_length: 200
+type_body_length: 2000
+function_parameter_count: 6
+statement_position:
+    statement_mode: uncuddled_else
