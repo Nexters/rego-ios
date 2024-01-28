@@ -179,7 +179,7 @@
 				042C40012B615FFB0017F9F3 /* Sources */,
 				042C40022B615FFB0017F9F3 /* Frameworks */,
 				042C40032B615FFB0017F9F3 /* Resources */,
-				ED8D13ED2B64D57900C4A2A0 /* ShellScript */,
+				ED8D13ED2B64D57900C4A2A0 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -237,7 +237,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		ED8D13ED2B64D57900C4A2A0 /* ShellScript */ = {
+		ED8D13ED2B64D57900C4A2A0 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -247,13 +247,14 @@
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Build Phases -> Run script phase for Apple Silicon chips\n# Adds support for Apple Silicon brew directory\nexport PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint; then\n    swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "# Build Phases -> Run script phase for Apple Silicon chips\n# Adds support for Apple Silicon brew directory\nexport PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint; then\n    swiftlint --fix\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
