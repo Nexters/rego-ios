@@ -28,7 +28,7 @@ struct GameListView: View {
             Text("인기 게임")
             LazyVStack(alignment: .leading, content: {
                 ForEach(Array(zip(gameList.prefix(5).indices, gameList)), id: \.0) { idx, game in
-                    RankedGameRowView(game: game, rank: idx+1)
+                    GameRowView(game: game, rank: idx+1)
                 }
             })
 
@@ -38,62 +38,39 @@ struct GameListView: View {
                     GameRowView(game: game)
                 }
             })
-
         }
         .padding(20)
     }
 }
 
-struct RankedGameRowView: View {
-    let game: Game
-    let rank: Int
+struct GameRowView: View {
 
-    init(game: Game, rank: Int) {
+    let rank: Int?
+    let game: Game
+
+    @State private var isLiked = false
+
+    init(game: Game, rank: Int? = nil) {
         self.game = game
         self.rank = rank
     }
 
     var body: some View {
         HStack {
-            Image(systemName: "person")
-            VStack(alignment: .leading) {
-                HStack {
-                    Text("\(rank)위")
-                    Text("\(game.name)")
-                    Spacer()
-                    Image(systemName: "heart.fill")
-                }
-                HStack {
-                    Text("소요시간 30m")
-                    Text("참여인원 5~10명")
-                }
-                .foregroundStyle(.gray)
-            }
-        }
-        .padding()
-    }
-}
-
-struct GameRowView: View {
-
-    let game: Game
-
-    init(game: Game) {
-        self.game = game
-    }
-
-    var body: some View {
-        HStack {
             Image(systemName: "star")
+                .resizable()
+                .frame(width: 60, height: 60)
             VStack(alignment: .leading) {
                 HStack {
+                    if let rank {
+                        Text("\(rank)위")
+                    }
                     Text("\(game.name)")
                     Spacer()
-                    Image(systemName: "heart.fill")
+                    LikeButtonView(isLiked: $isLiked)
                 }
                 HStack {
-                    Text("소요시간 30m")
-                    Text("참여인원 5~10명")
+                    Text("소요시간 30m | 참여인원 5~10명")
                 }
                 .foregroundStyle(.gray)
             }
