@@ -10,6 +10,8 @@ import SwiftUI
 struct CardFront: View {
     @Binding var degree: Double
 
+    var flipFunction: () -> Void
+
     var tagList: [String] = ["준비물", "진행자"]
 
     var body: some View {
@@ -42,15 +44,50 @@ struct CardFront: View {
                             RoundedRectangle(cornerRadius: 6))
                     }
                 }
-
+                Text("게임 방법")
+                VStack(alignment: .leading) {
+                    HStack {
+                        Image(systemName: "star")
+                        Text("진행자")
+                    }
+                    Text("참여자들이 헷갈리도록 물건의 위치를 바꿔주세요.")
+                    Divider()
+                    HStack {
+                        Image(systemName: "star")
+                        Text("참여자")
+                    }
+                    Text("5분간 원본을 관찰하고 바뀐 모습을 빠르게 찾아야 해요.")
+                    Spacer()
+                }
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .foregroundStyle(.gray)
+                        .opacity(0.5)
+                )
+                .padding()
+                Text("Tip! 잘못된 정답을 외쳐도 괜찮아요")
+                    .padding()
+                Button(action: {
+                    self.flipFunction()
+                }, label: {
+                    Text("예시보기")
+                        .frame(maxWidth: .infinity, maxHeight: 46)
+                        .clipShape(.rect(cornerRadius: 12))
+                        .foregroundStyle(.white)
+                        .background(Color.black)
+                })
             }
-
+            .padding()
         }.rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
     }
 }
 
 struct CardBack: View {
     @Binding var degree: Double
+    @Binding var rotation: Bool
+
+    var flipFunction: () -> Void
 
     var body: some View {
         ZStack {
@@ -60,11 +97,28 @@ struct CardBack: View {
             RoundedRectangle(cornerRadius: 20)
                 .fill(.blue.opacity(0.2))
                 .shadow(color: .gray, radius: 2, x: 0, y: 0)
+            VStack {
+                Text("문제 예시")
+                Image(systemName: "person")
+                Spacer()
+                Button(action: {
+                    self.flipFunction()
+                }, label: {
+                    Text("설명보기")
+                        .frame(maxWidth: .infinity, maxHeight: 46)
+                        .clipShape(.rect(cornerRadius: 12))
+                        .foregroundStyle(.white)
+                        .background(Color.black)
 
-            Text("뒷 면")
-
+                })
+            }
+            .background(.yellow)
+            .padding()
+            .rotation3DEffect(
+                .degrees(rotation ? 0 : 180),
+                                      axis: (x: 0.0, y: 1.0, z: 0.0)
+            )
         }
-        .background(.pink)
         .rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
 
     }
@@ -72,13 +126,11 @@ struct CardBack: View {
 
 struct GameDetailCardView: View {
     // MARK: Variables
-    //    @State var backDegree = 0.0
-    //    @State var frontDegree = -90.0
     @State var backDegree = -90.0
     @State var frontDegree = 0.0
     @State var isFlipped = false
 
-    let durationAndDelay: CGFloat = 0.5
+    let durationAndDelay: CGFloat = 1
 
     // MARK: Flip Card Function
     func flipCard () {
@@ -95,6 +147,7 @@ struct GameDetailCardView: View {
             withAnimation(.linear(duration: durationAndDelay)) {
                 backDegree = 90
             }
+
             withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
                 frontDegree = 180
             }
@@ -106,10 +159,8 @@ struct GameDetailCardView: View {
     // MARK: View Body
     var body: some View {
         ZStack {
-            CardFront(degree: $frontDegree)
-            CardBack(degree: $backDegree)
-        }.onTapGesture {
-            flipCard()
+            CardFront(degree: $frontDegree, flipFunction: flipCard)
+            CardBack(degree: $backDegree, rotation: $isFlipped, flipFunction: flipCard)
         }
     }
 }

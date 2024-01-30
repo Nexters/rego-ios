@@ -12,7 +12,8 @@ struct REGOApp: App {
     var body: some Scene {
         WindowGroup {
 //            HomeView()
-            GameListView()
+//            GameListView()
+            GameDetailView()
         }
     }
 }
