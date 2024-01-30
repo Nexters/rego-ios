@@ -17,6 +17,8 @@
 		042C40292B6283C90017F9F3 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C40282B6283C90017F9F3 /* FavoriteView.swift */; };
 		042C402C2B62850B0017F9F3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C402B2B62850B0017F9F3 /* NetworkManager.swift */; };
 		042C402F2B6285860017F9F3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C402E2B6285860017F9F3 /* Game.swift */; };
+		046F0FD82B67935A0091DA50 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F0FD72B67935A0091DA50 /* CarouselView.swift */; };
+		0488EEF22B67E5D30026DAE8 /* GameDetailCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488EEF12B67E5D30026DAE8 /* GameDetailCardView.swift */; };
 		ED8D13EC2B64D52A00C4A2A0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = ED8D13EB2B64D52A00C4A2A0 /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +34,8 @@
 		042C40282B6283C90017F9F3 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
 		042C402B2B62850B0017F9F3 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		042C402E2B6285860017F9F3 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		046F0FD72B67935A0091DA50 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		0488EEF12B67E5D30026DAE8 /* GameDetailCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailCardView.swift; sourceTree = "<group>"; };
 		ED8D13EB2B64D52A00C4A2A0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,6 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				042C40242B6283AA0017F9F3 /* GameDetailView.swift */,
+				046F0FD72B67935A0091DA50 /* CarouselView.swift */,
+				0488EEF12B67E5D30026DAE8 /* GameDetailCardView.swift */,
 			);
 			path = GameDetail;
 			sourceTree = "<group>";
@@ -267,6 +273,8 @@
 				042C40292B6283C90017F9F3 /* FavoriteView.swift in Sources */,
 				042C402F2B6285860017F9F3 /* Game.swift in Sources */,
 				042C40272B6283B60017F9F3 /* GameFilterView.swift in Sources */,
+				046F0FD82B67935A0091DA50 /* CarouselView.swift in Sources */,
+				0488EEF22B67E5D30026DAE8 /* GameDetailCardView.swift in Sources */,
 				042C402C2B62850B0017F9F3 /* NetworkManager.swift in Sources */,
 				042C40232B62839E0017F9F3 /* GameListView.swift in Sources */,
 				042C40252B6283AA0017F9F3 /* GameDetailView.swift in Sources */,
