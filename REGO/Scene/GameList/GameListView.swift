@@ -24,58 +24,75 @@ struct GameListView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text("스피드 게임")
-                .padding(.bottom)
-            Text("인기 게임")
-            LazyVStack(alignment: .leading, content: {
-                ForEach(Array(zip(gameList.prefix(5).indices, gameList)), id: \.0) { idx, game in
-                    GameRowView(game: game, rank: idx+1)
-                }
-            })
+                .font(RegoFontStyle.h1.font)
+                .frame(height: 59)
+            ScrollView(.vertical) {
+                VStack(alignment: .leading) {
+                    Section {
+                        LazyVStack(alignment: .leading, content: {
+                            ForEach(Array(zip(gameList.prefix(5).indices, gameList)), id: \.0) { idx, game in
+                                GameRowView(game: game, rank: idx+1)
+                            }
+                        })
+                    } header: {
+                        Text("인기 게임")
+                    }
 
-            Text("전체 게임")
-            LazyVStack(alignment: .leading, content: {
-                ForEach(gameList.suffix(from: 5), id: \.id) { game in
-                    GameRowView(game: game)
+                    Text("전체 게임")
+                    LazyVStack(alignment: .leading, content: {
+                        ForEach(gameList.suffix(from: 5), id: \.id) { game in
+                            GameRowView(game: game)
+                        }
+                    })
                 }
-            })
-        }
-        .padding(20)
+            }
+        }.padding(20)
     }
 }
 
 struct GameRowView: View {
-
     let rank: Int?
     let game: Game
 
     @State private var isLiked = false
+    @State private var likeCnt: Int
 
     init(game: Game, rank: Int? = nil) {
         self.game = game
         self.rank = rank
+        self._likeCnt = .init(initialValue: game.favoriteNum)
     }
 
     var body: some View {
         HStack {
-            Image(systemName: "star")
+            Image([._3DActive, ._3DKnowledge, ._3DMission, ._3DSong, ._3DSpeed, ._3DTaste, ._3DTaste, ._3DTouch].randomElement()!)
                 .resizable()
                 .frame(width: 60, height: 60)
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 2) {
                 HStack {
                     if let rank {
                         Text("\(rank)위")
+                            .font(RegoFontStyle.subtitle5.font)
                     }
                     Text("\(game.name)")
-                    Spacer()
-                    LikeButtonView(isLiked: $isLiked)
+                        .font(RegoFontStyle.subtitle2.font)
                 }
-                HStack {
-                    Text("소요시간 30m | 참여인원 5~10명")
+                HStack(spacing: 4) {
+                    Text("소요시간")
+                        .font(RegoFontStyle.body4.font)
+                    Text("30m")
+                        .font(RegoFontStyle.body2.font)
+                    Text(" | ")
+                    Text("참여인원")
+                        .font(RegoFontStyle.body4.font)
+                    Text("5~10명")
+                        .font(RegoFontStyle.body2.font)
                 }
-                .foregroundStyle(.gray)
+                .foregroundStyle(Color(uiColor: .gray500))
             }
+            Spacer()
+            LikeButtonView(isLiked: $isLiked, likeCnt: $likeCnt)
         }
-        .padding()
     }
 }
 
