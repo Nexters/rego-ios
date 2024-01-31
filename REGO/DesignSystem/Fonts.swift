@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import SwiftUI
 
 public typealias RegoSystemFont = RegoFontPresentation & CaseIterable
 
 public protocol RegoFontPresentation {
-    var font: UIFont { get }
+    var font: Font { get }
 }
 
 enum RegoFontStyle: RegoSystemFont {
@@ -21,10 +22,10 @@ enum RegoFontStyle: RegoSystemFont {
 }
 
 extension RegoFontStyle {
-    var font: UIFont {
+    var uiFont: UIFont {
         switch self {
         case .h1:
-            return .systemFont(ofSize: 26, weight: .semibold)
+            return UIFont.systemFont(ofSize: 26, weight: .semibold)
         case .h2:
             return .systemFont(ofSize: 24, weight: .semibold)
         case .h3:
@@ -58,5 +59,9 @@ extension RegoFontStyle {
         case .body7:
             return .systemFont(ofSize: 10, weight: .regular)
         }
+    }
+
+    var font: Font {
+        return Font(uiFont)
     }
 }
