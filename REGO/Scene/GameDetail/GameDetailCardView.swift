@@ -130,7 +130,7 @@ struct GameDetailCardView: View {
     @State var frontDegree = 0.0
     @State var isFlipped = false
 
-    let durationAndDelay: CGFloat = 1
+    let durationAndDelay: CGFloat = 0.2
 
     // MARK: Flip Card Function
     func flipCard () {
@@ -139,7 +139,8 @@ struct GameDetailCardView: View {
             withAnimation(.linear(duration: durationAndDelay)) {
                 frontDegree = 90
             }
-            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
+            withAnimation(
+                .easeInOut(duration: durationAndDelay).delay(durationAndDelay)){
                 backDegree = 0
             }
         }
