@@ -13,7 +13,7 @@ struct LikeButtonView: View {
     @Binding var likeCnt: Int
 
     var body: some View {
-        VStack(spacing: 0){
+        VStack(spacing: -2){
             Button(action: {
                 isLiked.toggle()
                 if isLiked {
