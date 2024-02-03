@@ -18,6 +18,10 @@
 		042C402C2B62850B0017F9F3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C402B2B62850B0017F9F3 /* NetworkManager.swift */; };
 		042C402F2B6285860017F9F3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C402E2B6285860017F9F3 /* Game.swift */; };
 		042C40312B66A0870017F9F3 /* LikeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C40302B66A0870017F9F3 /* LikeButtonView.swift */; };
+		046996AF2B6E0C4C00F6D5C4 /* GameDetailTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046996AE2B6E0C4C00F6D5C4 /* GameDetailTagView.swift */; };
+		046996B32B6E141800F6D5C4 /* TagEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046996B22B6E141800F6D5C4 /* TagEnum.swift */; };
+		046F0FD82B67935A0091DA50 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F0FD72B67935A0091DA50 /* CarouselView.swift */; };
+		0488EEF22B67E5D30026DAE8 /* GameDetailCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488EEF12B67E5D30026DAE8 /* GameDetailCardView.swift */; };
 		04A79B562B6B9CD4007A4BF3 /* NavLikeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A79B552B6B9CD4007A4BF3 /* NavLikeButtonView.swift */; };
 		ED0F24742B6FF8A3002C12C9 /* GameFilterSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F24732B6FF8A3002C12C9 /* GameFilterSectionView.swift */; };
 		ED0F24762B712659002C12C9 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F24752B712659002C12C9 /* Text.swift */; };
@@ -26,8 +30,6 @@
 		ED5E9F052B6FDBFC0055B482 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E9F042B6FDBFC0055B482 /* SplashView.swift */; };
 		ED5E9F082B6FE1F80055B482 /* logo_lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = ED5E9F072B6FE1F80055B482 /* logo_lottie.json */; };
 		ED5E9EFC2B66AE360055B482 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E9EFB2B66AE360055B482 /* Labels.swift */; };
-		046F0FD82B67935A0091DA50 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F0FD72B67935A0091DA50 /* CarouselView.swift */; };
-		0488EEF22B67E5D30026DAE8 /* GameDetailCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488EEF12B67E5D30026DAE8 /* GameDetailCardView.swift */; };
 		ED8D13EC2B64D52A00C4A2A0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = ED8D13EB2B64D52A00C4A2A0 /* .swiftlint.yml */; };
 		ED8D13F32B64E9B300C4A2A0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D13F22B64E9B200C4A2A0 /* Colors.swift */; };
 		EDF1BFE02B7134E1003C29AB /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF1BFDF2B7134E1003C29AB /* LottieView.swift */; };
@@ -47,6 +49,10 @@
 		042C402B2B62850B0017F9F3 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		042C402E2B6285860017F9F3 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		042C40302B66A0870017F9F3 /* LikeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButtonView.swift; sourceTree = "<group>"; };
+		046996AE2B6E0C4C00F6D5C4 /* GameDetailTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailTagView.swift; sourceTree = "<group>"; };
+		046996B22B6E141800F6D5C4 /* TagEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagEnum.swift; sourceTree = "<group>"; };
+		046F0FD72B67935A0091DA50 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		0488EEF12B67E5D30026DAE8 /* GameDetailCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailCardView.swift; sourceTree = "<group>"; };
 		04A79B552B6B9CD4007A4BF3 /* NavLikeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavLikeButtonView.swift; sourceTree = "<group>"; };
 		ED0F24732B6FF8A3002C12C9 /* GameFilterSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameFilterSectionView.swift; sourceTree = "<group>"; };
 		ED0F24752B712659002C12C9 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
@@ -54,8 +60,6 @@
 		ED5E9F042B6FDBFC0055B482 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		ED5E9F072B6FE1F80055B482 /* logo_lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = logo_lottie.json; sourceTree = "<group>"; };
 		ED5E9EFB2B66AE360055B482 /* Labels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
-		046F0FD72B67935A0091DA50 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
-		0488EEF12B67E5D30026DAE8 /* GameDetailCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailCardView.swift; sourceTree = "<group>"; };
 		ED8D13EB2B64D52A00C4A2A0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		ED8D13F22B64E9B200C4A2A0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		EDF1BFDF2B7134E1003C29AB /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
@@ -133,6 +137,7 @@
 		042C401A2B6283040017F9F3 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				046996B02B6E138F00F6D5C4 /* Common */,
 				042C401B2B6283170017F9F3 /* Home */,
 				042C401C2B6283260017F9F3 /* GameList */,
 				042C401D2B62833F0017F9F3 /* GameDetail */,
@@ -167,6 +172,7 @@
 				042C40242B6283AA0017F9F3 /* GameDetailView.swift */,
 				046F0FD72B67935A0091DA50 /* CarouselView.swift */,
 				0488EEF12B67E5D30026DAE8 /* GameDetailCardView.swift */,
+				046996AE2B6E0C4C00F6D5C4 /* GameDetailTagView.swift */,
 			);
 			path = GameDetail;
 			sourceTree = "<group>";
@@ -212,6 +218,22 @@
 				ED5E9F072B6FE1F80055B482 /* logo_lottie.json */,
 			);
 			path = Lotties;
+			sourceTree = "<group>";
+		};
+		046996B02B6E138F00F6D5C4 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				046996B12B6E140400F6D5C4 /* Enums */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		046996B12B6E140400F6D5C4 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				046996B22B6E141800F6D5C4 /* TagEnum.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		ED8D13F12B64E31400C4A2A0 /* DesignSystem */ = {
@@ -337,6 +359,7 @@
 				EDF1BFE02B7134E1003C29AB /* LottieView.swift in Sources */,
 				ED5E9EFC2B66AE360055B482 /* Labels.swift in Sources */,
 				046F0FD82B67935A0091DA50 /* CarouselView.swift in Sources */,
+				046996AF2B6E0C4C00F6D5C4 /* GameDetailTagView.swift in Sources */,
 				0488EEF22B67E5D30026DAE8 /* GameDetailCardView.swift in Sources */,
 				042C402C2B62850B0017F9F3 /* NetworkManager.swift in Sources */,
 				042C40232B62839E0017F9F3 /* GameListView.swift in Sources */,
@@ -346,6 +369,7 @@
 				04A79B562B6B9CD4007A4BF3 /* NavLikeButtonView.swift in Sources */,
 				042C40092B615FFB0017F9F3 /* REGOApp.swift in Sources */,
 				ED5E9F052B6FDBFC0055B482 /* SplashView.swift in Sources */,
+				046996B32B6E141800F6D5C4 /* TagEnum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
