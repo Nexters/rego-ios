@@ -75,6 +75,7 @@ struct GameRowView: View {
                             .font(RegoFontStyle.subtitle5.font)
                     }
                     Text("\(game.name)")
+                        .font(RegoFontStyle.subtitle2.font)
                 }
                 HStack(spacing: 4) {
                     Text("소요시간")
