@@ -136,4 +136,7 @@ extension UIColor {
 
     static let homeGradientTop = UIColor(hex: 0x0C0E20)
     static let homeGradientBottom = UIColor(hex: 0x0F1443)
+
+    static let orange15 = UIColor(hex: 0xFF621F, alpha: 0.15)
+    static let orange50 = UIColor(hex: 0xFF621F, alpha: 0.50)
 }
