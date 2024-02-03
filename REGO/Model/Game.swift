@@ -12,4 +12,6 @@ struct Game: Codable, Hashable {
     let name: String
     let type: String // TODO: enum
     let descriptionType: String
+    var isFavorite: Bool = false
+    var favoriteNum: Int
 }
