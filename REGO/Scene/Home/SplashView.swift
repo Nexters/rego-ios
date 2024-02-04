@@ -11,14 +11,13 @@ import Lottie
 struct SplashView: View {
     var body: some View {
         ZStack {
-            LinearGradient(colors: [Color(uiColor: .homeGradientTop), Color(uiColor: .homeGradientBottom)],
+            LinearGradient(colors: [.homeGradientTop, .homeGradientBottom],
                            startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
             VStack(alignment: .center) {
                 Image(.logo) // TODO: lottie 적용
                     .frame(width: 165, height: 60)
             }
-
         }
     }
 }

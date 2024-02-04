@@ -12,7 +12,7 @@ struct HomeView: View {
 
     var body: some View {
         ZStack {
-            LinearGradient(colors: [Color(uiColor: .homeGradientTop), Color(uiColor: .homeGradientBottom)],
+            LinearGradient(colors: [.homeGradientTop, .homeGradientBottom],
                            startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
             VStack(alignment: .center) {
@@ -29,11 +29,11 @@ struct HomeView: View {
                         print("[tapped] 게임 제안하기")
                     }, label: {
                         Text("게임 제안하기")
-                            .font(RegoFontStyle.body6.font)
-                            .foregroundColor(Color(uiColor: .gray100))
+                            .font(.body6)
+                            .foregroundColor(.gray100)
                     })
                     .frame(width: 86, height: 30)
-                    .background(Color(uiColor: .gray700))
+                    .background(Color.gray700)
                     .cornerRadius(6)
                     Spacer()
                         .frame(width: 12)
@@ -42,10 +42,10 @@ struct HomeView: View {
                     }, label: {
                         Image(uiImage: .icon24Liked)
                             .renderingMode(.template)
-                            .foregroundColor(Color(uiColor: .gray100))
+                            .foregroundColor(.gray100)
                     })
                     .frame(width: 30, height: 30)
-                    .background(Color(uiColor: .gray700))
+                    .background(Color.gray700)
                     .cornerRadius(6)
                     Spacer()
                         .frame(width: 20)
@@ -54,7 +54,7 @@ struct HomeView: View {
                 Spacer()
                     .frame(height: 50)
                 Text("다 함께 친해져야 하는\n이 순간 RE'GO!")
-                    .font(RegoFontStyle.h1.font)
+                    .font(.h1)
                     .lineLimit(nil)
                     .multilineTextAlignment(.center)
                     .lineSpacing(6)
@@ -66,16 +66,15 @@ struct HomeView: View {
                     HStack {
                         Image(.icon24Menu)
                             .renderingMode(.template)
-                            .foregroundColor(Color(uiColor: .gray100))
+                            .foregroundColor(.gray100)
                         Text("전체 게임 목록")
-                            .font(RegoFontStyle.subtitle4.font)
-                            .foregroundColor(Color(uiColor: .gray100))
+                            .font(.subtitle4)
+                            .foregroundColor(Color.gray100)
                     }
                 }
                 .frame(width: 144, height: 44)
-                .background(Color(uiColor: .gray600))
+                .background(Color.gray600)
                 .cornerRadius(12)
-
             }
         }
     }

@@ -6,6 +6,58 @@
 //
 
 import UIKit
+import SwiftUI
+
+extension Color {
+    static let whiteColor = Color(uiColor: .white)
+
+    static let gray100 = Color(uiColor: .gray100)
+    static let gray200 = Color(uiColor: .gray200)
+    static let gray300 = Color(uiColor: .gray300)
+    static let gray400 = Color(uiColor: .gray400)
+    static let gray500 = Color(uiColor: .gray500)
+    static let gray600 = Color(uiColor: .gray600)
+    static let gray700 = Color(uiColor: .gray700)
+    static let gray800 = Color(uiColor: .gray800)
+    static let gray900 = Color(uiColor: .gray900)
+
+    static let primary100 = Color(uiColor: .primary100)
+    static let primary200 = Color(uiColor: .primary200)
+    static let primary300 = Color(uiColor: .primary300)
+    static let primary400 = Color(uiColor: .primary400)
+    static let primary500 = Color(uiColor: .primary500)
+    static let primary600 = Color(uiColor: .primary600)
+    static let primary700 = Color(uiColor: .primary700)
+    static let primary800 = Color(uiColor: .primary800)
+    static let primary900 = Color(uiColor: .primary900)
+
+    static let green15 = Color(uiColor: .green15)
+    static let green50 = Color(uiColor: .green50)
+    static let green100 = Color(uiColor: .green100)
+
+    static let skyBlue15 = Color(uiColor: .skyBlue15)
+    static let skyBlue50 = Color(uiColor: .skyBlue50)
+    static let skyBlue100 = Color(uiColor: .skyBlue100)
+
+    static let blue15 = Color(uiColor: .blue15)
+    static let blue50 = Color(uiColor: .blue50)
+    static let blue100 = Color(uiColor: .blue100)
+
+    static let yellow15 = Color(uiColor: .yellow15)
+    static let yellow50 = Color(uiColor: .yellow50)
+    static let yellow100 = Color(uiColor: .yellow100)
+
+    static let coral15 = Color(uiColor: .coral15)
+    static let coral50 = Color(uiColor: .coral50)
+    static let coral100 = Color(uiColor: .coral100)
+
+    static let purple15 = Color(uiColor: .purple15)
+    static let purple50 = Color(uiColor: .purple50)
+    static let purple100 = Color(uiColor: .purple100)
+
+    static let homeGradientTop = Color(uiColor: .homeGradientTop)
+    static let homeGradientBottom = Color(uiColor: .homeGradientBottom)
+}
 
 extension UIColor {
     var rgba: Int {
