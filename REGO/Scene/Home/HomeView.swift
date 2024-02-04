@@ -22,7 +22,7 @@ struct HomeView: View {
                     Button(action: {
                         print("[tapped] logo")
                     }, label: {
-                        Image(.logo)
+                        Image(.logo) // TODO: Lottie 적용
                     })
                     Spacer()
                     Button(action: {
@@ -38,7 +38,7 @@ struct HomeView: View {
                     Spacer()
                         .frame(width: 12)
                     Button(action: {
-                        print("[tapped] liked list")
+                        print("[tapped] 좋아요 목록")
                     }, label: {
                         Image(uiImage: .icon24Liked)
                             .renderingMode(.template)
@@ -61,7 +61,7 @@ struct HomeView: View {
                     .frame(height: 78)
                 Spacer()
                 Button(action: {
-                    print("tapped filter bottom sheet")
+                    print("[tapped] 전체 게임 목록")
                 }) {
                     HStack {
                         Image(.icon24Menu)
