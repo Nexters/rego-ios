@@ -81,4 +81,7 @@ extension UIColor {
     static let purple15 = UIColor(hex: 0x7675FF, alpha: 0.15)
     static let purple50 = UIColor(hex: 0x7675FF, alpha: 0.50)
     static let purple100 = UIColor(hex: 0x7675FF)
+
+    static let homeGradientTop = UIColor(hex: 0x0C0E20)
+    static let homeGradientBottom = UIColor(hex: 0x0F1443)
 }

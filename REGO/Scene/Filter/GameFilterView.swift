@@ -9,7 +9,10 @@ import SwiftUI
 
 struct GameFilterView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .center) {
+            Text("상세필터")
+                .font(RegoFontStyle.h1.font)
+        }
     }
 }
 
