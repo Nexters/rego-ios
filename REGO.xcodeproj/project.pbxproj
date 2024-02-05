@@ -20,6 +20,7 @@
 		042C40312B66A0870017F9F3 /* LikeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C40302B66A0870017F9F3 /* LikeButtonView.swift */; };
 		04A79B562B6B9CD4007A4BF3 /* NavLikeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A79B552B6B9CD4007A4BF3 /* NavLikeButtonView.swift */; };
 		ED0F24742B6FF8A3002C12C9 /* GameFilterSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F24732B6FF8A3002C12C9 /* GameFilterSectionView.swift */; };
+		ED0F24762B712659002C12C9 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F24752B712659002C12C9 /* Text.swift */; };
 		ED5E9EF32B6682320055B482 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E9EF22B6682320055B482 /* Fonts.swift */; };
 		ED5E9F032B6E1F680055B482 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = ED5E9F022B6E1F680055B482 /* Lottie */; };
 		ED5E9F052B6FDBFC0055B482 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E9F042B6FDBFC0055B482 /* SplashView.swift */; };
@@ -43,6 +44,7 @@
 		042C40302B66A0870017F9F3 /* LikeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButtonView.swift; sourceTree = "<group>"; };
 		04A79B552B6B9CD4007A4BF3 /* NavLikeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavLikeButtonView.swift; sourceTree = "<group>"; };
 		ED0F24732B6FF8A3002C12C9 /* GameFilterSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameFilterSectionView.swift; sourceTree = "<group>"; };
+		ED0F24752B712659002C12C9 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		ED5E9EF22B6682320055B482 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		ED5E9F042B6FDBFC0055B482 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		ED5E9F072B6FE1F80055B482 /* logo_lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = logo_lottie.json; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			children = (
 				ED8D13F22B64E9B200C4A2A0 /* Colors.swift */,
 				ED5E9EF22B6682320055B482 /* Fonts.swift */,
+				ED0F24752B712659002C12C9 /* Text.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				042C40312B66A0870017F9F3 /* LikeButtonView.swift in Sources */,
+				ED0F24762B712659002C12C9 /* Text.swift in Sources */,
 				042C40212B6283920017F9F3 /* HomeView.swift in Sources */,
 				042C40292B6283C90017F9F3 /* FavoriteView.swift in Sources */,
 				042C402F2B6285860017F9F3 /* Game.swift in Sources */,

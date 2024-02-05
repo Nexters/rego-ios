@@ -22,9 +22,7 @@ struct HomeView: View {
                     })
                     Spacer()
                     Button(action: {}, label: {
-                        Text("게임 제안하기")
-                            .font(.body6)
-                            .foregroundColor(.gray100)
+                        Body6Text("게임 제안하기")
                     })
                     .frame(width: 86, height: 30)
                     .background(Color.gray700)
@@ -46,8 +44,7 @@ struct HomeView: View {
                 ScrollView(showsIndicators: false) {
                     Spacer().frame(height: 40)
                     VStack {
-                        Text("다 함께 친해져야 하는\n이 순간 RE'GO!")
-                            .font(.h1)
+                        H1Text("다 함께 친해져야 하는\n이 순간 RE'GO!")
                             .lineLimit(nil)
                             .multilineTextAlignment(.center)
                             .lineSpacing(6)
@@ -87,9 +84,7 @@ struct HomeView: View {
                         Image(.icon24Menu)
                             .renderingMode(.template)
                             .foregroundColor(.gray100)
-                        Text("전체 게임 목록")
-                            .font(.subtitle4)
-                            .foregroundColor(Color.gray100)
+                        Subtitle4Text("전체 게임 목록")
                     }
                 }
                 .frame(width: 144, height: 44)
