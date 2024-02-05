@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var isPresentSheet: Bool = false
-
     var body: some View {
         ZStack {
             LinearGradient(colors: [.homeGradientTop, .homeGradientBottom],
@@ -19,15 +17,11 @@ struct HomeView: View {
                 HStack {
                     Spacer()
                         .frame(width: 20)
-                    Button(action: {
-                        print("[tapped] logo")
-                    }, label: {
+                    Button(action: {}, label: {
                         Image(.logo) // TODO: Lottie 적용
                     })
                     Spacer()
-                    Button(action: {
-                        print("[tapped] 게임 제안하기")
-                    }, label: {
+                    Button(action: {}, label: {
                         Text("게임 제안하기")
                             .font(.body6)
                             .foregroundColor(.gray100)
@@ -37,9 +31,7 @@ struct HomeView: View {
                     .cornerRadius(6)
                     Spacer()
                         .frame(width: 12)
-                    Button(action: {
-                        print("[tapped] 좋아요 목록")
-                    }, label: {
+                    Button(action: {}, label: {
                         Image(uiImage: .icon24Liked)
                             .renderingMode(.template)
                             .foregroundColor(.gray100)
@@ -51,18 +43,46 @@ struct HomeView: View {
                         .frame(width: 20)
                 }
                 .frame(height: 52)
-                Spacer()
-                    .frame(height: 50)
-                Text("다 함께 친해져야 하는\n이 순간 RE'GO!")
-                    .font(.h1)
-                    .lineLimit(nil)
-                    .multilineTextAlignment(.center)
-                    .lineSpacing(6)
-                    .frame(height: 78)
-                Spacer()
-                Button(action: {
-                    print("[tapped] 전체 게임 목록")
-                }) {
+                ScrollView(showsIndicators: false) {
+                    Spacer().frame(height: 40)
+                    VStack {
+                        Text("다 함께 친해져야 하는\n이 순간 RE'GO!")
+                            .font(.h1)
+                            .lineLimit(nil)
+                            .multilineTextAlignment(.center)
+                            .lineSpacing(6)
+                            .frame(height: 78).frame(maxWidth: .infinity)
+                    }
+                    ZStack {
+                        // TODO: 게임 종류 Enum 처리 + 각도 세밀 조정
+                        Button(action: {}, label: {
+                            Image(uiImage: .mainSpeed)
+                        })
+                        .rotationEffect(.degrees(-10))
+                        .offset(x: -100)
+                        Button(action: {}, label: {
+                            Image(uiImage: .mainMc)
+                        })
+                        .rotationEffect(.degrees(10))
+                        .offset(x: 100, y: 20)
+                        Button(action: {}, label: {
+                            Image(uiImage: .mainTheme)
+                        })
+                        .rotationEffect(.degrees(-10))
+                        .offset(x: -80, y: 170)
+                        Button(action: {}, label: {
+                            Image(uiImage: .mainGame)
+                        })
+                        .rotationEffect(.degrees(5))
+                        .offset(x: 100, y: 200)
+                        Button(action: {}, label: {
+                            Image(uiImage: .mainOption)
+                        })
+                        .offset(x: -180, y: 300)
+                        .rotationEffect(.degrees(-20))
+                    }
+                }
+                Button(action: {}) {
                     HStack {
                         Image(.icon24Menu)
                             .renderingMode(.template)
