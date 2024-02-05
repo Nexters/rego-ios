@@ -27,6 +27,7 @@
 		ED5E9F082B6FE1F80055B482 /* logo_lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = ED5E9F072B6FE1F80055B482 /* logo_lottie.json */; };
 		ED8D13EC2B64D52A00C4A2A0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = ED8D13EB2B64D52A00C4A2A0 /* .swiftlint.yml */; };
 		ED8D13F32B64E9B300C4A2A0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D13F22B64E9B200C4A2A0 /* Colors.swift */; };
+		EDF1BFE02B7134E1003C29AB /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF1BFDF2B7134E1003C29AB /* LottieView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		ED5E9F072B6FE1F80055B482 /* logo_lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = logo_lottie.json; sourceTree = "<group>"; };
 		ED8D13EB2B64D52A00C4A2A0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		ED8D13F22B64E9B200C4A2A0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		EDF1BFDF2B7134E1003C29AB /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 				ED8D13F22B64E9B200C4A2A0 /* Colors.swift */,
 				ED5E9EF22B6682320055B482 /* Fonts.swift */,
 				ED0F24752B712659002C12C9 /* Text.swift */,
+				EDF1BFDF2B7134E1003C29AB /* LottieView.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				042C402F2B6285860017F9F3 /* Game.swift in Sources */,
 				042C40272B6283B60017F9F3 /* GameFilterView.swift in Sources */,
 				ED0F24742B6FF8A3002C12C9 /* GameFilterSectionView.swift in Sources */,
+				EDF1BFE02B7134E1003C29AB /* LottieView.swift in Sources */,
 				042C402C2B62850B0017F9F3 /* NetworkManager.swift in Sources */,
 				042C40232B62839E0017F9F3 /* GameListView.swift in Sources */,
 				ED5E9EF32B6682320055B482 /* Fonts.swift in Sources */,

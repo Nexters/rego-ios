@@ -15,7 +15,7 @@ struct SplashView: View {
                            startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
             VStack(alignment: .center) {
-                Image(.logo) // TODO: lottie 적용
+                LottieView(filename: "logo_lottie")
                     .frame(width: 165, height: 60)
             }
         }

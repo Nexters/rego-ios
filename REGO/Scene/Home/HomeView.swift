@@ -18,7 +18,8 @@ struct HomeView: View {
                     Spacer()
                         .frame(width: 20)
                     Button(action: {}, label: {
-                        Image(.logo) // TODO: Lottie 적용
+                        LottieView(filename: "logo_lottie")
+                            .frame(width: 77, height: 28)
                     })
                     Spacer()
                     Button(action: {}, label: {
