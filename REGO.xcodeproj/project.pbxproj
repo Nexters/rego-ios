@@ -28,6 +28,7 @@
 		ED8D13EC2B64D52A00C4A2A0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = ED8D13EB2B64D52A00C4A2A0 /* .swiftlint.yml */; };
 		ED8D13F32B64E9B300C4A2A0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D13F22B64E9B200C4A2A0 /* Colors.swift */; };
 		EDF1BFE02B7134E1003C29AB /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF1BFDF2B7134E1003C29AB /* LottieView.swift */; };
+		EDF1BFE22B71380C003C29AB /* FavoriteItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF1BFE12B71380C003C29AB /* FavoriteItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		ED8D13EB2B64D52A00C4A2A0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		ED8D13F22B64E9B200C4A2A0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		EDF1BFDF2B7134E1003C29AB /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		EDF1BFE12B71380C003C29AB /* FavoriteItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				042C40282B6283C90017F9F3 /* FavoriteView.swift */,
+				EDF1BFE12B71380C003C29AB /* FavoriteItemView.swift */,
 			);
 			path = Favorite;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 			files = (
 				042C40312B66A0870017F9F3 /* LikeButtonView.swift in Sources */,
 				ED0F24762B712659002C12C9 /* Text.swift in Sources */,
+				EDF1BFE22B71380C003C29AB /* FavoriteItemView.swift in Sources */,
 				042C40212B6283920017F9F3 /* HomeView.swift in Sources */,
 				042C40292B6283C90017F9F3 /* FavoriteView.swift in Sources */,
 				042C402F2B6285860017F9F3 /* Game.swift in Sources */,
