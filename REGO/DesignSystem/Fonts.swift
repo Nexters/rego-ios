@@ -8,6 +8,29 @@
 import UIKit
 import SwiftUI
 
+extension Font {
+    static let h1 = RegoFontStyle.h1.font
+    static let h2 = RegoFontStyle.h2.font
+    static let h3 = RegoFontStyle.h3.font
+    static let h4 = RegoFontStyle.h4.font
+
+    static let subtitle1 = RegoFontStyle.subtitle1.font
+    static let subtitle2 = RegoFontStyle.subtitle2.font
+    static let subtitle3 = RegoFontStyle.subtitle3.font
+    static let subtitle4 = RegoFontStyle.subtitle4.font
+    static let subtitle5 = RegoFontStyle.subtitle5.font
+
+    static let button = RegoFontStyle.button.font
+
+    static let body1 = RegoFontStyle.body1.font
+    static let body2 = RegoFontStyle.body2.font
+    static let body3 = RegoFontStyle.body3.font
+    static let body4 = RegoFontStyle.body4.font
+    static let body5 = RegoFontStyle.body5.font
+    static let body6 = RegoFontStyle.body6.font
+    static let body7 = RegoFontStyle.body7.font
+}
+
 public typealias RegoSystemFont = RegoFontPresentation & CaseIterable
 
 public protocol RegoFontPresentation {
@@ -25,7 +48,7 @@ extension RegoFontStyle {
     var uiFont: UIFont {
         switch self {
         case .h1:
-            return UIFont.systemFont(ofSize: 26, weight: .semibold)
+            return .systemFont(ofSize: 26, weight: .semibold)
         case .h2:
             return .systemFont(ofSize: 24, weight: .semibold)
         case .h3:
