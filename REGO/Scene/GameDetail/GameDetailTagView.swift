@@ -18,8 +18,11 @@ struct GameDetailTagView: View {
     var body: some View {
         HStack(spacing: 4) {
             tag.image
+                .renderingMode(.template)
+                .foregroundStyle(.white)
             Text(tag.title)
                 .font(RegoFontStyle.body6.font)
+                .foregroundStyle(.white)
         }
         .padding(.horizontal, 10)
         .padding(.vertical, 3)

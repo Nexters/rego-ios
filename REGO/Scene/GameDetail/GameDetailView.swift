@@ -39,9 +39,21 @@ struct GameDetailView: View {
                 GameDetailCardView()
             }
             .frame(height: 570)
+            HStack(spacing: 2){
+                Body3Text("\(currentIndex+1)")
+                    .foregroundStyle(.white)
+                Body4Text("/\(30)")
+                    .foregroundStyle(Color.gray200)
+            }
+            .padding(.vertical, 2)
+            .padding(.horizontal, 12)
+            .background(
+                Capsule()
+                    .foregroundStyle(.white.opacity(0.1))
+            )
             bottomBar
         }
-        .background(.white)
+        .background(Color.gray900)
     }
 }
 
