@@ -59,7 +59,9 @@ struct Carousel<Content: View>: View {
                         let progress = -offsetX / pageWidth
                         let increment = Int(progress.rounded())
 
-                        currentIndex = max(min(currentIndex + increment, pageCount - 1), 0)
+                        withAnimation(.linear) {
+                            currentIndex = max(min(currentIndex + increment, pageCount - 1), 0)
+                        }
                     }
             )
         }

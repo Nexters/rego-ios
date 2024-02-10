@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CardFront: View {
     @Binding var degree: Double
+    @Binding var isLiked: Bool
 
     var flipFunction: () -> Void
 
@@ -27,6 +28,8 @@ struct CardFront: View {
                             .frame(width: 36, height: 36)
                         H3Text("음식 확대 사진 맞추기")
                             .foregroundStyle(.white)
+                        Spacer()
+                        GameDetailLikeButton(isLiked: $isLiked)
                     }
                     Body1Text("확대된 사진을 보고 음식을 맞추는 게임")
                         .foregroundStyle(.white)
@@ -79,32 +82,50 @@ struct CardFront: View {
                         .frame(maxWidth: .infinity, maxHeight: 46)
                         .clipShape(.rect(cornerRadius: 12))
                         .foregroundStyle(.white)
-                        .background(Color.black)
+                        .background(
+                            RoundedRectangle(cornerRadius: 12)
+                                .foregroundStyle(.black)
+                        )
                 })
             }
             .padding(.horizontal, 20)
-            .padding(.bottom, 24)
-        }.rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
+            .padding(.vertical, 24)
+        }
+        .overlay(
+            RoundedRectangle(cornerRadius: 24)
+                .stroke(Color.purple50, lineWidth: 1)
+        )
+        .rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
     }
 }
 
 struct CardBack: View {
     @Binding var degree: Double
     @Binding var rotation: Bool
+    @Binding var isLiked: Bool
 
     var flipFunction: () -> Void
 
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 20)
-                .stroke(.blue.opacity(0.7), lineWidth: 3)
+            RoundedRectangle(cornerRadius: 24)
+                .fill(.linearGradient(.init(colors: [.homeGradientTop, .homeGradientBottom]), startPoint: .top, endPoint: .bottom))
 
-            RoundedRectangle(cornerRadius: 20)
-                .fill(.blue.opacity(0.2))
-                .shadow(color: .gray, radius: 2, x: 0, y: 0)
-            VStack {
-                Text("문제 예시")
-                Image(systemName: "person")
+            VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack {
+                        Image(._3DSpeed)
+                            .resizable()
+                            .frame(width: 36, height: 36)
+                        H3Text("음식 확대 사진 맞추기")
+                            .foregroundStyle(.white)
+                        Spacer()
+                        GameDetailLikeButton(isLiked: $isLiked)
+                    }
+
+                }
+                Spacer().frame(height: 20)
+                Subtitle3Text("게임방법")
                 Spacer()
                 Button(action: {
                     self.flipFunction()
@@ -113,17 +134,22 @@ struct CardBack: View {
                         .frame(maxWidth: .infinity, maxHeight: 46)
                         .clipShape(.rect(cornerRadius: 12))
                         .foregroundStyle(.white)
-                        .background(Color.black)
-
+                        .background(
+                            RoundedRectangle(cornerRadius: 12)
+                                .foregroundStyle(.black))
                 })
             }
-            .background(.yellow)
-            .padding()
+            .padding(.horizontal, 20)
+            .padding(.vertical, 24)
             .rotation3DEffect(
                 .degrees(rotation ? 0 : 180),
                 axis: (x: 0.0, y: 1.0, z: 0.0)
             )
         }
+        .overlay(
+            RoundedRectangle(cornerRadius: 24)
+                .stroke(Color.purple50, lineWidth: 1)
+        )
         .rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
 
     }
@@ -131,13 +157,13 @@ struct CardBack: View {
 
 struct GameDetailCardView: View {
     // MARK: Variables
-    @State var backDegree = -90.0
-    @State var frontDegree = 0.0
-    @State var isFlipped = false
+    @State private var backDegree = -90.0
+    @State private var frontDegree = 0.0
+    @State private var isFlipped = false
+    @State var isLiked = false
 
     let durationAndDelay: CGFloat = 0.2
 
-    // MARK: Flip Card Function
     func flipCard () {
         isFlipped = !isFlipped
         if isFlipped {
@@ -162,11 +188,11 @@ struct GameDetailCardView: View {
             backDegree = -90
         }
     }
-    // MARK: View Body
+
     var body: some View {
         ZStack {
-            CardFront(degree: $frontDegree, flipFunction: flipCard)
-            CardBack(degree: $backDegree, rotation: $isFlipped, flipFunction: flipCard)
+            CardFront(degree: $frontDegree, isLiked: $isLiked, flipFunction: flipCard)
+            CardBack(degree: $backDegree, rotation: $isFlipped, isLiked: $isLiked, flipFunction: flipCard)
         }
     }
 }
