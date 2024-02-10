@@ -57,6 +57,10 @@ extension Color {
 
     static let homeGradientTop = Color(uiColor: .homeGradientTop)
     static let homeGradientBottom = Color(uiColor: .homeGradientBottom)
+
+    static let gameCardGradientTop = Color(uiColor: .gameCardGradientTop)
+    static let gameCardGradientBottom = Color(uiColor: .gameCardGradientBottom)
+
 }
 
 extension UIColor {
@@ -136,4 +140,9 @@ extension UIColor {
 
     static let homeGradientTop = UIColor(hex: 0x0C0E20)
     static let homeGradientBottom = UIColor(hex: 0x0F1443)
+    static let gameCardGradientTop = UIColor(hex: 0x0B1145)
+    static let gameCardGradientBottom = UIColor(hex: 0x22264C)
+
+    static let orange15 = UIColor(hex: 0xFF621F, alpha: 0.15)
+    static let orange50 = UIColor(hex: 0xFF621F, alpha: 0.50)
 }
