@@ -35,17 +35,17 @@ struct GameFilterView: View {
                     }
                     Spacer().frame(height: 24)
                     VStack(spacing: 20) {
-                        // TODO: 데이터 바인딩
-    //                    GameFilterItemView(title: "", list: [])
-    //                    GameFilterItemView(title: "", list: [])
-    //                    GameFilterItemView(title: "", list: [])
-    //                    GameFilterItemView(title: "", list: [])
-    //                    GameFilterItemView(title: "", list: [])
+                        GameFilterItemView(store: store.scope(
+                            state: \.filter1State,
+                            action: GameFilterFeature.Action.filter1)
+                        )
                     }
                     Spacer()
                     HStack(spacing: 14) {
                         Spacer().frame(width: 6)
-                        Button(action: {}, label: {
+                        Button(action: {
+                            viewStore.send(.reset)
+                        }, label: {
                             Image(.icon24Refresh)
                                 .renderingMode(.template)
                                 .foregroundColor(.gray100)
