@@ -71,7 +71,9 @@ struct GameFilterView: View {
 }
 
 #Preview {
-    GameFilterView(store: Store(initialState: GameFilterFeature.State(), reducer: {
-        GameFilterFeature()
-    }))
+    GameFilterView(store: Store(
+        initialState: GameFilterFeature.State(),
+        reducer: {
+            GameFilterFeature()
+        }))
 }

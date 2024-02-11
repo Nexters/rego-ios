@@ -12,7 +12,7 @@ struct GameFilterFeature: Reducer {
     struct State: Equatable {
         var selectedGameTypes: [GameType] = []
         
-        var filter1State = GameFilterItemFeature.State(title: "인원 수", allGameTypes: GameType.peopleTypes)
+        var filter1State = GameFilterItemFeature.State(title: "인원 수", allGameTypes: GameType.peopleTypes) // TODO: 네이밍 수정
     }
 
     enum Action: Equatable {

@@ -6,36 +6,38 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct FavoriteView: View {
+    let store: StoreOf<FavoriteViewFeature>
+    
     var body: some View {
-        ZStack {
-            Color.gray900
-            VStack(alignment: .center) {
-                HStack(alignment: .center) {
-                    Spacer().frame(width: 20)
-                    H1Text("관심 게임")
-                    Spacer().frame(width: 6)
-                    H3Text("10").foregroundColor(.gray200)
+        WithViewStore(store, observe: { $0 }) { viewStore in
+            ZStack {
+                Color.gray900
+                VStack(alignment: .center) {
+                    HStack(alignment: .center) {
+                        Spacer().frame(width: 20)
+                        H1Text("관심 게임")
+                        Spacer().frame(width: 6)
+                        H3Text("\(viewStore.gameList.count)").foregroundColor(.gray200)
+                        Spacer()
+                    }
+                    VStack(spacing: 20) {
+                        // TODO: FavoriteItem 추가
+                    }
                     Spacer()
                 }
-                // TODO: 리스트뷰 처리 + 데이터 바인딩
-                VStack(spacing: 20) {
-                    FavoriteItemView()
-                    FavoriteItemView()
-                    FavoriteItemView()
-                    FavoriteItemView()
-                    FavoriteItemView()
-                    FavoriteItemView()
-                    FavoriteItemView()
-                    FavoriteItemView()
-                }
-                Spacer()
             }
         }
     }
 }
 
 #Preview {
-    FavoriteView()
+    FavoriteView(store: Store(
+        initialState: FavoriteViewFeature.State(), 
+        reducer: {
+            FavoriteViewFeature()
+        })
+    )
 }

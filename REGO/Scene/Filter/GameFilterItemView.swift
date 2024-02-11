@@ -41,7 +41,9 @@ struct GameFilterItemView: View {
 }
 
 #Preview {
-    GameFilterItemView(store: Store(initialState: GameFilterItemFeature.State(title: "인원 수", allGameTypes: GameType.peopleTypes), reducer: {
-        GameFilterItemFeature()
-    }))
+    GameFilterItemView(store: Store(
+        initialState: GameFilterItemFeature.State(title: "인원 수", allGameTypes: GameType.peopleTypes),
+        reducer: {
+            GameFilterItemFeature()
+        }))
 }
