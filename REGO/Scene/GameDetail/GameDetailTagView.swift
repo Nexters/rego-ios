@@ -9,9 +9,9 @@ import SwiftUI
 
 struct GameDetailTagView: View {
 
-    private let tag: Tag
+    private let tag: TagEnum
 
-    init(tag: Tag) {
+    init(tag: TagEnum) {
         self.tag = tag
     }
 
