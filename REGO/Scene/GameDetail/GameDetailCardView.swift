@@ -13,7 +13,7 @@ struct CardFront: View {
 
     var flipFunction: () -> Void
 
-    var tagList: [Tag] = [.두뇌회전, .속도가생명, .신체사용, .팀대항전]
+    var tagList: [TagEnum] = [.두뇌회전, .속도가생명, .신체사용, .팀대항전]
 
     var body: some View {
         ZStack {
