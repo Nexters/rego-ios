@@ -55,6 +55,9 @@ extension Color {
     static let purple50 = Color(uiColor: .purple50)
     static let purple100 = Color(uiColor: .purple100)
 
+    static let orange15 = Color(uiColor: .orange15)
+    static let orange50 = Color(uiColor: .orange50)
+
     static let homeGradientTop = Color(uiColor: .homeGradientTop)
     static let homeGradientBottom = Color(uiColor: .homeGradientBottom)
 
