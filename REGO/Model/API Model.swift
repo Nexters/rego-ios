@@ -6,26 +6,31 @@
 //
 
 import Foundation
+import SwiftUI
 
 // MARK: - FetchGamesModel
 struct FetchGamesModel {
-    let popularGames: [PopularGame]
+    let popularGames: [GameInfo]
     let allGames: [AllGame]
 }
 
 // MARK: - AllGame
 struct AllGame {
     let category: String? = nil
-    let info: [PopularGame]
+    let info: [GameInfo]
 }
 
 // MARK: - PopularGame
-struct PopularGame {
+struct GameInfo: Identifiable {
     let gameUUID, title: String
     let gameSummary: GameSummary
     let like: Int
     let iconType: IconType
     let rank: Int?
+
+    var id: String {
+        return gameUUID
+    }
 }
 
 // MARK: - GameSummary
@@ -66,7 +71,44 @@ enum IconType: String {
     case SPEED
     case TASTE
     case TOUCH
-    case BODY // TODO: 신체사용에 맞춰 수정하기
     case KNOWLEDGE
     case MISSION
+
+    var image: Image {
+        switch self {
+        case .ACTIVE:
+            return Image(._3DActive)
+        case .SONG:
+            return Image(._3DSong)
+        case .SPEED:
+            return Image(._3DSpeed)
+        case .TASTE:
+            return Image(._3DTaste)
+        case .TOUCH:
+            return Image(._3DTouch)
+        case .KNOWLEDGE:
+            return Image(._3DKnowledge)
+        case .MISSION:
+            return Image(._3DMission)
+        }
+    }
+
+    var bgColor: Color {
+        switch self {
+        case .ACTIVE:
+            return .green15
+        case .SONG:
+            return .orange15
+        case .SPEED:
+            return .skyBlue15
+        case .TASTE:
+            return .orange15
+        case .TOUCH:
+            return .yellow15
+        case .KNOWLEDGE:
+            return .blue15
+        case .MISSION:
+            return .coral15
+        }
+    }
 }
