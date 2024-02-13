@@ -9,11 +9,23 @@ import SwiftUI
 
 @main
 struct REGOApp: App {
+    @State private var showHomeView = false
+
     var body: some Scene {
         WindowGroup {
-//            HomeView()
-//            GameListView()
-            GameDetailView()
+            ZStack {
+                if showHomeView {
+                    HomeView()
+                }
+                else {
+                    SplashView()
+                        .onAppear(perform: {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                showHomeView = true
+                            }
+                        })
+                }
+            }
         }
     }
 }

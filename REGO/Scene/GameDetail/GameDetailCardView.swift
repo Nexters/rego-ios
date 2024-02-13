@@ -16,7 +16,9 @@ struct CardFront: View {
 
     var flipFunction: () -> Void
 
-    var tagList: [TagEnum] = [.두뇌회전, .속도가생명, .신체사용, .팀대항전]
+//    var tagList: [TagEnum] = [.두뇌회전, .속도가생명, .신체사용, .팀대항전]
+
+    var tagList: [TagEnum]
 
     init(gameDetail: FetchDetailGamesModel, degree: Binding<Double>, isLiked: Binding<Bool>, isShowLottie: Binding<Bool>, flipFunction: @escaping () -> Void) {
         self._degree = degree
@@ -24,6 +26,7 @@ struct CardFront: View {
         self._isShowLottie = isShowLottie
         self.gameDetail = gameDetail
         self.flipFunction = flipFunction
+        self.tagList = gameDetail.tag
     }
 
     var body: some View {
@@ -49,14 +52,13 @@ struct CardFront: View {
                         .foregroundStyle(.white)
 
                     // TODO: nested scrollView 해결
-                    ScrollView(.horizontal) {
+                    ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             ForEach(tagList, id: \.self) { tag in
                                 GameDetailTagView(tag: tag)
                             }
                         }
                     }
-                    .background(Color.pink)
                 }
                 Spacer(minLength: 20)
                 Subtitle3Text("게임방법")
@@ -110,10 +112,10 @@ struct CardFront: View {
                     .frame(width: 120, height: 120)
             }
         }
-//        .overlay(
-//            RoundedRectangle(cornerRadius: 24)
-//                .stroke(Color.purple50, lineWidth: 1)
-//        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 24)
+                .stroke(Color.purple50, lineWidth: 1)
+        )
         .rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
     }
 }
@@ -199,7 +201,7 @@ struct GameDetailCardView: View {
     @State private var frontDegree = 0.0
     @State private var isFlipped = false
     @State private var isLiked: Bool
-    @State private var isShowLottie: Bool = true
+    @State private var isShowLottie: Bool = false
 
     var gameDetail: FetchDetailGamesModel
 

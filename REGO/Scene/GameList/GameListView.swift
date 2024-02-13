@@ -19,7 +19,11 @@ struct GameListView: View {
                     Section {
                         LazyVStack(alignment: .leading, spacing: 24, content: {
                             ForEach(fetchGames.popularGames) { gameInfo in
-                                GameRowView(gameInfo: gameInfo)
+                                NavigationLink {
+                                    GameDetailView()
+                                } label: {
+                                    GameRowView(gameInfo: gameInfo)
+                                }.buttonStyle(.plain)
                             }
                         })
                     } header: {
@@ -34,7 +38,11 @@ struct GameListView: View {
                             Section {
                                 VStack(alignment: .leading, spacing: 24, content: {
                                     ForEach(allGame.info, id: \.gameUUID) { gameInfo in
-                                        GameRowView(gameInfo: gameInfo)
+                                        NavigationLink {
+                                            GameDetailView()
+                                        } label: {
+                                            GameRowView(gameInfo: gameInfo)
+                                        }.buttonStyle(.plain)
                                     }
                                 })
                             } header: {
@@ -51,6 +59,15 @@ struct GameListView: View {
             }
         }
         .padding(.horizontal, 20)
+//        .navigationBarBackButtonHidden()
+//        .toolbar(content: {
+//            ToolbarItem(placement: .topBarLeading) {
+//                NavBackButtonView()
+//            }
+//            ToolbarItem(placement: .topBarTrailing) {
+//                NavLikeButtonView(likeCnt: 5) // TODO: API 연결
+//            }
+//        })
     }
 }
 
