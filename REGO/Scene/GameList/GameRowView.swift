@@ -21,7 +21,7 @@ struct GameRowView: View {
     }
 
     var body: some View {
-        HStack {
+        HStack(spacing: 15) {
             gameInfo.iconType.image
                 .resizable()
                 .frame(width: rank == 1 ? 110 : 60, height: rank == 1 ? 110 : 60)
@@ -29,6 +29,8 @@ struct GameRowView: View {
                     RoundedRectangle(cornerRadius: 12)
                         .fill(gameInfo.iconType.bgColor)
                 }
+                .rotationEffect(rank == 1 ? .degrees(-6) : .zero)
+
             VStack(alignment: .leading, spacing: 2) {
                 if let rank = gameInfo.rank {
                     if rank == 1 {
@@ -64,12 +66,12 @@ struct GameRowView: View {
                     Body4Text("소요시간")
                     Body2Text("\(gameInfo.gameSummary.gameTime)")
                     Text(" | ")
+                        .foregroundStyle(Color.gray500)
                     Body4Text("참여인원")
                     Body2Text("\(gameInfo.gameSummary.gamePeople)")
                 }
                 .foregroundStyle(Color.gray300)
             }
-            Spacer()
         }
     }
 }

@@ -10,6 +10,8 @@ import SwiftUI
 struct GameDetailView: View {
     @State var currentIndex: Int = 0
 
+    @State private var fetchDetailGames: [FetchDetailGamesModel] = Mock.detailGameMock
+
     var bottomBar: some View {
         HStack {
             Button {
@@ -25,7 +27,7 @@ struct GameDetailView: View {
             Button {
                 withAnimation(.easeInOut) {
                     print("right")
-                    currentIndex = min(10-1, currentIndex+1)
+                    currentIndex = min(fetchDetailGames.count-1, currentIndex+1)
                 }
             } label: {
                 Text("right")
@@ -35,14 +37,13 @@ struct GameDetailView: View {
     }
     var body: some View {
         VStack(alignment: .center) {
-            Carousel(pageCount: 10, visibleEdgeSpace: 14, spacing: 14, currentIndex: $currentIndex) { _ in
-                GameDetailCardView()
+            Carousel(gameDetails: fetchDetailGames, pageCount: fetchDetailGames.count, visibleEdgeSpace: 14, spacing: 14, currentIndex: $currentIndex) { idx in
+                GameDetailCardView(gameDetail: fetchDetailGames[idx])
             }
             .frame(height: 570)
             HStack(spacing: 2){
                 Body3Text("\(currentIndex+1)")
-                    .foregroundStyle(.white)
-                Body4Text("/\(30)")
+                Body4Text("/\(fetchDetailGames.count)")
                     .foregroundStyle(Color.gray200)
             }
             .padding(.vertical, 2)

@@ -15,16 +15,20 @@ struct Carousel<Content: View>: View {
     let spacing: CGFloat
     let content: (PageIndex) -> Content
 
+    var gameDetails: [FetchDetailGamesModel]
+
     @GestureState var dragOffset: CGFloat = 0
     @Binding var currentIndex: Int
 
     init(
+        gameDetails: [FetchDetailGamesModel],
         pageCount: Int,
         visibleEdgeSpace: CGFloat,
         spacing: CGFloat,
         currentIndex: Binding<Int>,
         @ViewBuilder content: @escaping (PageIndex) -> Content
     ) {
+        self.gameDetails = gameDetails
         self.pageCount = pageCount
         self.visibleEdgeSpace = visibleEdgeSpace
         self.spacing = spacing

@@ -10,10 +10,21 @@ import SwiftUI
 struct CardFront: View {
     @Binding var degree: Double
     @Binding var isLiked: Bool
+    @Binding var isShowLottie: Bool
+
+    var gameDetail: FetchDetailGamesModel
 
     var flipFunction: () -> Void
 
     var tagList: [TagEnum] = [.두뇌회전, .속도가생명, .신체사용, .팀대항전]
+
+    init(gameDetail: FetchDetailGamesModel, degree: Binding<Double>, isLiked: Binding<Bool>, isShowLottie: Binding<Bool>, flipFunction: @escaping () -> Void) {
+        self._degree = degree
+        self._isLiked = isLiked
+        self._isShowLottie = isShowLottie
+        self.gameDetail = gameDetail
+        self.flipFunction = flipFunction
+    }
 
     var body: some View {
         ZStack {
@@ -23,15 +34,18 @@ struct CardFront: View {
             VStack(alignment: .leading) {
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {
-                        Image(._3DSpeed)
+                        gameDetail.iconType.image
                             .resizable()
                             .frame(width: 36, height: 36)
-                        H3Text("음식 확대 사진 맞추기")
-                            .foregroundStyle(.white)
+                            .background {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(gameDetail.iconType.bgColor)
+                            }
+                        H3Text(gameDetail.title)
                         Spacer()
-                        GameDetailLikeButton(isLiked: $isLiked)
+                        GameDetailLikeButton(isLiked: $isLiked, isShowLottie: $isShowLottie)
                     }
-                    Body1Text("확대된 사진을 보고 음식을 맞추는 게임")
+                    Body1Text(gameDetail.gameDescription)
                         .foregroundStyle(.white)
 
                     // TODO: nested scrollView 해결
@@ -42,6 +56,7 @@ struct CardFront: View {
                             }
                         }
                     }
+                    .background(Color.pink)
                 }
                 Spacer(minLength: 20)
                 Subtitle3Text("게임방법")
@@ -90,11 +105,15 @@ struct CardFront: View {
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 24)
+            if isShowLottie {
+                LottieView(filename: "like_big_lottie", loopMode: .playOnce)
+                    .frame(width: 120, height: 120)
+            }
         }
-        .overlay(
-            RoundedRectangle(cornerRadius: 24)
-                .stroke(Color.purple50, lineWidth: 1)
-        )
+//        .overlay(
+//            RoundedRectangle(cornerRadius: 24)
+//                .stroke(Color.purple50, lineWidth: 1)
+//        )
         .rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
     }
 }
@@ -103,8 +122,20 @@ struct CardBack: View {
     @Binding var degree: Double
     @Binding var rotation: Bool
     @Binding var isLiked: Bool
+    @Binding var isShowLottie: Bool
 
     var flipFunction: () -> Void
+
+    var gameDetail: FetchDetailGamesModel
+
+    init(gameDetail: FetchDetailGamesModel, degree: Binding<Double>, rotation: Binding<Bool>, isLiked: Binding<Bool>, isShowLottie: Binding<Bool>, flipFunction: @escaping () -> Void) {
+        self._degree = degree
+        self._isLiked = isLiked
+        self._rotation = rotation
+        self._isShowLottie = isShowLottie
+        self.gameDetail = gameDetail
+        self.flipFunction = flipFunction
+    }
 
     var body: some View {
         ZStack {
@@ -114,15 +145,17 @@ struct CardBack: View {
             VStack(alignment: .leading) {
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {
-                        Image(._3DSpeed)
+                        gameDetail.iconType.image
                             .resizable()
                             .frame(width: 36, height: 36)
-                        H3Text("음식 확대 사진 맞추기")
-                            .foregroundStyle(.white)
+                            .background {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(gameDetail.iconType.bgColor)
+                            }
+                        H3Text(gameDetail.title)
                         Spacer()
-                        GameDetailLikeButton(isLiked: $isLiked)
+                        GameDetailLikeButton(isLiked: $isLiked, isShowLottie: $isShowLottie)
                     }
-
                 }
                 Spacer().frame(height: 20)
                 Subtitle3Text("게임방법")
@@ -145,6 +178,11 @@ struct CardBack: View {
                 .degrees(rotation ? 0 : 180),
                 axis: (x: 0.0, y: 1.0, z: 0.0)
             )
+
+            if isShowLottie {
+                LottieView(filename: "like_big_lottie", loopMode: .playOnce)
+                    .frame(width: 120, height: 120)
+            }
         }
         .overlay(
             RoundedRectangle(cornerRadius: 24)
@@ -160,7 +198,15 @@ struct GameDetailCardView: View {
     @State private var backDegree = -90.0
     @State private var frontDegree = 0.0
     @State private var isFlipped = false
-    @State var isLiked = false
+    @State private var isLiked: Bool
+    @State private var isShowLottie: Bool = true
+
+    var gameDetail: FetchDetailGamesModel
+
+    init(gameDetail: FetchDetailGamesModel) {
+        self.isLiked = gameDetail.like
+        self.gameDetail = gameDetail
+    }
 
     let durationAndDelay: CGFloat = 0.2
 
@@ -191,12 +237,12 @@ struct GameDetailCardView: View {
 
     var body: some View {
         ZStack {
-            CardFront(degree: $frontDegree, isLiked: $isLiked, flipFunction: flipCard)
-            CardBack(degree: $backDegree, rotation: $isFlipped, isLiked: $isLiked, flipFunction: flipCard)
+            CardFront(gameDetail: gameDetail, degree: $frontDegree, isLiked: $isLiked, isShowLottie: $isShowLottie, flipFunction: flipCard)
+            CardBack(gameDetail: gameDetail, degree: $backDegree, rotation: $isFlipped, isLiked: $isLiked, isShowLottie: $isShowLottie, flipFunction: flipCard)
         }
     }
 }
 
-#Preview {
-    GameDetailCardView()
-}
+// #Preview {
+//    GameDetailCardView(gameDetail: )
+// }
