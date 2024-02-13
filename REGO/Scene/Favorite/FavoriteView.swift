@@ -10,7 +10,7 @@ import ComposableArchitecture
 
 struct FavoriteView: View {
     let store: StoreOf<FavoriteViewFeature>
-    
+
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             ZStack {
@@ -23,11 +23,14 @@ struct FavoriteView: View {
                         H3Text("\(viewStore.gameList.count)").foregroundColor(.gray200)
                         Spacer()
                     }
-                    VStack(spacing: 20) {
-                        // TODO: FavoriteItem 추가
+                    LazyVStack(spacing: 20) {
+                        // TODO: 리스트 추가
                     }
                     Spacer()
                 }
+            }
+            .onAppear {
+                viewStore.send(.loadGameList)
             }
         }
     }
@@ -35,7 +38,7 @@ struct FavoriteView: View {
 
 #Preview {
     FavoriteView(store: Store(
-        initialState: FavoriteViewFeature.State(), 
+        initialState: FavoriteViewFeature.State(),
         reducer: {
             FavoriteViewFeature()
         })

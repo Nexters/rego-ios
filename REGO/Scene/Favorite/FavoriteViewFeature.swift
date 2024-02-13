@@ -12,16 +12,32 @@ import SwiftUI
 struct FavoriteViewFeature: Reducer {
     struct State: Equatable {
         var gameList: [Game] = []
+        var gameStateList: [FavoriteItemFeature.State] = []
     }
 
     enum Action: Equatable {
         case loadGameList
+        case receivedGameList([Game])
+
+        case setGameInfo(FavoriteItemFeature.Action)
     }
 
-    func reduce(into state: inout State, action: Action) -> Effect<Action> {
-        switch action {
-        case .loadGameList:
-            return .none
+    var body: some Reducer<State, Action> {
+        Reduce { _, action in
+            switch action {
+            case .loadGameList:
+                // TODO: API 통신
+                let list: [Game] = [
+                    Game(name: "test11", type: "", descriptionType: "", favoriteNum: 1),
+                    Game(name: "test22", type: "", descriptionType: "", favoriteNum: 1)
+                ]
+                return .send(.receivedGameList(list))
+            case .receivedGameList:
+                return .none
+            case .setGameInfo(let game):
+                return .none
+            }
         }
+
     }
 }

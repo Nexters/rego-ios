@@ -17,6 +17,7 @@ struct GameFilterItemFeature: Reducer {
 
     enum Action: Equatable {
         case selectGameType(GameType)
+        case reset
     }
 
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
@@ -24,11 +25,15 @@ struct GameFilterItemFeature: Reducer {
         case .selectGameType(let type):
             if !state.selectedGameTypes.contains(type) {
                 state.selectedGameTypes.append(type)
-            } else {
+            }
+            else {
                 if let index = state.selectedGameTypes.firstIndex(of: type) {
                     state.selectedGameTypes.remove(at: index)
                 }
             }
+            return .none
+        case .reset:
+            state.selectedGameTypes = []
             return .none
         }
     }
@@ -114,7 +119,6 @@ extension GameType {
     }
 }
 
-
 extension GameType {
     static var peopleTypes: [GameType] {
         return [.twoFivePeople, .fiveTenPeople, .noLimitPeople]
@@ -144,4 +148,3 @@ extension GameType {
         return [.sinseougi, .ziraksil, .ahyeong, .runningMan]
     }
 }
-

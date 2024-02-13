@@ -10,7 +10,7 @@ import ComposableArchitecture
 
 struct GameFilterView: View {
     let store: StoreOf<GameFilterFeature>
-    
+
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             ZStack {
@@ -36,9 +36,10 @@ struct GameFilterView: View {
                     Spacer().frame(height: 24)
                     VStack(spacing: 20) {
                         GameFilterItemView(store: store.scope(
-                            state: \.filter1State,
-                            action: GameFilterFeature.Action.filter1)
+                            state: \.peopleFilterState,
+                            action: GameFilterFeature.Action.peopleFilter)
                         )
+                        GameFilterItemView(store: store.scope(state: \.minFilterState, action: GameFilterFeature.Action.minFilter))
                     }
                     Spacer()
                     HStack(spacing: 14) {

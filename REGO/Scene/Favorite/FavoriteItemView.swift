@@ -10,7 +10,7 @@ import ComposableArchitecture
 
 struct FavoriteItemView: View {
     let store: StoreOf<FavoriteItemFeature>
-    
+
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             HStack(alignment: .center) {
@@ -22,10 +22,12 @@ struct FavoriteItemView: View {
                     .cornerRadius(8)
                 Spacer().frame(width: 10)
                 Button(action: {}, label: {
-                    ButtonText(viewStore.state.title)
+                    ButtonText(viewStore.state.game.name)
                 })
                 Spacer()
-                Button(action: {}, label: {
+                Button(action: {
+                    viewStore.send(.selectItem)
+                }, label: {
                     Image(.icon24Liked)
                         .renderingMode(.template)
                         .foregroundColor(viewStore.state.isSelected ? .primary500 : .gray400)
@@ -39,7 +41,7 @@ struct FavoriteItemView: View {
 
 #Preview {
     FavoriteItemView(store: Store(
-        initialState: FavoriteItemFeature.State(title: "노래 맞추기"),
+        initialState: FavoriteItemFeature.State(),
         reducer: {
             FavoriteItemFeature()
         }))

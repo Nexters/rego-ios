@@ -11,26 +11,38 @@ import SwiftUI
 struct GameFilterFeature: Reducer {
     struct State: Equatable {
         var selectedGameTypes: [GameType] = []
-        
-        var filter1State = GameFilterItemFeature.State(title: "인원 수", allGameTypes: GameType.peopleTypes) // TODO: 네이밍 수정
+
+        var peopleFilterState = GameFilterItemFeature.State(title: "인원 수", allGameTypes: GameType.peopleTypes)
+        var minFilterState = GameFilterItemFeature.State(title: "소요시간", allGameTypes: GameType.minuateTypes)
     }
 
     enum Action: Equatable {
-        case filter1(GameFilterItemFeature.Action)
+        case peopleFilter(GameFilterItemFeature.Action)
+        case minFilter(GameFilterItemFeature.Action)
+
+        case selectGame(GameType)
         case reset
     }
-    
+
     var body: some Reducer<State, Action> {
-        Scope(state: \.filter1State, action: /Action.filter1) {
+        Scope(state: \.peopleFilterState, action: /Action.peopleFilter) {
             GameFilterItemFeature()
         }
-        
+        Scope(state: \.minFilterState, action: /Action.minFilter) {
+            GameFilterItemFeature()
+        }
+
         Reduce { state, action in
             switch action {
-            case .filter1(.selectGameType(let type)):
+            case .peopleFilter(.selectGameType(let type)):
+                return .send(.selectGame(type))
+            case .minFilter(.selectGameType(let type)):
+                return .send(.selectGame(type))
+            case .selectGame(let type):
                 if !state.selectedGameTypes.contains(type) {
                     state.selectedGameTypes.append(type)
-                } else {
+                }
+                else {
                     if let index = state.selectedGameTypes.firstIndex(of: type) {
                         state.selectedGameTypes.remove(at: index)
                     }
@@ -38,8 +50,10 @@ struct GameFilterFeature: Reducer {
                 return .none
             case .reset:
                 state.selectedGameTypes = []
-                state.filter1State.selectedGameTypes = []
-                return .none
+                return .merge(
+                    .send(.peopleFilter(.reset)),
+                    .send(.minFilter(.reset))
+                )
             default:
                 return .none
             }
