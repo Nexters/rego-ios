@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct NavLikeButtonView: View {
     @State var likeCnt: Int
@@ -15,9 +16,14 @@ struct NavLikeButtonView: View {
     }
 
     var body: some View {
-        Button(action: {
-
-        }, label: {
+        NavigationLink {
+            FavoriteView(store: Store(
+                initialState: FavoriteViewFeature.State(),
+                reducer: {
+                    FavoriteViewFeature()
+                })
+            )
+        } label: {
             ZStack(alignment: .topLeading) {
                 Image(.icon24Liked)
                     .resizable()
@@ -35,7 +41,7 @@ struct NavLikeButtonView: View {
                         .padding(.leading, 21)
                 }
             }
-        })
+        }
     }
 }
 

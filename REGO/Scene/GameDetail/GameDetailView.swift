@@ -40,7 +40,7 @@ struct GameDetailView: View {
             Carousel(gameDetails: fetchDetailGames, pageCount: fetchDetailGames.count, visibleEdgeSpace: 14, spacing: 14, currentIndex: $currentIndex) { idx in
                 GameDetailCardView(gameDetail: fetchDetailGames[idx])
             }
-            .frame(height: 570)
+            .frame(width: UIScreen.main.bounds.size.width, height: 570)
             HStack(spacing: 2){
                 Body3Text("\(currentIndex+1)")
                 Body4Text("/\(fetchDetailGames.count)")

@@ -15,7 +15,6 @@ struct GameDetailLikeButton: View {
         VStack {
             Button(action: {
                 isLiked.toggle()
-                print("GameDetailLikeButton", isLiked)
                 if isLiked {
                     isShowLottie = true
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

@@ -21,6 +21,7 @@
 		046996AF2B6E0C4C00F6D5C4 /* GameDetailTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046996AE2B6E0C4C00F6D5C4 /* GameDetailTagView.swift */; };
 		046996B32B6E141800F6D5C4 /* TagEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046996B22B6E141800F6D5C4 /* TagEnum.swift */; };
 		046F0FD82B67935A0091DA50 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F0FD72B67935A0091DA50 /* CarouselView.swift */; };
+		0478291F2B7B463E00E33041 /* NavBackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0478291E2B7B463E00E33041 /* NavBackButtonView.swift */; };
 		0488EEF22B67E5D30026DAE8 /* GameDetailCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488EEF12B67E5D30026DAE8 /* GameDetailCardView.swift */; };
 		04A79B562B6B9CD4007A4BF3 /* NavLikeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A79B552B6B9CD4007A4BF3 /* NavLikeButtonView.swift */; };
 		04AE72FA2B75153600F10F47 /* GameDetailLikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE72F92B75153600F10F47 /* GameDetailLikeButton.swift */; };
@@ -63,6 +64,7 @@
 		046996AE2B6E0C4C00F6D5C4 /* GameDetailTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailTagView.swift; sourceTree = "<group>"; };
 		046996B22B6E141800F6D5C4 /* TagEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagEnum.swift; sourceTree = "<group>"; };
 		046F0FD72B67935A0091DA50 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		0478291E2B7B463E00E33041 /* NavBackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBackButtonView.swift; sourceTree = "<group>"; };
 		0488EEF12B67E5D30026DAE8 /* GameDetailCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailCardView.swift; sourceTree = "<group>"; };
 		04A79B552B6B9CD4007A4BF3 /* NavLikeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavLikeButtonView.swift; sourceTree = "<group>"; };
 		04AE72F92B75153600F10F47 /* GameDetailLikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailLikeButton.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				04AE72FF2B7A57D800F10F47 /* GameRowView.swift */,
 				042C40302B66A0870017F9F3 /* LikeButtonView.swift */,
 				04A79B552B6B9CD4007A4BF3 /* NavLikeButtonView.swift */,
+				0478291E2B7B463E00E33041 /* NavBackButtonView.swift */,
 			);
 			path = GameList;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				ED45BC5C2B794DA3006C63B0 /* GameFilterItemFeature.swift in Sources */,
 				0488EEF22B67E5D30026DAE8 /* GameDetailCardView.swift in Sources */,
 				042C402C2B62850B0017F9F3 /* NetworkManager.swift in Sources */,
+				0478291F2B7B463E00E33041 /* NavBackButtonView.swift in Sources */,
 				042C40232B62839E0017F9F3 /* GameListView.swift in Sources */,
 				ED5E9EF32B6682320055B482 /* Fonts.swift in Sources */,
 				042C40252B6283AA0017F9F3 /* GameDetailView.swift in Sources */,
