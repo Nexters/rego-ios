@@ -42,10 +42,10 @@ struct FetchDetailGamesModel {
     let gameUUID, title: String
     let gameDescription: String
     // TODO: Enum화
-    let iconType: String
-    let tag: String
+    let iconType: IconType
+    let tag: [TagEnum] // TODO: Enum수정, BE Model 수정 요청
     let tip: String? = nil
-    let uiType: String
+    let uiType: UIType
     let like: Bool
     let likeCount: Int
 
@@ -53,6 +53,13 @@ struct FetchDetailGamesModel {
     let gameHow: GameHow? = nil
     let gameExample: GameExample? = nil
     let gameExamples: [String]? = nil
+}
+
+enum UIType: String {
+    case IMAGE_TYPE
+    case NARRATIVE_WITH_PROGRESS
+    case NARRATIVE_WITHOUT_PROGRESS
+    case TEXT_TYPE
 }
 
 struct GameHow {
