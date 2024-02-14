@@ -39,7 +39,7 @@ struct FavoriteViewFeature: Reducer {
                         state.rows.append(FavoriteItemFeature.State(id: UUID(), name: favoriteItem.name))
                     }
                     return .none
-                case .row(_, let action):
+                case .row(let id, let action):
                     return .none
                 }
             }.forEach(\.rows, action: /Action.row) {

@@ -26,7 +26,7 @@ struct FavoriteItemView: View {
                 })
                 Spacer()
                 Button(action: {
-                    viewStore.send(.selectItem)
+                    viewStore.send(.sendSelectItem)
                 }, label: {
                     Image(.icon24Liked)
                         .renderingMode(.template)

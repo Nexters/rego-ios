@@ -19,7 +19,8 @@ struct FavoriteItemFeature: Reducer {
 
     enum Action: Equatable {
         case loadGameInfo(Game)
-        case selectItem
+        case sendSelectItem
+        case setselectItem
     }
 
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
@@ -27,7 +28,10 @@ struct FavoriteItemFeature: Reducer {
         case .loadGameInfo(let game):
             state.name = game.name
             return .none
-        case .selectItem:
+        case .sendSelectItem:
+            // TODO: API 통신
+            return .send(.setselectItem)
+        case .setselectItem:
             state.isSelected.toggle()
             return .none
         }
