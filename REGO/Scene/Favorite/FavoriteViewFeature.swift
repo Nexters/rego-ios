@@ -11,33 +11,39 @@ import SwiftUI
 
 struct FavoriteViewFeature: Reducer {
     struct State: Equatable {
-        var gameList: [Game] = []
-        var gameStateList: [FavoriteItemFeature.State] = []
+        var favoriteItems: [Game] = []
+        var rows: IdentifiedArrayOf<FavoriteItemFeature.State> = []
     }
 
     enum Action: Equatable {
         case loadGameList
-        case receivedGameList([Game])
-
-        case setGameInfo(FavoriteItemFeature.Action)
+        case setGameList([Game])
+        case row(id: FavoriteItemFeature.State.ID, action: FavoriteItemFeature.Action)
     }
 
     var body: some Reducer<State, Action> {
-        Reduce { _, action in
-            switch action {
-            case .loadGameList:
-                // TODO: API 통신
-                let list: [Game] = [
-                    Game(name: "test11", type: "", descriptionType: "", favoriteNum: 1),
-                    Game(name: "test22", type: "", descriptionType: "", favoriteNum: 1)
-                ]
-                return .send(.receivedGameList(list))
-            case .receivedGameList:
-                return .none
-            case .setGameInfo(let game):
-                return .none
+            Reduce { state, action in
+                switch action {
+                case .loadGameList:
+                    // TODO: API 통신
+                    let items: [Game] = [
+                        Game(name: "이름테스트", type: "", descriptionType: "", favoriteNum: 1),
+                        Game(name: "이름테스트2", type: "", descriptionType: "", favoriteNum: 1),
+                        Game(name: "이름테스트3", type: "", descriptionType: "", favoriteNum: 1)
+                    ]
+
+                    return .send(.setGameList(items))
+                case .setGameList(let items):
+                    state.favoriteItems = items
+                    for favoriteItem in state.favoriteItems {
+                        state.rows.append(FavoriteItemFeature.State(id: UUID(), name: favoriteItem.name))
+                    }
+                    return .none
+                case .row(_, let action):
+                    return .none
+                }
+            }.forEach(\.rows, action: /Action.row) {
+                FavoriteItemFeature()
             }
         }
-
-    }
 }

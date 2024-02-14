@@ -20,11 +20,15 @@ struct FavoriteView: View {
                         Spacer().frame(width: 20)
                         H1Text("관심 게임")
                         Spacer().frame(width: 6)
-                        H3Text("\(viewStore.gameList.count)").foregroundColor(.gray200)
+                        H3Text("\(viewStore.favoriteItems.count)").foregroundColor(.gray200)
                         Spacer()
                     }
                     LazyVStack(spacing: 20) {
-                        // TODO: 리스트 추가
+                        ForEachStore(
+                            self.store.scope(state: \.rows, action: { .row(id: $0, action: $1) })
+                        ) { childStore in
+                            FavoriteItemView(store: childStore)
+                        }
                     }
                     Spacer()
                 }

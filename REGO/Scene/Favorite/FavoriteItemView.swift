@@ -22,7 +22,7 @@ struct FavoriteItemView: View {
                     .cornerRadius(8)
                 Spacer().frame(width: 10)
                 Button(action: {}, label: {
-                    ButtonText(viewStore.state.game.name)
+                    ButtonText(viewStore.name)
                 })
                 Spacer()
                 Button(action: {
@@ -41,7 +41,7 @@ struct FavoriteItemView: View {
 
 #Preview {
     FavoriteItemView(store: Store(
-        initialState: FavoriteItemFeature.State(),
+        initialState: FavoriteItemFeature.State(id: UUID(), name: "이름"),
         reducer: {
             FavoriteItemFeature()
         }))

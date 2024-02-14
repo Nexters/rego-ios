@@ -10,8 +10,10 @@ import ComposableArchitecture
 import SwiftUI
 
 struct FavoriteItemFeature: Reducer {
-    struct State: Equatable, Hashable {
-        var game: Game = Game(name: "이름테스트", type: "", descriptionType: "", favoriteNum: 1)
+    struct State: Equatable, Identifiable {
+        var id: UUID
+
+        var name: String = ""
         var isSelected: Bool = false
     }
 
@@ -23,7 +25,7 @@ struct FavoriteItemFeature: Reducer {
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
         case .loadGameInfo(let game):
-            state.game = game
+            state.name = game.name
             return .none
         case .selectItem:
             state.isSelected.toggle()
