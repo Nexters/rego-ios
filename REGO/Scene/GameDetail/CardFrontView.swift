@@ -95,13 +95,13 @@ struct CardFrontView: View {
                 Button(action: {
                     self.flipFunction()
                 }, label: {
-                    Text("예시보기")
+                    Subtitle4Text("예시보기")
                         .frame(maxWidth: .infinity, maxHeight: 46)
                         .clipShape(.rect(cornerRadius: 12))
                         .foregroundStyle(.white)
                         .background(
                             RoundedRectangle(cornerRadius: 12)
-                                .foregroundStyle(.black)
+                                .foregroundStyle(Color.gray900)
                         )
                 })
             }

@@ -211,6 +211,30 @@ struct Body7Text: View {
     }
 }
 
+struct Body8Text: View {
+    var text: String
+
+    init(_ text: String) {
+        self.text = text
+    }
+
+    var body: some View {
+        Text(text).font(.body8)
+    }
+}
+
+struct Body9Text: View {
+    var text: String
+
+    init(_ text: String) {
+        self.text = text
+    }
+
+    var body: some View {
+        Text(text).font(.body9)
+    }
+}
+
 /// Custom Text 목록을 테스트 합니다.
 struct TextSampleView: View {
     var body: some View {
@@ -232,6 +256,8 @@ struct TextSampleView: View {
             Body5Text("Body5 테스트")
             Body6Text("Body6 테스트")
             Body7Text("Body7 테스트")
+            Body8Text("Body7 테스트")
+            Body9Text("Body7 테스트")
         }
     }
 }

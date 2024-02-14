@@ -22,8 +22,7 @@ struct GameDetailTagView: View {
                 .resizable()
                 .frame(width: 14, height: 14)
                 .foregroundStyle(.white)
-            Text(tag.title)
-                .font(RegoFontStyle.body6.font)
+            Body6Text(tag.title)
                 .foregroundStyle(.white)
         }
         .padding(.horizontal, 10)
