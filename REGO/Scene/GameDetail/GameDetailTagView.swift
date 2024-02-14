@@ -19,6 +19,8 @@ struct GameDetailTagView: View {
         HStack(spacing: 4) {
             tag.image
                 .renderingMode(.template)
+                .resizable()
+                .frame(width: 14, height: 14)
                 .foregroundStyle(.white)
             Text(tag.title)
                 .font(RegoFontStyle.body6.font)
