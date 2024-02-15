@@ -47,7 +47,7 @@ struct Carousel<Content: View>: View {
                     self.content(pageIndex)
                         .frame(
                             width: pageWidth,
-                            height: pageIndex == currentIndex ? proxy.size.height : 400
+                            height: pageIndex == currentIndex ? proxy.size.height : 520
                         )
                 }
                 .contentShape(Rectangle())

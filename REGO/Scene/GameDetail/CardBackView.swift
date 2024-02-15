@@ -33,7 +33,7 @@ struct CardBackView: View {
 
             VStack(alignment: .leading) {
                 VStack(alignment: .leading, spacing: 8) {
-                    HStack {
+                    HStack { // TODO: Front, Back 2줄에 대한 대응 -> 너무 경우가 달라서 이상해짐
                         gameDetail.iconType.image
                             .resizable()
                             .frame(width: 36, height: 36)
@@ -42,17 +42,52 @@ struct CardBackView: View {
                                     .fill(gameDetail.iconType.bgColor)
                             }
                         H3Text(gameDetail.title)
+                            .lineLimit(2)
                         Spacer()
                         GameDetailLikeButton(isLiked: $isLiked, isShowLottie: $isShowLottie)
                     }
                 }
                 Spacer().frame(height: 20)
-                Subtitle3Text("게임방법")
-                Spacer()
+                Subtitle3Text("문제예시")
+                switch gameDetail.uiType {
+                case .IMAGE_TYPE:
+                    VStack(alignment: .leading) {
+                        Image(.mainGame) // TODO: 이미지 변경
+                            .resizable()
+                        HStack(spacing: 10) {
+                            Body2Text("정답예시")
+                            Body5Text(gameDetail.gameImageExample?.answer ?? "")
+                        }
+                    }
+                case .TEXT_TYPE:
+                    ScrollView(.vertical) {
+                        if let games = gameDetail.gameExample {
+                            LazyVStack(alignment: .leading, spacing: 8) {
+                                ForEach(games, id: \.self) { game in
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(Color.gray700)
+
+                                        HStack {
+                                            Body4Text(game)
+                                                .foregroundStyle(.white)
+                                            Spacer()
+                                        }
+                                        .padding(.horizontal, 14)
+                                        .padding(.vertical, 7)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                default:
+                    EmptyView()
+                }
+                Spacer().frame(height: 20)
                 Button(action: {
                     self.flipFunction()
                 }, label: {
-                    Subtitle4Text("예시보기")
+                    Subtitle4Text("설명보기")
                         .frame(maxWidth: .infinity, maxHeight: 46)
                         .clipShape(.rect(cornerRadius: 12))
                         .foregroundStyle(.white)

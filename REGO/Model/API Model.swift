@@ -44,15 +44,15 @@ struct FetchDetailGamesModel {
     // TODO: Enum화
     let iconType: IconType
     let tag: [TagEnum] // TODO: Enum수정, BE Model 수정 요청
-    let tip: String? = nil
+    let tip: String?
     let uiType: UIType
     let like: Bool
     let likeCount: Int
 
     // 이미지형, 설명문형, 텍스트형
-    let gameHow: GameHow? = nil
-    let gameExample: GameExample? = nil
-    let gameExamples: [String]? = nil
+    let gameHow: GameHow?
+    let gameImageExample: GameImageExample?
+    let gameExample: [String]?
 }
 
 enum UIType: String {
@@ -63,11 +63,11 @@ enum UIType: String {
 }
 
 struct GameHow {
-    let facilitator: String?
+    let mc: String?
     let attendee: String
 }
 
-struct GameExample {
+struct GameImageExample {
     let image: String
     let answer: String
 }

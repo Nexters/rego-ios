@@ -43,6 +43,7 @@ struct CardFrontView: View {
                                     .fill(gameDetail.iconType.bgColor)
                             }
                         H3Text(gameDetail.title)
+                            .lineLimit(2)
                         Spacer()
                         GameDetailLikeButton(isLiked: $isLiked, isShowLottie: $isShowLottie)
                     }
@@ -58,27 +59,33 @@ struct CardFrontView: View {
                     }
                 }
                 Spacer(minLength: 20)
-                HStack {
-                    Subtitle3Text("게임방법")
-                    GameDetailLikeButton(isLiked: $isLiked, isShowLottie: $isShowLottie)
-                }
+                Subtitle3Text("게임방법")
 
                 // 게임 설명 View
                 VStack(alignment: .leading) {
-                    HStack {
-                        Image(.icon24User01)
-                        Subtitle5Text("진행자")
-                            .foregroundStyle(.white)
+                    if let mc = gameDetail.gameHow?.mc {
+                        HStack {
+                            Image(.icon24User01)
+                                .resizable()
+                                .frame(width: 16, height: 16)
+                            Subtitle5Text("진행자")
+                                .foregroundStyle(.white)
+                        }
+                        Body4Text(mc)
+                        Divider()
+                            .foregroundStyle(Color.gray600)
                     }
-                    Body4Text("참여자들이 헷갈리도록 물건의 위치를 바꿔주세요.")
-                    Divider()
-                        .foregroundStyle(Color.gray600)
-                    HStack {
-                        Image(.icon24User02)
-                        Subtitle5Text("참여자")
-                            .foregroundStyle(.white)
+                    if let attendee = gameDetail.gameHow?.attendee {
+                        HStack {
+                            Image(.icon24User02)
+                                .resizable()
+                                .frame(width: 16, height: 16)
+                            Subtitle5Text("참여자")
+                                .foregroundStyle(.white)
+                            Spacer()
+                        }
+                        Body4Text(attendee)
                     }
-                    Body4Text("5분간 원본을 관찰하고 바뀐 모습을 빠르게 찾아야 해요.")
                     Spacer()
                 }
                 .padding(14)
@@ -87,23 +94,28 @@ struct CardFrontView: View {
                         .fill(.white)
                         .opacity(0.1)
                 )
-
-                HStack(spacing: 8) {
-                    Body2Text("Tip!")
-                    Body5Text("잘못된 정답을 외쳐도 괜찮아요!")
+                if let tip = gameDetail.tip {
+                    Spacer(minLength: 10)
+                    HStack(spacing: 8) {
+                        Body2Text("Tip!")
+                        Body5Text(tip)
+                    }
                 }
-                Button(action: {
-                    self.flipFunction()
-                }, label: {
-                    Subtitle4Text("예시보기")
-                        .frame(maxWidth: .infinity, maxHeight: 46)
-                        .clipShape(.rect(cornerRadius: 12))
-                        .foregroundStyle(.white)
-                        .background(
-                            RoundedRectangle(cornerRadius: 12)
-                                .foregroundStyle(Color.gray900)
-                        )
-                })
+                if gameDetail.uiType == .TEXT_TYPE || gameDetail.uiType == .IMAGE_TYPE {
+                    Spacer(minLength: 20)
+                    Button(action: {
+                        self.flipFunction()
+                    }, label: {
+                        Subtitle4Text("예시보기")
+                            .frame(maxWidth: .infinity, maxHeight: 46)
+                            .clipShape(.rect(cornerRadius: 12))
+                            .foregroundStyle(.white)
+                            .background(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .foregroundStyle(Color.gray900)
+                            )
+                    })
+                }
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 24)

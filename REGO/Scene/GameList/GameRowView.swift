@@ -38,6 +38,7 @@ struct GameRowView: View {
                             H3Text("\(rank)위")
                             HStack {
                                 H2Text(gameInfo.title)
+                                    .lineLimit(1)
                                 Spacer()
                                 LikeButtonView(isLiked: $isLiked, likeCnt: $like)
                             }
@@ -49,6 +50,7 @@ struct GameRowView: View {
                                 Subtitle5Text("\(rank)위")
                             }
                             Subtitle2Text("\(gameInfo.title)")
+                                .lineLimit(1)
                             Spacer()
                             LikeButtonView(isLiked: $isLiked, likeCnt: $like)
                         }
@@ -57,17 +59,18 @@ struct GameRowView: View {
                 else {
                     HStack {
                         Subtitle2Text("\(gameInfo.title)")
+                            .lineLimit(1)
                         Spacer()
                         LikeButtonView(isLiked: $isLiked, likeCnt: $like)
                     }
                 }
 
                 HStack(spacing: 4) {
-                    Body4Text("소요시간")
+                    Body4Text("시간")
                     Body2Text("\(gameInfo.gameSummary.gameTime)")
                     Text(" | ")
                         .foregroundStyle(Color.gray500)
-                    Body4Text("참여인원")
+                    Body4Text("인원")
                     Body2Text("\(gameInfo.gameSummary.gamePeople)")
                 }
                 .foregroundStyle(Color.gray300)
