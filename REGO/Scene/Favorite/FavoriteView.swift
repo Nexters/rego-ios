@@ -10,7 +10,7 @@ import ComposableArchitecture
 
 struct FavoriteView: View {
     let store: StoreOf<FavoriteViewFeature>
-    
+
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             ZStack {
@@ -35,7 +35,7 @@ struct FavoriteView: View {
 
 #Preview {
     FavoriteView(store: Store(
-        initialState: FavoriteViewFeature.State(), 
+        initialState: FavoriteViewFeature.State(),
         reducer: {
             FavoriteViewFeature()
         })

@@ -16,7 +16,6 @@ struct H1Text: View {
 
     var body: some View {
         Text(text).font(.h1)
-            .foregroundColor(.gray100)
     }
 }
 
@@ -29,7 +28,6 @@ struct H2Text: View {
 
     var body: some View {
         Text(text).font(.h2)
-            .foregroundColor(.gray100)
     }
 }
 
@@ -42,7 +40,6 @@ struct H3Text: View {
 
     var body: some View {
         Text(text).font(.h3)
-            .foregroundColor(.gray100)
     }
 }
 
@@ -55,7 +52,6 @@ struct H4Text: View {
 
     var body: some View {
         Text(text).font(.h4)
-            .foregroundColor(.gray100)
     }
 }
 
@@ -68,7 +64,6 @@ struct Subtitle1Text: View {
 
     var body: some View {
         Text(text).font(.subtitle1)
-            .foregroundColor(.gray100)
     }
 }
 
@@ -81,7 +76,6 @@ struct Subtitle2Text: View {
 
     var body: some View {
         Text(text).font(.subtitle2)
-            .foregroundColor(.gray100)
     }
 }
 
@@ -94,7 +88,6 @@ struct Subtitle3Text: View {
 
     var body: some View {
         Text(text).font(.subtitle3)
-            .foregroundColor(.gray100)
     }
 }
 
@@ -107,7 +100,6 @@ struct Subtitle4Text: View {
 
     var body: some View {
         Text(text).font(.subtitle4)
-            .foregroundColor(.gray100)
     }
 }
 
@@ -120,7 +112,6 @@ struct Subtitle5Text: View {
 
     var body: some View {
         Text(text).font(.subtitle5)
-            .foregroundColor(.gray100)
     }
 }
 
@@ -133,7 +124,6 @@ struct ButtonText: View {
 
     var body: some View {
         Text(text).font(.button)
-            .foregroundColor(.gray100)
     }
 }
 
@@ -146,7 +136,6 @@ struct Body1Text: View {
 
     var body: some View {
         Text(text).font(.body1)
-            .foregroundColor(.gray100)
     }
 }
 
@@ -159,7 +148,6 @@ struct Body2Text: View {
 
     var body: some View {
         Text(text).font(.body2)
-            .foregroundColor(.gray100)
     }
 }
 
@@ -172,7 +160,6 @@ struct Body3Text: View {
 
     var body: some View {
         Text(text).font(.body3)
-            .foregroundColor(.gray100)
     }
 }
 
@@ -185,7 +172,6 @@ struct Body4Text: View {
 
     var body: some View {
         Text(text).font(.body4)
-            .foregroundColor(.gray100)
     }
 }
 
@@ -198,7 +184,6 @@ struct Body5Text: View {
 
     var body: some View {
         Text(text).font(.body5)
-            .foregroundColor(.gray100)
     }
 }
 
@@ -211,7 +196,6 @@ struct Body6Text: View {
 
     var body: some View {
         Text(text).font(.body6)
-            .foregroundColor(.gray100)
     }
 }
 
@@ -224,7 +208,6 @@ struct Body7Text: View {
 
     var body: some View {
         Text(text).font(.body7)
-            .foregroundColor(.gray100)
     }
 }
 

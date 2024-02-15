@@ -10,7 +10,7 @@ import ComposableArchitecture
 
 struct FavoriteItemView: View {
     let store: StoreOf<FavoriteItemFeature>
-    
+
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             HStack(alignment: .center) {

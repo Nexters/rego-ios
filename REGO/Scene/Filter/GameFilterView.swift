@@ -10,7 +10,7 @@ import ComposableArchitecture
 
 struct GameFilterView: View {
     let store: StoreOf<GameFilterFeature>
-    
+
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             ZStack {
@@ -54,13 +54,25 @@ struct GameFilterView: View {
                         .padding(.horizontal, 14).padding(.vertical, 12)
                         .background(Color(uiColor: .gray700))
                         .cornerRadius(14)
-                        Button(action: {}, label: {
+                        // TODO: 컴포넌트 수정
+                        NavigationLink {
+                            GameListView()
+                        } label: {
                             Subtitle4Text("적용하기")
-                        })
-                        .padding(.horizontal, 14)
-                        .frame(height: 48).frame(maxWidth: .infinity)
-                        .background(Color.primary500)
-                        .cornerRadius(14)
+                                .padding(.horizontal, 14)
+                                .frame(height: 48).frame(maxWidth: .infinity)
+                                .background(Color.primary500)
+                                .cornerRadius(14)
+                        }
+                        .buttonStyle(.plain)
+
+//                        Button(action: {}, label: {
+//                            Subtitle4Text("적용하기")
+//                        })
+//                        .padding(.horizontal, 14)
+//                        .frame(height: 48).frame(maxWidth: .infinity)
+//                        .background(Color.primary500)
+//                        .cornerRadius(14)
                         Spacer().frame(width: 6)
                     }
                     Spacer().frame(height: 14)

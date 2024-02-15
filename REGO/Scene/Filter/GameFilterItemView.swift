@@ -23,7 +23,7 @@ struct GameFilterItemView: View {
                 ScrollView(.horizontal) {
                     LazyHStack {
                         Spacer().frame(width: 20)
-                        ForEach(viewStore.allGameTypes, id:\.self) { type in
+                        ForEach(viewStore.allGameTypes, id: \.self) { type in
                             Button(action: {
                                 viewStore.send(.selectGameType(type))
                             }, label: {

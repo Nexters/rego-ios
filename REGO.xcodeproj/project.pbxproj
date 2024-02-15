@@ -21,11 +21,16 @@
 		046996AF2B6E0C4C00F6D5C4 /* GameDetailTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046996AE2B6E0C4C00F6D5C4 /* GameDetailTagView.swift */; };
 		046996B32B6E141800F6D5C4 /* TagEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046996B22B6E141800F6D5C4 /* TagEnum.swift */; };
 		046F0FD82B67935A0091DA50 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F0FD72B67935A0091DA50 /* CarouselView.swift */; };
+		0478291F2B7B463E00E33041 /* NavBackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0478291E2B7B463E00E33041 /* NavBackButtonView.swift */; };
 		0488EEF22B67E5D30026DAE8 /* GameDetailCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488EEF12B67E5D30026DAE8 /* GameDetailCardView.swift */; };
 		04A79B562B6B9CD4007A4BF3 /* NavLikeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A79B552B6B9CD4007A4BF3 /* NavLikeButtonView.swift */; };
 		04AE72FA2B75153600F10F47 /* GameDetailLikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE72F92B75153600F10F47 /* GameDetailLikeButton.swift */; };
 		04AE72FC2B78BB3600F10F47 /* API Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE72FB2B78BB3600F10F47 /* API Model.swift */; };
 		04AE72FE2B78C6DC00F10F47 /* APIMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE72FD2B78C6DC00F10F47 /* APIMockData.swift */; };
+		04AE73002B7A57D800F10F47 /* GameRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE72FF2B7A57D800F10F47 /* GameRowView.swift */; };
+		04AE73022B7A7C9D00F10F47 /* like_small_lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 04AE73012B7A7C9D00F10F47 /* like_small_lottie.json */; };
+		04AE73052B7A7CD600F10F47 /* loading_lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 04AE73032B7A7CD600F10F47 /* loading_lottie.json */; };
+		04AE73062B7A7CD600F10F47 /* like_big_lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 04AE73042B7A7CD600F10F47 /* like_big_lottie.json */; };
 		ED0F24742B6FF8A3002C12C9 /* GameFilterItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F24732B6FF8A3002C12C9 /* GameFilterItemView.swift */; };
 		ED0F24762B712659002C12C9 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F24752B712659002C12C9 /* Text.swift */; };
 		ED45BC582B794D10006C63B0 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = ED45BC572B794D10006C63B0 /* ComposableArchitecture */; };
@@ -59,11 +64,16 @@
 		046996AE2B6E0C4C00F6D5C4 /* GameDetailTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailTagView.swift; sourceTree = "<group>"; };
 		046996B22B6E141800F6D5C4 /* TagEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagEnum.swift; sourceTree = "<group>"; };
 		046F0FD72B67935A0091DA50 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		0478291E2B7B463E00E33041 /* NavBackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBackButtonView.swift; sourceTree = "<group>"; };
 		0488EEF12B67E5D30026DAE8 /* GameDetailCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailCardView.swift; sourceTree = "<group>"; };
 		04A79B552B6B9CD4007A4BF3 /* NavLikeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavLikeButtonView.swift; sourceTree = "<group>"; };
 		04AE72F92B75153600F10F47 /* GameDetailLikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailLikeButton.swift; sourceTree = "<group>"; };
 		04AE72FB2B78BB3600F10F47 /* API Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API Model.swift"; sourceTree = "<group>"; };
 		04AE72FD2B78C6DC00F10F47 /* APIMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMockData.swift; sourceTree = "<group>"; };
+		04AE72FF2B7A57D800F10F47 /* GameRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRowView.swift; sourceTree = "<group>"; };
+		04AE73012B7A7C9D00F10F47 /* like_small_lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = like_small_lottie.json; sourceTree = "<group>"; };
+		04AE73032B7A7CD600F10F47 /* loading_lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_lottie.json; sourceTree = "<group>"; };
+		04AE73042B7A7CD600F10F47 /* like_big_lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = like_big_lottie.json; sourceTree = "<group>"; };
 		ED0F24732B6FF8A3002C12C9 /* GameFilterItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameFilterItemView.swift; sourceTree = "<group>"; };
 		ED0F24752B712659002C12C9 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		ED45BC592B794D95006C63B0 /* GameFilterFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameFilterFeature.swift; sourceTree = "<group>"; };
@@ -175,8 +185,10 @@
 			isa = PBXGroup;
 			children = (
 				042C40222B62839E0017F9F3 /* GameListView.swift */,
+				04AE72FF2B7A57D800F10F47 /* GameRowView.swift */,
 				042C40302B66A0870017F9F3 /* LikeButtonView.swift */,
 				04A79B552B6B9CD4007A4BF3 /* NavLikeButtonView.swift */,
+				0478291E2B7B463E00E33041 /* NavBackButtonView.swift */,
 			);
 			path = GameList;
 			sourceTree = "<group>";
@@ -261,6 +273,9 @@
 			isa = PBXGroup;
 			children = (
 				ED5E9F072B6FE1F80055B482 /* logo_lottie.json */,
+				04AE73012B7A7C9D00F10F47 /* like_small_lottie.json */,
+				04AE73042B7A7CD600F10F47 /* like_big_lottie.json */,
+				04AE73032B7A7CD600F10F47 /* loading_lottie.json */,
 			);
 			path = Lotties;
 			sourceTree = "<group>";
@@ -344,8 +359,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED8D13EC2B64D52A00C4A2A0 /* .swiftlint.yml in Resources */,
+				04AE73062B7A7CD600F10F47 /* like_big_lottie.json in Resources */,
+				04AE73052B7A7CD600F10F47 /* loading_lottie.json in Resources */,
 				ED5E9F082B6FE1F80055B482 /* logo_lottie.json in Resources */,
 				042C40102B615FFF0017F9F3 /* Preview Assets.xcassets in Resources */,
+				04AE73022B7A7C9D00F10F47 /* like_small_lottie.json in Resources */,
 				042C400D2B615FFF0017F9F3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,6 +399,7 @@
 			files = (
 				042C40312B66A0870017F9F3 /* LikeButtonView.swift in Sources */,
 				ED0F24762B712659002C12C9 /* Text.swift in Sources */,
+				04AE73002B7A57D800F10F47 /* GameRowView.swift in Sources */,
 				EDF1BFE22B71380C003C29AB /* FavoriteItemView.swift in Sources */,
 				042C40212B6283920017F9F3 /* HomeView.swift in Sources */,
 				042C40292B6283C90017F9F3 /* FavoriteView.swift in Sources */,
@@ -399,6 +418,7 @@
 				ED45BC5C2B794DA3006C63B0 /* GameFilterItemFeature.swift in Sources */,
 				0488EEF22B67E5D30026DAE8 /* GameDetailCardView.swift in Sources */,
 				042C402C2B62850B0017F9F3 /* NetworkManager.swift in Sources */,
+				0478291F2B7B463E00E33041 /* NavBackButtonView.swift in Sources */,
 				042C40232B62839E0017F9F3 /* GameListView.swift in Sources */,
 				ED5E9EF32B6682320055B482 /* Fonts.swift in Sources */,
 				042C40252B6283AA0017F9F3 /* GameDetailView.swift in Sources */,
