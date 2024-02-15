@@ -33,6 +33,8 @@
 		04AE73022B7A7C9D00F10F47 /* like_small_lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 04AE73012B7A7C9D00F10F47 /* like_small_lottie.json */; };
 		04AE73052B7A7CD600F10F47 /* loading_lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 04AE73032B7A7CD600F10F47 /* loading_lottie.json */; };
 		04AE73062B7A7CD600F10F47 /* like_big_lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 04AE73042B7A7CD600F10F47 /* like_big_lottie.json */; };
+		04CBFBFC2B7E74980051397E /* NavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBFBFB2B7E74980051397E /* NavigationController+.swift */; };
+		04CBFC012B7E75AD0051397E /* NavToolbarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBFC002B7E75AD0051397E /* NavToolbarModifier.swift */; };
 		ED0F24742B6FF8A3002C12C9 /* GameFilterItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F24732B6FF8A3002C12C9 /* GameFilterItemView.swift */; };
 		ED0F24762B712659002C12C9 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F24752B712659002C12C9 /* Text.swift */; };
 		ED45BC582B794D10006C63B0 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = ED45BC572B794D10006C63B0 /* ComposableArchitecture */; };
@@ -78,6 +80,8 @@
 		04AE73012B7A7C9D00F10F47 /* like_small_lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = like_small_lottie.json; sourceTree = "<group>"; };
 		04AE73032B7A7CD600F10F47 /* loading_lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_lottie.json; sourceTree = "<group>"; };
 		04AE73042B7A7CD600F10F47 /* like_big_lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = like_big_lottie.json; sourceTree = "<group>"; };
+		04CBFBFB2B7E74980051397E /* NavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+.swift"; sourceTree = "<group>"; };
+		04CBFC002B7E75AD0051397E /* NavToolbarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavToolbarModifier.swift; sourceTree = "<group>"; };
 		ED0F24732B6FF8A3002C12C9 /* GameFilterItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameFilterItemView.swift; sourceTree = "<group>"; };
 		ED0F24752B712659002C12C9 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		ED45BC592B794D95006C63B0 /* GameFilterFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameFilterFeature.swift; sourceTree = "<group>"; };
@@ -255,6 +259,7 @@
 		046996B02B6E138F00F6D5C4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				04CBFBFA2B7E747E0051397E /* Extension */,
 				046996B12B6E140400F6D5C4 /* Enums */,
 			);
 			path = Common;
@@ -273,6 +278,23 @@
 			children = (
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		04CBFBFA2B7E747E0051397E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				04CBFBFD2B7E751D0051397E /* Modifier */,
+				04CBFBFB2B7E74980051397E /* NavigationController+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		04CBFBFD2B7E751D0051397E /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+				04CBFC002B7E75AD0051397E /* NavToolbarModifier.swift */,
+			);
+			path = Modifier;
 			sourceTree = "<group>";
 		};
 		ED5E9F062B6FE1B50055B482 /* Lotties */ = {
@@ -416,6 +438,7 @@
 				046F0FD82B67935A0091DA50 /* CarouselView.swift in Sources */,
 				046996AF2B6E0C4C00F6D5C4 /* GameDetailTagView.swift in Sources */,
 				04AE72FA2B75153600F10F47 /* GameDetailLikeButton.swift in Sources */,
+				04CBFBFC2B7E74980051397E /* NavigationController+.swift in Sources */,
 				0488EEF22B67E5D30026DAE8 /* GameDetailCardView.swift in Sources */,
 				043BF9402B7CEC090011F7D0 /* CardFrontView.swift in Sources */,
 				046F0FD82B67935A0091DA50 /* CarouselView.swift in Sources */,
@@ -426,6 +449,7 @@
 				ED45BC5C2B794DA3006C63B0 /* GameFilterItemFeature.swift in Sources */,
 				0488EEF22B67E5D30026DAE8 /* GameDetailCardView.swift in Sources */,
 				042C402C2B62850B0017F9F3 /* NetworkManager.swift in Sources */,
+				04CBFC012B7E75AD0051397E /* NavToolbarModifier.swift in Sources */,
 				0478291F2B7B463E00E33041 /* NavBackButtonView.swift in Sources */,
 				042C40232B62839E0017F9F3 /* GameListView.swift in Sources */,
 				ED5E9EF32B6682320055B482 /* Fonts.swift in Sources */,

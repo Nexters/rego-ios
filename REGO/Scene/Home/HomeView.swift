@@ -121,15 +121,6 @@ struct HomeView: View {
                     )
                 case .gameListView:
                     GameListView()
-                        .navigationBarBackButtonHidden()
-                        .toolbar(content: {
-                            ToolbarItem(placement: .topBarLeading) {
-                                NavBackButtonView()
-                            }
-                            ToolbarItem(placement: .topBarTrailing) {
-                                NavLikeButtonView(likeCnt: 5) // TODO: API 연결
-                            }
-                        })
                 case .gameFilterView:
                     GameFilterView(store: Store(
                         initialState: GameFilterFeature.State(),
@@ -137,7 +128,6 @@ struct HomeView: View {
                             GameFilterFeature()
                         }))
                 }
-
             }
         }
     }

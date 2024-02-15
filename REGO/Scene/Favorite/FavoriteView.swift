@@ -29,6 +29,12 @@ struct FavoriteView: View {
                     Spacer()
                 }
             }
+            .navigationBarBackButtonHidden()
+            .toolbar(content: {
+                ToolbarItem(placement: .topBarLeading) {
+                    NavBackButtonView()
+                }
+            })
         }
     }
 }

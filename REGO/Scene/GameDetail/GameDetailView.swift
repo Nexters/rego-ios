@@ -14,7 +14,7 @@ struct GameDetailView: View {
 
     var body: some View {
         ZStack {
-            VStack(alignment: .center) {
+            VStack(alignment: .center, spacing: 20) {
                 Spacer()
                 Carousel(gameDetails: fetchDetailGames, pageCount: fetchDetailGames.count, visibleEdgeSpace: 14, spacing: 14, currentIndex: $currentIndex) { idx in
                     GameDetailCardView(gameDetail: fetchDetailGames[idx])
@@ -35,6 +35,8 @@ struct GameDetailView: View {
             }
             .background(Color.gray900)
         }
+        .modifier(NavToolbarModifier())
+        .navigationTitle("게임 설명")
     }
 }
 

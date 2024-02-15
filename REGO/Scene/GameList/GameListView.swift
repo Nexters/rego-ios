@@ -11,9 +11,10 @@ struct GameListView: View {
     @State private var fetchGames: FetchGamesModel = Mock.fetchGamesMock
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 34) {
-                H1Text("스피드 게임")
-                    .frame(height: 59)
+        VStack(alignment: .leading) {
+            H1Text("스피드 게임") // TODO: Title 넘겨주기
+                .padding(.horizontal, 20)
+                .padding(.vertical, 10)
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 34) {
                     Section {
@@ -56,18 +57,11 @@ struct GameListView: View {
                         }
                     }
                 }
-            }
+                .padding(.top, 34)
+            } // ScrollView
+            .padding(.horizontal, 20)
         }
-        .padding(.horizontal, 20)
-//        .navigationBarBackButtonHidden()
-//        .toolbar(content: {
-//            ToolbarItem(placement: .topBarLeading) {
-//                NavBackButtonView()
-//            }
-//            ToolbarItem(placement: .topBarTrailing) {
-//                NavLikeButtonView(likeCnt: 5) // TODO: API 연결
-//            }
-//        })
+        .modifier(NavToolbarModifier())
     }
 }
 
