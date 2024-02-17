@@ -23,18 +23,27 @@ struct FavoriteView: View {
                         H3Text("\(viewStore.favoriteItems.count)").foregroundColor(.gray200)
                         Spacer()
                     }
-                    LazyVStack(spacing: 20) {
-                        ForEachStore(
-                            self.store.scope(state: \.rows, action: { .row(id: $0, action: $1) })
-                        ) { childStore in
-                            FavoriteItemView(store: childStore)
-                        }
-                    }
-                    Spacer()
+                    peopleFilterView()
+                        .opacity(viewStore.favoriteItems.isEmpty ? 0 : 1)
+                    FavoriteEmptyView()
+                        .opacity(viewStore.favoriteItems.isEmpty ? 1 : 0)
                 }
             }
             .onAppear {
                 viewStore.send(.loadGameList)
+            }
+        }
+    }
+}
+
+extension FavoriteView {
+    @ViewBuilder
+    func peopleFilterView() -> some View {
+        LazyVStack(spacing: 20) {
+            ForEachStore(
+                self.store.scope(state: \.rows, action: { .row(id: $0, action: $1) })
+            ) { childStore in
+                FavoriteItemView(store: childStore)
             }
         }
     }
