@@ -40,6 +40,7 @@
 		ED5E9F082B6FE1F80055B482 /* logo_lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = ED5E9F072B6FE1F80055B482 /* logo_lottie.json */; };
 		ED8D13EC2B64D52A00C4A2A0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = ED8D13EB2B64D52A00C4A2A0 /* .swiftlint.yml */; };
 		ED8D13F32B64E9B300C4A2A0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D13F22B64E9B200C4A2A0 /* Colors.swift */; };
+		EDAD8C882B81114D00DD3A9D /* GameListTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAD8C872B81114D00DD3A9D /* GameListTagView.swift */; };
 		EDF1BFE02B7134E1003C29AB /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF1BFDF2B7134E1003C29AB /* LottieView.swift */; };
 		EDF1BFE22B71380C003C29AB /* FavoriteItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF1BFE12B71380C003C29AB /* FavoriteItemView.swift */; };
 /* End PBXBuildFile section */
@@ -77,6 +78,7 @@
 		ED5E9F072B6FE1F80055B482 /* logo_lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = logo_lottie.json; sourceTree = "<group>"; };
 		ED8D13EB2B64D52A00C4A2A0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		ED8D13F22B64E9B200C4A2A0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		EDAD8C872B81114D00DD3A9D /* GameListTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListTagView.swift; sourceTree = "<group>"; };
 		EDF1BFDF2B7134E1003C29AB /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		EDF1BFE12B71380C003C29AB /* FavoriteItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -179,6 +181,7 @@
 				042C40222B62839E0017F9F3 /* GameListView.swift */,
 				042C40302B66A0870017F9F3 /* LikeButtonView.swift */,
 				04A79B552B6B9CD4007A4BF3 /* NavLikeButtonView.swift */,
+				EDAD8C872B81114D00DD3A9D /* GameListTagView.swift */,
 			);
 			path = GameList;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				042C40092B615FFB0017F9F3 /* REGOApp.swift in Sources */,
 				ED5E9F052B6FDBFC0055B482 /* SplashView.swift in Sources */,
 				ED45BC662B79889B006C63B0 /* FavoriteViewFeature.swift in Sources */,
+				EDAD8C882B81114D00DD3A9D /* GameListTagView.swift in Sources */,
 				ED45BC642B798714006C63B0 /* FavoriteItemFeature.swift in Sources */,
 				ED45BC5A2B794D95006C63B0 /* GameFilterFeature.swift in Sources */,
 				04AE72FE2B78C6DC00F10F47 /* APIMockData.swift in Sources */,
