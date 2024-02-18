@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct GameDetailCardView: View {
-    @State private var backDegree: Double = -90
-    @State private var frontDegree: Double = 0.01
+    @State private var backDegree: Double = -90.001
+    @State private var frontDegree: Double = 0.001
     @State private var isFlipped = false
     @State private var isLiked: Bool
     @State private var isShowLottie: Bool = false
@@ -27,24 +27,24 @@ struct GameDetailCardView: View {
         isFlipped = !isFlipped
         if isFlipped {
             withAnimation(.linear(duration: durationAndDelay)) {
-                frontDegree = 90
+                frontDegree = 90.001
             }
             withAnimation(
                 .easeInOut(duration: durationAndDelay).delay(durationAndDelay)){
-                    backDegree = 0.01
+                    backDegree = 0.001
                 }
         }
         else {
             withAnimation(.linear(duration: durationAndDelay)) {
-                backDegree = 90
+                backDegree = 90.001
             }
 
             withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
-                frontDegree = 180.01
+                frontDegree = 180.001
             }
 
-            frontDegree = 0.01
-            backDegree = -90
+            frontDegree = 0.001
+            backDegree = -90.001
         }
     }
 
