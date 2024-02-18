@@ -47,7 +47,15 @@ struct Mock {
                 rank: 5)
         ],
         allGames: [
-            AllGame(info: [
+            AllGame(category: "카테고리1", info: [
+                GameInfo(gameUUID: "영화 소리만 듣고 맞추기1", title: "영화 소리만 듣고 맞추기1", gameSummary: GameSummary(gameTime: "20m", gamePeople: "2-5명"), like: 10, iconType: .SPEED, rank: nil),
+                GameInfo(gameUUID: "영화 소리만 듣고 맞추기2", title: "영화 소리만 듣고 맞추기2", gameSummary: GameSummary(gameTime: "20m", gamePeople: "2-5명"), like: 11, iconType: .SPEED, rank: nil),
+                GameInfo(gameUUID: "영화 소리만 듣고 맞추기3", title: "영화 소리만 듣고 맞추기3", gameSummary: GameSummary(gameTime: "20m", gamePeople: "2-5명"), like: 12, iconType: .SPEED, rank: nil),
+                GameInfo(gameUUID: "영화 소리만 듣고 맞추기4", title: "영화 소리만 듣고 맞추기4", gameSummary: GameSummary(gameTime: "20m", gamePeople: "2-5명"), like: 13, iconType: .SPEED, rank: nil),
+                GameInfo(gameUUID: "영화 소리만 듣고 맞추기5", title: "영화 소리만 듣고 맞추기5", gameSummary: GameSummary(gameTime: "20m", gamePeople: "2-5명"), like: 14, iconType: .SPEED, rank: nil),
+                GameInfo(gameUUID: "영화 소리만 듣고 맞추기6", title: "영화 소리만 듣고 맞추기6", gameSummary: GameSummary(gameTime: "20m", gamePeople: "2-5명"), like: 15, iconType: .SPEED, rank: nil)
+            ]),
+            AllGame(category: "카테고리2", info: [
                 GameInfo(gameUUID: "영화 소리만 듣고 맞추기1", title: "영화 소리만 듣고 맞추기1", gameSummary: GameSummary(gameTime: "20m", gamePeople: "2-5명"), like: 10, iconType: .SPEED, rank: nil),
                 GameInfo(gameUUID: "영화 소리만 듣고 맞추기2", title: "영화 소리만 듣고 맞추기2", gameSummary: GameSummary(gameTime: "20m", gamePeople: "2-5명"), like: 11, iconType: .SPEED, rank: nil),
                 GameInfo(gameUUID: "영화 소리만 듣고 맞추기3", title: "영화 소리만 듣고 맞추기3", gameSummary: GameSummary(gameTime: "20m", gamePeople: "2-5명"), like: 12, iconType: .SPEED, rank: nil),

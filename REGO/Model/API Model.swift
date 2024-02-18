@@ -16,7 +16,7 @@ struct FetchGamesModel {
 
 // MARK: - AllGame
 struct AllGame {
-    let category: String? = nil
+    let category: String?
     let info: [GameInfo]
 }
 
