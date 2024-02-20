@@ -33,8 +33,7 @@ struct LikeButtonView: View {
                     }
                 }
             })
-            Text(likeCnt > 999 ? "+999" : "\(likeCnt)")
-                .font(RegoFontStyle.body7.font)
+            Body8Text(likeCnt > 999 ? "+999" : "\(likeCnt)")
                 .foregroundStyle(isLiked ? Color(.primary500) : Color(.gray200))
         }
     }

@@ -10,54 +10,54 @@ import SwiftUI
 struct GameDetailView: View {
     @State var currentIndex: Int = 0
 
-    @State private var fetchDetailGames: [FetchDetailGamesModel] = Mock.detailGameMock
+    @State private var fetchDetailGames: FetchDetailModel = Mock.detailGameMock
 
-    var bottomBar: some View {
-        HStack {
-            Button {
-                withAnimation(.easeInOut) {
-                    print("left")
-                    currentIndex = max(0, currentIndex-1)
-                }
+    var gameUuids: [Int64]
+    var selectedGameUuid: Int64
 
-            } label: {
-                Text("left")
-            }
-            Spacer()
-            Button {
-                withAnimation(.easeInOut) {
-                    print("right")
-                    currentIndex = min(fetchDetailGames.count-1, currentIndex+1)
-                }
-            } label: {
-                Text("right")
-            }
-        }
-        .padding()
-    }
     var body: some View {
-        VStack(alignment: .center) {
-            Carousel(gameDetails: fetchDetailGames, pageCount: fetchDetailGames.count, visibleEdgeSpace: 14, spacing: 14, currentIndex: $currentIndex) { idx in
-                GameDetailCardView(gameDetail: fetchDetailGames[idx])
+        ZStack {
+            VStack(alignment: .center, spacing: 20) {
+                Spacer()
+                Carousel(gameDetails: fetchDetailGames.games, pageCount: fetchDetailGames.games.count, visibleEdgeSpace: 14, spacing: 14, currentIndex: $currentIndex) { idx in
+                    GameDetailCardView(gameDetail: fetchDetailGames.games[idx])
+                }
+                .frame(width: UIScreen.main.bounds.size.width, height: 570)
+                HStack(spacing: 2){
+                    Body3Text("\(currentIndex+1)")
+                    Body4Text("/\(fetchDetailGames.games.count)")
+                        .foregroundStyle(Color.gray200)
+                }
+                .padding(.vertical, 2)
+                .padding(.horizontal, 12)
+                .background(
+                    Capsule()
+                        .foregroundStyle(.white.opacity(0.1))
+                )
+                Spacer()
             }
-            .frame(width: UIScreen.main.bounds.size.width, height: 570)
-            HStack(spacing: 2){
-                Body3Text("\(currentIndex+1)")
-                Body4Text("/\(fetchDetailGames.count)")
-                    .foregroundStyle(Color.gray200)
-            }
-            .padding(.vertical, 2)
-            .padding(.horizontal, 12)
-            .background(
-                Capsule()
-                    .foregroundStyle(.white.opacity(0.1))
-            )
-            bottomBar
+            .background(Color.gray900)
         }
-        .background(Color.gray900)
+        .onAppear {
+            Task{
+//                let fetchDetails = try await NetworkManager.shared.request(type: FetchGamesModel.self, api: .fetchDetails(ids: gameUuids))
+//                print("fetchDetails", fetchDetails)
+
+                currentIndex = fetchDetailGames.games.firstIndex { gameDetail in
+                    gameDetail.gameUUID == selectedGameUuid
+                } ?? 0
+
+                print(fetchDetailGames.games.map({$0.gameUUID}))
+                print("selectedGameUuid", selectedGameUuid)
+                print("currentIndex", currentIndex)
+
+            }
+        }
+        .modifier(NavToolbarModifier(likeCnt: fetchDetailGames.userCountLike))
+        .navigationTitle("게임 설명")
     }
 }
 
 #Preview {
-    GameDetailView()
+    GameDetailView(gameUuids: [], selectedGameUuid: 1)
 }

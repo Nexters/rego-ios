@@ -56,7 +56,7 @@ struct GameFilterView: View {
                         .cornerRadius(14)
                         // TODO: 컴포넌트 수정
                         NavigationLink {
-                            GameListView()
+                            GameListView(homeCategory: .FILTER)
                         } label: {
                             Subtitle4Text("적용하기")
                                 .padding(.horizontal, 14)
@@ -65,14 +65,6 @@ struct GameFilterView: View {
                                 .cornerRadius(14)
                         }
                         .buttonStyle(.plain)
-
-//                        Button(action: {}, label: {
-//                            Subtitle4Text("적용하기")
-//                        })
-//                        .padding(.horizontal, 14)
-//                        .frame(height: 48).frame(maxWidth: .infinity)
-//                        .background(Color.primary500)
-//                        .cornerRadius(14)
                         Spacer().frame(width: 6)
                     }
                     Spacer().frame(height: 14)

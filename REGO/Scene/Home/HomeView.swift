@@ -12,8 +12,8 @@ struct HomeView: View {
 
     @State private var path: [NextView] = []
 
-    enum NextView {
-        case gameListView
+    enum NextView: Hashable {
+        case gameListView(homeCategory: HomeCategoryEnum)
         case gameFilterView
         case favoriteView
     }
@@ -67,28 +67,36 @@ struct HomeView: View {
                         ZStack {
                             // TODO: 게임 종류 Enum 처리 + 각도 세밀 조정
                             Button(action: {
-                                path.append(.gameListView)
+                                path.append(.gameListView(homeCategory: .SPEED))
                             }, label: {
                                 Image(uiImage: .mainSpeed)
                             })
                             .rotationEffect(.degrees(-10))
                             .offset(x: -100)
-                            Button(action: {}, label: {
+                            Button(action: {
+                                path.append(.gameListView(homeCategory: .MC))
+                            }, label: {
                                 Image(uiImage: .mainMc)
                             })
                             .rotationEffect(.degrees(10))
                             .offset(x: 100, y: 20)
-                            Button(action: {}, label: {
+                            Button(action: {
+                                path.append(.gameListView(homeCategory: .THEME))
+                            }, label: {
                                 Image(uiImage: .mainTheme)
                             })
                             .rotationEffect(.degrees(-10))
                             .offset(x: -80, y: 170)
-                            Button(action: {}, label: {
+                            Button(action: {
+                                path.append(.gameListView(homeCategory: .ENTERTAINMENT))
+                            }, label: {
                                 Image(uiImage: .mainGame)
                             })
                             .rotationEffect(.degrees(5))
                             .offset(x: 100, y: 200)
-                            Button(action: {}, label: {
+                            Button(action: {
+                                path.append(.gameListView(homeCategory: .MATERIALS))
+                            }, label: {
                                 Image(uiImage: .mainOption)
                             })
                             .offset(x: -180, y: 300)
@@ -119,17 +127,8 @@ struct HomeView: View {
                             FavoriteViewFeature()
                         })
                     )
-                case .gameListView:
-                    GameListView()
-                        .navigationBarBackButtonHidden()
-                        .toolbar(content: {
-                            ToolbarItem(placement: .topBarLeading) {
-                                NavBackButtonView()
-                            }
-                            ToolbarItem(placement: .topBarTrailing) {
-                                NavLikeButtonView(likeCnt: 5) // TODO: API 연결
-                            }
-                        })
+                case .gameListView(let homeCategory):
+                    GameListView(homeCategory: homeCategory)
                 case .gameFilterView:
                     GameFilterView(store: Store(
                         initialState: GameFilterFeature.State(),
@@ -137,7 +136,6 @@ struct HomeView: View {
                             GameFilterFeature()
                         }))
                 }
-
             }
         }
     }

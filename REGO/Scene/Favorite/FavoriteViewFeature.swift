@@ -11,7 +11,7 @@ import SwiftUI
 
 struct FavoriteViewFeature: Reducer {
     struct State: Equatable {
-        var gameList: [Game] = []
+        var gameList: [GameData] = []
     }
 
     enum Action: Equatable {

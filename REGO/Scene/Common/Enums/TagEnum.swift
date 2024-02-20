@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum TagEnum {
+enum TagEnum: Codable {
     case 두뇌회전
     case 속도가생명
     case 팀대항전

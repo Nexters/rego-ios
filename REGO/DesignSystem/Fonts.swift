@@ -29,6 +29,8 @@ extension Font {
     static let body5 = RegoFontStyle.body5.font
     static let body6 = RegoFontStyle.body6.font
     static let body7 = RegoFontStyle.body7.font
+    static let body8 = RegoFontStyle.body8.font
+    static let body9 = RegoFontStyle.body9.font
 }
 
 public typealias RegoSystemFont = RegoFontPresentation & CaseIterable
@@ -41,7 +43,7 @@ enum RegoFontStyle: RegoSystemFont {
     case h1, h2, h3, h4
     case subtitle1, subtitle2, subtitle3, subtitle4, subtitle5
     case button
-    case body1, body2, body3, body4, body5, body6, body7
+    case body1, body2, body3, body4, body5, body6, body7, body8, body9
 }
 
 extension RegoFontStyle {
@@ -81,6 +83,10 @@ extension RegoFontStyle {
             return .systemFont(ofSize: 12, weight: .regular)
         case .body7:
             return .systemFont(ofSize: 10, weight: .regular)
+        case .body8:
+            return .systemFont(ofSize: 9, weight: .regular)
+        case .body9:
+            return .systemFont(ofSize: 10, weight: .medium)
         }
     }
 

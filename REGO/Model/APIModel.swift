@@ -9,70 +9,77 @@ import Foundation
 import SwiftUI
 
 // MARK: - FetchGamesModel
-struct FetchGamesModel {
-    let popularGames: [GameInfo]
-    let allGames: [AllGame]
+struct FetchGamesModel: Codable {
+    let userLikeCount: Int
+    let games: [Game]
 }
 
-// MARK: - AllGame
-struct AllGame {
-    let category: String? = nil
-    let info: [GameInfo]
+// MARK: - Game
+struct Game: Codable {
+    let category: String
+    let data: [GameData]
 }
 
-// MARK: - PopularGame
-struct GameInfo: Identifiable {
-    let gameUUID, title: String
-    let gameSummary: GameSummary
-    let like: Int
-    let iconType: IconType
+// MARK: - GameData
+struct GameData: Codable, Identifiable, Equatable {
+    static func == (lhs: GameData, rhs: GameData) -> Bool {
+        lhs.gameUUID == rhs.gameUUID
+    }
+
+    let gameUUID: Int64
+    let title: String
     let rank: Int?
+    let gameSummary: GameSummary
+    let likeCount: Int
+    let iconType: IconType
+    let like: Bool
 
-    var id: String {
+    var id: Int64 {
         return gameUUID
     }
 }
 
 // MARK: - GameSummary
-struct GameSummary {
+struct GameSummary: Codable {
     let gameTime, gamePeople: String
 }
 
-struct FetchDetailGamesModel {
-    let gameUUID, title: String
-    let gameDescription: String
-    // TODO: Enum화
+struct FetchDetailModel {
+    let userCountLike: Int
+    let games: [GameDetail]
+}
+
+// MARK: - Game
+struct GameDetail: Codable {
+    let gameUUID: Int64
+    let title, gameDescription: String
     let iconType: IconType
-    let tag: [TagEnum] // TODO: Enum수정, BE Model 수정 요청
-    let tip: String? = nil
+    let tag: [TagEnum]
     let uiType: UIType
+    let gameHow: GameHow
+    let gameImageExample: GameImageExample?
+    let gameExample: [String]?
     let like: Bool
-    let likeCount: Int
-
-    // 이미지형, 설명문형, 텍스트형
-    let gameHow: GameHow? = nil
-    let gameExample: GameExample? = nil
-    let gameExamples: [String]? = nil
+    let tip: String?
 }
 
-enum UIType: String {
-    case IMAGE_TYPE
-    case NARRATIVE_WITH_PROGRESS
-    case NARRATIVE_WITHOUT_PROGRESS
-    case TEXT_TYPE
+enum UIType: String, Codable {
+    case NO_EXAMPLE
+    case TEXT_EXAMPLE
+    case IMAGE_EXAMPLE
 }
 
-struct GameHow {
-    let facilitator: String?
+struct GameHow: Codable {
+    let mc: String?
     let attendee: String
 }
 
-struct GameExample {
-    let image: String
+struct GameImageExample: Codable {
+    let image: String // Image URL
     let answer: String
 }
 
-enum IconType: String {
+enum IconType: String, Codable {
     case ACTIVE
     case SONG
     case SPEED
