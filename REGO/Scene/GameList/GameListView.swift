@@ -75,6 +75,7 @@ struct GameListView: View {
                             }
                             .padding(.horizontal, 14)
                             .padding(.vertical, 6)
+                            .frame(height: 34)
                             .background(
                                 RoundedRectangle(cornerRadius: 10)
                                     .foregroundStyle(Color.primary500)
@@ -84,6 +85,7 @@ struct GameListView: View {
                 }
                 .frame(height: 34)
                 .padding(.horizontal, 20)
+                .padding(.bottom, 14)
             }
 
             ScrollViewReader(content: { proxy in

@@ -31,10 +31,9 @@ struct NavLikeButtonView: View {
                     .foregroundStyle(likeCnt > 0 ? Color(.primary500) : Color(.gray200))
 
                 if likeCnt > 0 {
-                    Body8Text(likeCnt < 999 ? "\(likeCnt)" : "+999")
+                    Body9Text(likeCnt < 999 ? "\(likeCnt)" : "+999")
                         .padding(3)
                         .frame(height: 13)
-                        .font(RegoFontStyle.body7.font)
                         .foregroundStyle(Color(.primary500))
                         .background(.white)
                         .cornerRadius(99)
