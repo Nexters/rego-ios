@@ -14,9 +14,9 @@ struct GameDetailCardView: View {
     @State private var isLiked: Bool
     @State private var isShowLottie: Bool = false
 
-    var gameDetail: FetchDetailGamesModel
+    var gameDetail: GameDetail
 
-    init(gameDetail: FetchDetailGamesModel) {
+    init(gameDetail: GameDetail) {
         self.isLiked = gameDetail.like
         self.gameDetail = gameDetail
     }

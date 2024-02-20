@@ -12,13 +12,13 @@ struct CardFrontView: View {
     @Binding var isLiked: Bool
     @Binding var isShowLottie: Bool
 
-    var gameDetail: FetchDetailGamesModel
+    var gameDetail: GameDetail
 
     var flipFunction: () -> Void
 
     var tagList: [TagEnum]
 
-    init(gameDetail: FetchDetailGamesModel, degree: Binding<Double>, isLiked: Binding<Bool>, isShowLottie: Binding<Bool>, flipFunction: @escaping () -> Void) {
+    init(gameDetail: GameDetail, degree: Binding<Double>, isLiked: Binding<Bool>, isShowLottie: Binding<Bool>, flipFunction: @escaping () -> Void) {
         self._degree = degree
         self._isLiked = isLiked
         self._isShowLottie = isShowLottie
@@ -63,7 +63,7 @@ struct CardFrontView: View {
 
                 // 게임 설명 View
                 VStack(alignment: .leading) {
-                    if let mc = gameDetail.gameHow?.mc {
+                    if let mc = gameDetail.gameHow.mc {
                         HStack {
                             Image(.icon24User01)
                                 .resizable()
@@ -75,17 +75,15 @@ struct CardFrontView: View {
                         Divider()
                             .foregroundStyle(Color.gray600)
                     }
-                    if let attendee = gameDetail.gameHow?.attendee {
-                        HStack {
-                            Image(.icon24User02)
-                                .resizable()
-                                .frame(width: 16, height: 16)
-                            Subtitle5Text("참여자")
-                                .foregroundStyle(.white)
-                            Spacer()
-                        }
-                        Body4Text(attendee)
+                    HStack {
+                        Image(.icon24User02)
+                            .resizable()
+                            .frame(width: 16, height: 16)
+                        Subtitle5Text("참여자")
+                            .foregroundStyle(.white)
+                        Spacer()
                     }
+                    Body4Text(gameDetail.gameHow.attendee)
                     Spacer()
                 }
                 .padding(14)
@@ -101,7 +99,7 @@ struct CardFrontView: View {
                         Body5Text(tip)
                     }
                 }
-                if gameDetail.uiType == .TEXT_TYPE || gameDetail.uiType == .IMAGE_TYPE {
+                if gameDetail.uiType == .TEXT_EXAMPLE || gameDetail.uiType == .IMAGE_EXAMPLE {
                     Spacer(minLength: 20)
                     Button(action: {
                         self.flipFunction()

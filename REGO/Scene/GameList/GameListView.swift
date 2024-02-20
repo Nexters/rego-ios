@@ -11,75 +11,68 @@ import Combine
 struct GameListView: View {
     @State private var fetchGames: FetchGamesModel = Mock.fetchGamesMock
     //    @State private var selectedIndex: Int = 0
-    @State private var selectedCategory: String = "카테고리1" // TODO: 
+    @State private var selectedCategory: String = "" //
+
+    var homeCategory: HomeCategoryEnum
 
     var body: some View {
         VStack(alignment: .leading) {
-            H1Text("스피드 게임") // TODO: Title 넘겨주기
+            H1Text(homeCategory.title)
                 .padding(.horizontal, 20)
                 .padding(.vertical, 10)
-            Text("selectedCategory\( selectedCategory)")
-            if !fetchGames.allGames.compactMap({$0.category}).isEmpty {
+
+            if [.ENTERTAINMENT, .THEME, .MATERIALS].contains(homeCategory) {
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack {
-                        ForEach(fetchGames.allGames.compactMap({$0.category}), id: \.self) { category in
-                            CategoryButton( selectedCategory: $selectedCategory, title: category, selectedColor: .primary500, deSelectedColor: .gray800)
+                        ForEach(fetchGames.games.map({$0.category}), id: \.self) { category in
+                            CategoryButton(selectedCategory: $selectedCategory, title: category, selectedColor: .primary500, deSelectedColor: .gray800)
                         }
                     }
                 }
                 .frame(height: 34)
                 .padding(.horizontal, 20)
             }
+            else if homeCategory == .FILTER { // TODO: 필터 UI 추가
+
+            }
+
             ScrollViewReader(content: { proxy in
-                //
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(alignment: .leading, spacing: 34) {
-                        Button(action: {
-                            proxy.scrollTo(selectedCategory, anchor: .top)
-                        }, label: {
-                            Text("이동하기")
-                        })
-                        Section {
-                            LazyVStack(alignment: .leading, spacing: 24, content: {
-                                ForEach(fetchGames.popularGames) { gameInfo in
-                                    NavigationLink {
-                                        GameDetailView()
-                                    } label: {
-                                        GameRowView(gameInfo: gameInfo)
-                                    }.buttonStyle(.plain)
-                                }
-                            })
-                        } header: {
-                            HStack(spacing: 4) {
-                                H4Text("인기 TOP")
-                                H4Text("5")
-                                    .foregroundStyle(Color.primary500)
-                            }
-                        }
                         VStack(alignment: .leading, spacing: 24) {
-                            ForEach(fetchGames.allGames, id: \.category) { allGame in
+                            ForEach(fetchGames.games, id: \.category) { game in
                                 Section {
                                     VStack(alignment: .leading, spacing: 24, content: {
-                                        ForEach(allGame.info, id: \.gameUUID) { gameInfo in
+                                        ForEach(game.data, id: \.gameUUID) { gameData in
                                             NavigationLink {
-                                                GameDetailView()
+                                                GameDetailView(gameUuids: fetchGames.games.flatMap({ game in
+                                                    game.data.map { $0.gameUUID }
+                                                }), selectedGameUuid: gameData.gameUUID)
                                             } label: {
-                                                GameRowView(gameInfo: gameInfo)
+                                                GameRowView(gameData: gameData)
                                             }.buttonStyle(.plain)
                                         }
                                     })
                                 } header: {
-                                    if let category =  allGame.category {
-                                        H4Text("\(category)")
+                                    if game.category == "인기" {
+                                        HStack(spacing: 4) {
+                                            Spacer().frame(width: 16)
+                                            H4Text("인기 TOP")
+                                            H4Text("5")
+                                                .foregroundStyle(Color.primary500)
+                                        }
                                     }
                                     else {
-                                        Subtitle1Text("이런 게임은 어때요?")
+                                        HStack {
+                                            Spacer().frame(width: 20)
+                                            H4Text(game.category)
+                                        }
                                     }
                                 }
-                                .id(allGame.category)
+                                .id(game.category)
                             }
                         }
-                    }
+                    } // vstack
                     .onReceive(selectedCategory.publisher, perform: { _ in
                         withAnimation {
                             proxy.scrollTo(selectedCategory, anchor: .top)
@@ -87,14 +80,19 @@ struct GameListView: View {
                     })
                     .padding(.top, 34)
                 } // ScrollView
-                .padding(.horizontal, 20)
             }) // reader
         }
-        .modifier(NavToolbarModifier())
+        .onAppear {
+            Task {
+                let fetchGames = try await NetworkManager.shared.request(type: FetchGamesModel.self, api: .fetchGames(tags: ["type1", "type2", "type3"], category: "aaaa"))
+                print("fetchGames", fetchGames)
+            }
+        }
+        .modifier(NavToolbarModifier(likeCnt: fetchGames.userLikeCount))
 
     }
 }
 
 #Preview {
-    GameListView()
+    GameListView(homeCategory: .THEME)
 }

@@ -15,9 +15,9 @@ struct CategoryButton: View {
 
     var body: some View {
         Button(action: {
-            if selectedCategory != title {
+//            if selectedCategory != title {
                 selectedCategory = title
-            }
+//            }
         }, label: {
           Body3Text(title)
                 .foregroundStyle(.white)
@@ -25,7 +25,8 @@ struct CategoryButton: View {
         .padding(.horizontal, 14)
         .padding(.vertical, 6)
         .background(
-            selectedCategory == title ? selectedColor : deSelectedColor
+//            selectedCategory == title ? selectedColor : deSelectedColor
+            selectedColor // TODO: 미선택시 자동으로 선택되도록
         )
         .cornerRadius(10)
     }

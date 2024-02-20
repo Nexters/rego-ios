@@ -15,9 +15,9 @@ struct CardBackView: View {
 
     var flipFunction: () -> Void
 
-    var gameDetail: FetchDetailGamesModel
+    var gameDetail: GameDetail
 
-    init(gameDetail: FetchDetailGamesModel, degree: Binding<Double>, rotation: Binding<Bool>, isLiked: Binding<Bool>, isShowLottie: Binding<Bool>, flipFunction: @escaping () -> Void) {
+    init(gameDetail: GameDetail, degree: Binding<Double>, rotation: Binding<Bool>, isLiked: Binding<Bool>, isShowLottie: Binding<Bool>, flipFunction: @escaping () -> Void) {
         self._degree = degree
         self._isLiked = isLiked
         self._rotation = rotation
@@ -50,7 +50,7 @@ struct CardBackView: View {
                 Spacer().frame(height: 20)
                 Subtitle3Text("문제예시")
                 switch gameDetail.uiType {
-                case .IMAGE_TYPE:
+                case .IMAGE_EXAMPLE:
                     VStack(alignment: .leading) {
                         Image(.mainGame) // TODO: 이미지 변경
                             .resizable()
@@ -59,7 +59,7 @@ struct CardBackView: View {
                             Body5Text(gameDetail.gameImageExample?.answer ?? "")
                         }
                     }
-                case .TEXT_TYPE:
+                case .TEXT_EXAMPLE:
                     ScrollView(.vertical) {
                         if let games = gameDetail.gameExample {
                             LazyVStack(alignment: .leading, spacing: 8) {

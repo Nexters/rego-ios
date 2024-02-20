@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct NavToolbarModifier: ViewModifier {
+    let likeCnt: Int
+
     func body(content: Content) -> some View {
         content
             .navigationBarBackButtonHidden()
@@ -16,7 +18,7 @@ struct NavToolbarModifier: ViewModifier {
                     NavBackButtonView()
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    NavLikeButtonView(likeCnt: 5) // TODO: API 연결
+                    NavLikeButtonView(likeCnt: likeCnt) // TODO: API 연결
                 }
             })
     }
