@@ -14,12 +14,34 @@ struct GameListView: View {
     @State private var selectedCategory: String = "" //
 
     var homeCategory: HomeCategoryEnum
+    @State var filterTags: [FilterTagEnum]?
 
     var body: some View {
         VStack(alignment: .leading) {
-            H1Text(homeCategory.title)
-                .padding(.horizontal, 20)
-                .padding(.vertical, 10)
+            HStack {
+                H1Text(homeCategory.title)
+                Spacer()
+                if homeCategory == .FILTER {
+                    Button(action: {
+                        // TODO: Filter View 띄우기
+//                        NavigationLink
+                    }, label: {
+                        Image(.icon24Filter)
+                            .renderingMode(.template)
+                            .resizable()
+                            .foregroundColor(.white)
+                            .tint(.white)
+                            .frame(width: 20, height: 20)
+                            .padding(7)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .foregroundStyle(Color.primary500)
+                            )
+                    })
+                }
+            }
+            .padding(.horizontal, 20)
+            .padding(.vertical, 10)
 
             if [.ENTERTAINMENT, .THEME, .MATERIALS].contains(homeCategory) {
                 ScrollView(.horizontal, showsIndicators: false) {
@@ -32,8 +54,38 @@ struct GameListView: View {
                 .frame(height: 34)
                 .padding(.horizontal, 20)
             }
-            else if homeCategory == .FILTER { // TODO: 필터 UI 추가
-
+            else if let filterTags = filterTags, !filterTags.isEmpty, homeCategory == .FILTER {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHStack {
+                        ForEach(filterTags, id: \.rawValue) { tag in
+                            HStack(spacing: 2) {
+                                Body3Text(tag.title)
+                                    .foregroundStyle(.white)
+                                Button(action: {
+                                    self.filterTags = filterTags.filter { $0.rawValue != tag.rawValue
+                                    }
+                                }, label: {
+                                    Image(.icon24Close)
+                                        .renderingMode(.original)
+                                        .resizable()
+                                        .foregroundColor(.white)
+                                        .tint(.white)
+                                        .frame(width: 14, height: 14)
+                                })
+                            }
+                            .padding(.horizontal, 14)
+                            .padding(.vertical, 6)
+                            .frame(height: 34)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .foregroundStyle(Color.primary500)
+                            )
+                        }
+                    }
+                }
+                .frame(height: 34)
+                .padding(.horizontal, 20)
+                .padding(.bottom, 14)
             }
 
             ScrollViewReader(content: { proxy in
@@ -94,5 +146,5 @@ struct GameListView: View {
 }
 
 #Preview {
-    GameListView(homeCategory: .THEME)
+    GameListView(homeCategory: .FILTER)
 }
