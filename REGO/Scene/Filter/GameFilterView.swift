@@ -57,7 +57,8 @@ struct GameFilterView: View {
                         .cornerRadius(14)
                         // TODO: 컴포넌트 수정
                         NavigationLink {
-                            GameListView(homeCategory: .FILTER)
+                            GameListView(homeCategory: .FILTER, filterTags: [.TWO_FIVE, .FIVE_TEN, .NO_LIMIT, .SPEED, .TWENTY])
+                            // TODO: Filter 관련 모델 수저
                         } label: {
                             Subtitle4Text("적용하기")
                                 .padding(.horizontal, 14)

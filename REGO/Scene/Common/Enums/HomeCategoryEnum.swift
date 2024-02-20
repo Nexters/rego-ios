@@ -15,7 +15,7 @@ enum HomeCategoryEnum: String {
     case SPEED
     case MC
 
-    case FILTER // 필터 적용시
+    case FILTER // 필터 관련 UI - associated value 쓰고 싶었는데 rawvalue 써서 안댐 ㅜ
 
     var title: String {
         switch self {
