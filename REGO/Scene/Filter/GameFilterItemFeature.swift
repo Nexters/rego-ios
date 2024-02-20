@@ -17,6 +17,7 @@ struct GameFilterItemFeature: Reducer {
 
     enum Action: Equatable {
         case selectGameType(GameType)
+        case reset
     }
 
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
@@ -30,6 +31,9 @@ struct GameFilterItemFeature: Reducer {
                     state.selectedGameTypes.remove(at: index)
                 }
             }
+            return .none
+        case .reset:
+            state.selectedGameTypes = []
             return .none
         }
     }

@@ -8,6 +8,10 @@
 import Foundation
 import Alamofire
 
+final class Network {
+    static let baseURL = "https://nexters-rego.com/api/"
+}
+
 enum Router: URLRequestConvertible {
 
     case fetchGames(tags: [String], category: String)

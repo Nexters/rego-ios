@@ -10,18 +10,28 @@ import ComposableArchitecture
 import SwiftUI
 
 struct FavoriteItemFeature: Reducer {
-    struct State: Equatable {
-        var title: String
+    struct State: Equatable, Identifiable {
+        var id: UUID
+
+        var name: String = ""
         var isSelected: Bool = false
     }
 
     enum Action: Equatable {
-        case selectItem
+        case loadGameInfo(GameData)
+        case sendSelectItem
+        case setselectItem
     }
 
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
-        case .selectItem:
+        case .loadGameInfo(let game):
+            state.name = game.title
+            return .none
+        case .sendSelectItem:
+            // TODO: API 통신
+            return .send(.setselectItem)
+        case .setselectItem:
             state.isSelected.toggle()
             return .none
         }

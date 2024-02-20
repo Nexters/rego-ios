@@ -35,10 +35,11 @@ struct GameFilterView: View {
                     }
                     Spacer().frame(height: 24)
                     VStack(spacing: 20) {
-                        GameFilterItemView(store: store.scope(
-                            state: \.filter1State,
-                            action: GameFilterFeature.Action.filter1)
-                        )
+                        peopleFilterView()
+                        minuateFilterView()
+                        useFilterView()
+                        mcFilterView()
+                        materialFilterView()
                     }
                     Spacer()
                     HStack(spacing: 14) {
@@ -71,6 +72,48 @@ struct GameFilterView: View {
                 }
             }
         }
+    }
+}
+
+extension GameFilterView {
+    @ViewBuilder
+    func peopleFilterView() -> some View {
+        GameFilterItemView(store: store.scope(
+            state: \.peopleState,
+            action: GameFilterFeature.Action.peopleFilter)
+        )
+    }
+
+    @ViewBuilder
+    func minuateFilterView() -> some View {
+        GameFilterItemView(store: store.scope(
+            state: \.minState,
+            action: GameFilterFeature.Action.minFilter)
+        )
+    }
+
+    @ViewBuilder
+    func useFilterView() -> some View {
+        GameFilterItemView(store: store.scope(
+            state: \.useState,
+            action: GameFilterFeature.Action.useFilter)
+        )
+    }
+
+    @ViewBuilder
+    func mcFilterView() -> some View {
+        GameFilterItemView(store: store.scope(
+            state: \.mcState,
+            action: GameFilterFeature.Action.mcFilter)
+        )
+    }
+
+    @ViewBuilder
+    func materialFilterView() -> some View {
+        GameFilterItemView(store: store.scope(
+            state: \.materialState,
+            action: GameFilterFeature.Action.materialFilter)
+        )
     }
 }
 

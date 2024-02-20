@@ -35,6 +35,7 @@ struct HomeView: View {
                         Spacer()
                         Button(action: {}, label: {
                             Body6Text("게임 제안하기")
+                                .foregroundColor(Color.white)
                         })
                         .frame(width: 86, height: 30)
                         .background(Color.gray700)
@@ -111,6 +112,7 @@ struct HomeView: View {
                                 .renderingMode(.template)
                                 .foregroundColor(.gray100)
                             Subtitle4Text("전체 게임 목록")
+                                .foregroundColor(.gray100)
                         }
                     }
                     .frame(width: 144, height: 44)

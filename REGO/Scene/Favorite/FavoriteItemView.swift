@@ -22,10 +22,12 @@ struct FavoriteItemView: View {
                     .cornerRadius(8)
                 Spacer().frame(width: 10)
                 Button(action: {}, label: {
-                    ButtonText(viewStore.state.title)
+                    ButtonText(viewStore.name)
                 })
                 Spacer()
-                Button(action: {}, label: {
+                Button(action: {
+                    viewStore.send(.sendSelectItem)
+                }, label: {
                     Image(.icon24Liked)
                         .renderingMode(.template)
                         .foregroundColor(viewStore.state.isSelected ? .primary500 : .gray400)
@@ -39,7 +41,7 @@ struct FavoriteItemView: View {
 
 #Preview {
     FavoriteItemView(store: Store(
-        initialState: FavoriteItemFeature.State(title: "노래 맞추기"),
+        initialState: FavoriteItemFeature.State(id: UUID(), name: "이름"),
         reducer: {
             FavoriteItemFeature()
         }))

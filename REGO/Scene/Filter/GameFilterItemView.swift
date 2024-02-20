@@ -28,6 +28,7 @@ struct GameFilterItemView: View {
                                 viewStore.send(.selectGameType(type))
                             }, label: {
                                 Body1Text(type.title)
+                                    .foregroundColor(.gray100)
                             })
                             .padding(.horizontal, 14).padding(.vertical, 8)
                             .background(viewStore.selectedGameTypes.contains(type) ? Color.primary500 : Color.gray400)

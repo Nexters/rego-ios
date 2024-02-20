@@ -20,21 +20,31 @@ struct FavoriteView: View {
                         Spacer().frame(width: 20)
                         H1Text("관심 게임")
                         Spacer().frame(width: 6)
-                        H3Text("\(viewStore.gameList.count)").foregroundColor(.gray200)
+                        H3Text("\(viewStore.favoriteItems.count)").foregroundColor(.gray200)
                         Spacer()
                     }
-                    VStack(spacing: 20) {
-                        // TODO: FavoriteItem 추가
-                    }
-                    Spacer()
+                    peopleFilterView()
+                        .opacity(viewStore.favoriteItems.isEmpty ? 0 : 1)
+                    FavoriteEmptyView()
+                        .opacity(viewStore.favoriteItems.isEmpty ? 1 : 0)
                 }
             }
-            .navigationBarBackButtonHidden()
-            .toolbar(content: {
-                ToolbarItem(placement: .topBarLeading) {
-                    NavBackButtonView()
-                }
-            })
+            .onAppear {
+                viewStore.send(.loadGameList)
+            }
+        }
+    }
+}
+
+extension FavoriteView {
+    @ViewBuilder
+    func peopleFilterView() -> some View {
+        LazyVStack(spacing: 20) {
+            ForEachStore(
+                self.store.scope(state: \.rows, action: { .row(id: $0, action: $1) })
+            ) { childStore in
+                FavoriteItemView(store: childStore)
+            }
         }
     }
 }
