@@ -21,7 +21,7 @@ struct GameFilterItemView: View {
                 }
                 Spacer().frame(height: 14)
                 ScrollView(.horizontal) {
-                    LazyHStack {
+                    LazyHStack(spacing: 14) {
                         Spacer().frame(width: 20)
                         ForEach(viewStore.allGameTypes, id: \.self) { type in
                             Button(action: {

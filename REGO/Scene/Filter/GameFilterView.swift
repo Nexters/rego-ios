@@ -24,6 +24,8 @@ struct GameFilterView: View {
                         Button(action: {}, label: {
                             Image(.icon24Close)
                                 .renderingMode(.template)
+                                .resizable()
+                                .frame(width: 30, height: 30)
                                 .foregroundColor(.gray100)
                         })
                         Spacer().frame(width: 20)
@@ -31,6 +33,7 @@ struct GameFilterView: View {
                     HStack {
                         Spacer().frame(width: 20)
                         Body4Text("중복 선택 가능해요.")
+                            .foregroundStyle(Color.gray200)
                         Spacer()
                     }
                     Spacer().frame(height: 24)

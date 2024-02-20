@@ -54,6 +54,7 @@ struct CardFrontView: View {
                         HStack {
                             ForEach(tagList, id: \.self) { tag in
                                 GameDetailTagView(tag: tag)
+                                    .frame(height: 24)
                             }
                         }
                     }
@@ -97,6 +98,7 @@ struct CardFrontView: View {
                     HStack(spacing: 8) {
                         Body2Text("Tip!")
                         Body5Text(tip)
+                            .foregroundStyle(Color.gray200)
                     }
                 }
                 if gameDetail.uiType == .TEXT_EXAMPLE || gameDetail.uiType == .IMAGE_EXAMPLE {

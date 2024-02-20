@@ -30,6 +30,7 @@ struct GameDetailView: View {
                 }
                 .padding(.vertical, 2)
                 .padding(.horizontal, 12)
+                .frame(height: 26)
                 .background(
                     Capsule()
                         .foregroundStyle(.white.opacity(0.1))
