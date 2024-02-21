@@ -73,8 +73,9 @@ struct CardFrontView: View {
                                 .foregroundStyle(.white)
                         }
                         Body4Text(mc)
+                            .foregroundStyle(Color.gray100)
                         Divider()
-                            .foregroundStyle(Color.gray600)
+                            .foregroundStyle(Color.gray700)
                     }
                     HStack {
                         Image(.icon24User02)
@@ -85,6 +86,7 @@ struct CardFrontView: View {
                         Spacer()
                     }
                     Body4Text(gameDetail.gameHow.attendee)
+                        .foregroundStyle(Color.gray100)
                     Spacer()
                 }
                 .padding(14)

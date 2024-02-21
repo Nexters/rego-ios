@@ -19,7 +19,9 @@ struct NavToolbarModifier: ViewModifier {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     NavLikeButtonView(likeCnt: likeCnt) // TODO: API 연결
+                        .background(.yellow)
                 }
             })
+            .background(Color.gray900)
     }
 }

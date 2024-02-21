@@ -17,7 +17,7 @@ struct GameListView: View {
     @State var filterTags: [FilterTagEnum]?
 
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 0) {
             HStack {
                 H1Text(homeCategory.title)
                 Spacer()
@@ -52,8 +52,10 @@ struct GameListView: View {
                         }
                         Spacer().frame(width: 6)
                     }
+                    .frame(height: 34)
                 }
-                .frame(height: 34)
+                .padding(.bottom, 14)
+                .background(.yellow)
             }
             else if let filterTags = filterTags, !filterTags.isEmpty, homeCategory == .FILTER {
                 ScrollView(.horizontal, showsIndicators: false) {
@@ -133,10 +135,11 @@ struct GameListView: View {
                             proxy.scrollTo(selectedCategory, anchor: .top)
                         }
                     })
-                    .padding(.top, 34)
+                    .padding(.top, 20)
                 } // ScrollView
             }) // reader
         }
+        .background(Color.gray900)
         .onAppear {
             Task {
                 let fetchGames = try await NetworkManager.shared.request(type: FetchGamesModel.self, api: .fetchGames(tags: ["type1", "type2", "type3"], category: "aaaa"))

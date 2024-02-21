@@ -78,6 +78,7 @@ struct GameRowView: View {
             }
             Spacer(minLength: 5)
         }
+        .background(Color.gray900)
     }
 }
 
