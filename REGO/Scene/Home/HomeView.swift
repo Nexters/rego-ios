@@ -114,6 +114,7 @@ struct HomeView: View {
                             Subtitle4Text("전체 게임 목록")
                                 .foregroundStyle(.white)
                         }
+                        .background(Color(uiColor: .init(hex: 0x33375D)))
                     }
                     .frame(width: 144, height: 44)
                     .background(Color.gray600)

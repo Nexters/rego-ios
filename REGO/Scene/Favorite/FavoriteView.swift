@@ -29,6 +29,7 @@ struct FavoriteView: View {
                         .opacity(viewStore.favoriteItems.isEmpty ? 1 : 0)
                 }
             }
+            .modifier(NavToolbarModifier(likeCnt: 8)) // TODO: likeCnt
             .onAppear {
                 viewStore.send(.loadGameList)
             }

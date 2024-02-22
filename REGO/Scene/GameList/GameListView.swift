@@ -45,7 +45,7 @@ struct GameListView: View {
                 }
             }
             .padding(.horizontal, 20)
-            .padding(.vertical, 10)
+            .padding(.vertical, 20)
 
             if [.ENTERTAINMENT, .THEME, .MATERIALS].contains(homeCategory) {
                 ScrollView(.horizontal, showsIndicators: false) {
@@ -59,7 +59,6 @@ struct GameListView: View {
                     .frame(height: 34)
                 }
                 .padding(.bottom, 14)
-                .background(.yellow)
             }
             else if let filterTags = filterTags, !filterTags.isEmpty, homeCategory == .FILTER {
                 ScrollView(.horizontal, showsIndicators: false) {
