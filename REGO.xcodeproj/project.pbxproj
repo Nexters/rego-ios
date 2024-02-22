@@ -57,6 +57,8 @@
 		ED8D13EC2B64D52A00C4A2A0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = ED8D13EB2B64D52A00C4A2A0 /* .swiftlint.yml */; };
 		ED8D13F32B64E9B300C4A2A0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D13F22B64E9B200C4A2A0 /* Colors.swift */; };
 		EDAD8C882B81114D00DD3A9D /* GameListTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAD8C872B81114D00DD3A9D /* GameListTagView.swift */; };
+		EDF01F372B87AD960079F3D3 /* FavoriteToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF01F362B87AD960079F3D3 /* FavoriteToastView.swift */; };
+		EDF01F392B87B3130079F3D3 /* GameDetailBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF01F382B87B3130079F3D3 /* GameDetailBackgroundView.swift */; };
 		EDF1BFE02B7134E1003C29AB /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF1BFDF2B7134E1003C29AB /* LottieView.swift */; };
 		EDF1BFE22B71380C003C29AB /* FavoriteItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF1BFE12B71380C003C29AB /* FavoriteItemView.swift */; };
 /* End PBXBuildFile section */
@@ -110,6 +112,8 @@
 		ED8D13EB2B64D52A00C4A2A0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		ED8D13F22B64E9B200C4A2A0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		EDAD8C872B81114D00DD3A9D /* GameListTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListTagView.swift; sourceTree = "<group>"; };
+		EDF01F362B87AD960079F3D3 /* FavoriteToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteToastView.swift; sourceTree = "<group>"; };
+		EDF01F382B87B3130079F3D3 /* GameDetailBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailBackgroundView.swift; sourceTree = "<group>"; };
 		EDF1BFDF2B7134E1003C29AB /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		EDF1BFE12B71380C003C29AB /* FavoriteItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -231,6 +235,7 @@
 				0488EEF12B67E5D30026DAE8 /* GameDetailCardView.swift */,
 				043BF93F2B7CEC090011F7D0 /* CardFrontView.swift */,
 				043BF9412B7CEC470011F7D0 /* CardBackView.swift */,
+				EDF01F382B87B3130079F3D3 /* GameDetailBackgroundView.swift */,
 			);
 			path = GameDetail;
 			sourceTree = "<group>";
@@ -254,6 +259,7 @@
 				EDF1BFE12B71380C003C29AB /* FavoriteItemView.swift */,
 				ED45BC632B798714006C63B0 /* FavoriteItemFeature.swift */,
 				ED209ADC2B8069A20038F04C /* FavoriteEmptyView.swift */,
+				EDF01F362B87AD960079F3D3 /* FavoriteToastView.swift */,
 			);
 			path = Favorite;
 			sourceTree = "<group>";
@@ -478,8 +484,10 @@
 				04CBFBFC2B7E74980051397E /* NavigationController+.swift in Sources */,
 				0488EEF22B67E5D30026DAE8 /* GameDetailCardView.swift in Sources */,
 				04AD137F2B83B7D5009EED82 /* HomeCategoryEnum.swift in Sources */,
+				EDF01F372B87AD960079F3D3 /* FavoriteToastView.swift in Sources */,
 				043BF9402B7CEC090011F7D0 /* CardFrontView.swift in Sources */,
 				046F0FD82B67935A0091DA50 /* CarouselView.swift in Sources */,
+				EDF01F392B87B3130079F3D3 /* GameDetailBackgroundView.swift in Sources */,
 				0488EEF22B67E5D30026DAE8 /* GameDetailCardView.swift in Sources */,
 				04AE72FC2B78BB3600F10F47 /* APIModel.swift in Sources */,
 				046F0FD82B67935A0091DA50 /* CarouselView.swift in Sources */,

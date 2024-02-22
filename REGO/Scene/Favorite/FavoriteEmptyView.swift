@@ -9,6 +9,8 @@ import SwiftUI
 import ComposableArchitecture
 
 struct FavoriteEmptyView: View {
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
         ZStack {
             Color.gray900
@@ -25,9 +27,10 @@ struct FavoriteEmptyView: View {
                 HStack {
                     Spacer().frame(width: 20)
                     Button(action: {
-                        // TODO: 홈화면 이동
+                        dismiss()
                     }, label: {
                         Subtitle4Text("게임 둘러보기")
+                            .foregroundColor(Color.white)
                     })
                     .padding(.vertical, 11)
                     .frame(maxWidth: .infinity)

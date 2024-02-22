@@ -11,6 +11,8 @@ import ComposableArchitecture
 struct GameFilterView: View {
     let store: StoreOf<GameFilterFeature>
 
+    @Environment(\.dismiss) private var dismiss
+
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             ZStack {
@@ -21,7 +23,9 @@ struct GameFilterView: View {
                         Spacer().frame(width: 20)
                         H1Text("상세필터")
                         Spacer()
-                        Button(action: {}, label: {
+                        Button(action: {
+                            dismiss()
+                        }, label: {
                             Image(.icon24Close)
                                 .renderingMode(.template)
                                 .foregroundColor(.gray100)
@@ -50,22 +54,22 @@ struct GameFilterView: View {
                             Image(.icon24Refresh)
                                 .renderingMode(.template)
                                 .foregroundColor(.gray100)
-                            Subtitle4Text("초기화")
+                            Subtitle4Text("초기화").foregroundColor(Color.white)
                         })
                         .padding(.horizontal, 14).padding(.vertical, 12)
                         .background(Color(uiColor: .gray700))
                         .cornerRadius(14)
                         // TODO: 컴포넌트 수정
-                        NavigationLink {
-                            GameListView(homeCategory: .FILTER, filterTags: [.TWO_FIVE, .FIVE_TEN, .NO_LIMIT, .SPEED, .TWENTY])
-                            // TODO: Filter 관련 모델 수저
-                        } label: {
+                        Button(action: {
+                            dismiss()
+                        }, label: {
                             Subtitle4Text("적용하기")
+                                .foregroundColor(Color.white)
                                 .padding(.horizontal, 14)
                                 .frame(height: 48).frame(maxWidth: .infinity)
                                 .background(Color.primary500)
                                 .cornerRadius(14)
-                        }
+                        })
                         .buttonStyle(.plain)
                         Spacer().frame(width: 6)
                     }
