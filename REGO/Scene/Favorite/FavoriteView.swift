@@ -6,16 +6,18 @@
 //
 
 import SwiftUI
+import UIKit
 import ComposableArchitecture
 
 struct FavoriteView: View {
     let store: StoreOf<FavoriteViewFeature>
-
+    
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             ZStack {
                 Color.gray900
                 VStack(alignment: .center) {
+                    Spacer().frame(height: 106)
                     HStack(alignment: .center) {
                         Spacer().frame(width: 20)
                         H1Text("관심 게임")
@@ -29,7 +31,10 @@ struct FavoriteView: View {
                         .opacity(viewStore.favoriteItems.isEmpty ? 1 : 0)
                 }
             }
-            .modifier(NavToolbarModifier(likeCnt: 8)) // TODO: likeCnt
+            .edgesIgnoringSafeArea(.all)
+            .toolbarBackground(Color.gray900)            
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
             .onAppear {
                 viewStore.send(.loadGameList)
             }

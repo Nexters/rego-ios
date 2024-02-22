@@ -9,13 +9,14 @@ import SwiftUI
 import ComposableArchitecture
 
 struct HomeView: View {
-
     @State private var path: [NextView] = []
 
     enum NextView: Hashable {
+        /// 특정 카테고리 게임 리스트
         case gameListView(homeCategory: HomeCategoryEnum)
+        /// 전체 게임 리스트
         case allGameList
-        case gameFilterView
+        /// 관심 게임 리스트
         case favoriteView
     }
 
@@ -67,7 +68,6 @@ struct HomeView: View {
                                 .frame(height: 78).frame(maxWidth: .infinity)
                         }
                         ZStack {
-                            // TODO: 게임 종류 Enum 처리 + 각도 세밀 조정
                             Button(action: {
                                 path.append(.gameListView(homeCategory: .SPEED))
                             }, label: {
@@ -120,9 +120,14 @@ struct HomeView: View {
                     .background(Color.gray600)
                     .cornerRadius(12)
                 }
-            } // ZStack
+            }
             .navigationDestination(for: NextView.self) { next in
                 switch next {
+                case .gameListView(let homeCategory):
+                    GameListView(homeCategory: homeCategory)
+                case .allGameList:
+                    GameListView(homeCategory: .FILTER, 
+                                 filterTags: [.TWO_FIVE, .FIVE_TEN, .NO_LIMIT, .SPEED, .TWENTY])
                 case .favoriteView:
                     FavoriteView(store: Store(
                         initialState: FavoriteViewFeature.State(),
