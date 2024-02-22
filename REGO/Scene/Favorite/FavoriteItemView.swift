@@ -23,6 +23,7 @@ struct FavoriteItemView: View {
                 Spacer().frame(width: 10)
                 Button(action: {}, label: {
                     ButtonText(viewStore.name)
+                        .foregroundColor(Color.white)
                 })
                 Spacer()
                 Button(action: {

@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 import Combine
 
 struct GameListView: View {
     @State private var fetchGames: FetchGamesModel = Mock.fetchGamesMock
     //    @State private var selectedIndex: Int = 0
     @State private var selectedCategory: String = "" //
+
+    /// 필터 bottom sheet present 여부
+    @State private var isPresentSheet: Bool = false
 
     var homeCategory: HomeCategoryEnum
     @State var filterTags: [FilterTagEnum]?
@@ -24,7 +28,7 @@ struct GameListView: View {
                 if homeCategory == .FILTER {
                     Button(action: {
                         // TODO: Filter View 띄우기
-                        //                        NavigationLink
+                        self.isPresentSheet.toggle()
                     }, label: {
                         Image(.icon24Filter)
                             .renderingMode(.template)
@@ -146,8 +150,16 @@ struct GameListView: View {
                 print("fetchGames", fetchGames)
             }
         }
+        .sheet(isPresented: $isPresentSheet) {
+            GameFilterView(store: Store(
+                initialState: GameFilterFeature.State(),
+                reducer: {
+                    GameFilterFeature()
+                }))
+            .presentationDetents([.height(680)])
+            .edgesIgnoringSafeArea(.bottom)
+        }
         .modifier(NavToolbarModifier(likeCnt: fetchGames.userLikeCount))
-
     }
 }
 

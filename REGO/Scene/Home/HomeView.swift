@@ -14,6 +14,7 @@ struct HomeView: View {
 
     enum NextView: Hashable {
         case gameListView(homeCategory: HomeCategoryEnum)
+        case allGameList
         case gameFilterView
         case favoriteView
     }
@@ -105,7 +106,7 @@ struct HomeView: View {
                         }
                     }
                     Button(action: {
-                        path.append(.gameFilterView)
+                        path.append(.allGameList)
                     }) {
                         HStack {
                             Image(.icon24Menu)
@@ -130,6 +131,8 @@ struct HomeView: View {
                     )
                 case .gameListView(let homeCategory):
                     GameListView(homeCategory: homeCategory)
+                case .allGameList:
+                    GameListView(homeCategory: .FILTER, filterTags: [.TWO_FIVE, .FIVE_TEN, .NO_LIMIT, .SPEED, .TWENTY])
                 case .gameFilterView:
                     GameFilterView(store: Store(
                         initialState: GameFilterFeature.State(),
