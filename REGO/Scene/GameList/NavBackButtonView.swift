@@ -16,7 +16,7 @@ struct NavBackButtonView: View {
         } label: {
             HStack {
                 Image(.icon24ArrowLeft) // 화살표 Image
-                    .foregroundStyle(Color.gray200)
+                    .foregroundStyle(Color.white)
             }
         }
     }

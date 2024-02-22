@@ -110,11 +110,11 @@ struct HomeView: View {
                     }) {
                         HStack {
                             Image(.icon24Menu)
-                                .renderingMode(.template)
-                                .foregroundColor(.gray100)
+                                .foregroundStyle(.white)
                             Subtitle4Text("전체 게임 목록")
-                                .foregroundColor(.gray100)
+                                .foregroundStyle(.white)
                         }
+                        .background(Color(uiColor: .init(hex: 0x33375D)))
                     }
                     .frame(width: 144, height: 44)
                     .background(Color.gray600)

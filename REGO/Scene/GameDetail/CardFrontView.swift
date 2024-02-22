@@ -54,6 +54,7 @@ struct CardFrontView: View {
                         HStack {
                             ForEach(tagList, id: \.self) { tag in
                                 GameDetailTagView(tag: tag)
+                                    .frame(height: 24)
                             }
                         }
                     }
@@ -72,8 +73,9 @@ struct CardFrontView: View {
                                 .foregroundStyle(.white)
                         }
                         Body4Text(mc)
+                            .foregroundStyle(Color.gray100)
                         Divider()
-                            .foregroundStyle(Color.gray600)
+                            .foregroundStyle(Color.gray700)
                     }
                     HStack {
                         Image(.icon24User02)
@@ -84,6 +86,7 @@ struct CardFrontView: View {
                         Spacer()
                     }
                     Body4Text(gameDetail.gameHow.attendee)
+                        .foregroundStyle(Color.gray100)
                     Spacer()
                 }
                 .padding(14)
@@ -97,6 +100,7 @@ struct CardFrontView: View {
                     HStack(spacing: 8) {
                         Body2Text("Tip!")
                         Body5Text(tip)
+                            .foregroundStyle(Color.gray200)
                     }
                 }
                 if gameDetail.uiType == .TEXT_EXAMPLE || gameDetail.uiType == .IMAGE_EXAMPLE {

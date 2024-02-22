@@ -21,6 +21,7 @@ struct CategoryButton: View {
         }, label: {
           Body3Text(title)
                 .foregroundStyle(.white)
+                .frame(height: 22)
         })
         .padding(.horizontal, 14)
         .padding(.vertical, 6)

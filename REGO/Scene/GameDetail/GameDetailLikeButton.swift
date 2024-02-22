@@ -27,11 +27,11 @@ struct GameDetailLikeButton: View {
             }, label: {
                 ZStack {
                     Image(.icon24Liked)
-                        .frame(width: 24, height: 24)
+                        .frame(width: 28, height: 28)
                         .foregroundStyle(isLiked ? Color(.primary500) : Color(.gray200))
                     if isLiked {
                         LottieView(filename: "like_small_lottie", loopMode: .playOnce)
-                            .frame(width: 24, height: 24)
+                            .frame(width: 28, height: 28)
                     }
                 }
             })
