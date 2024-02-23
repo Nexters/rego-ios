@@ -19,7 +19,7 @@ struct GameListView: View {
     @State private var isPresentSheet: Bool = false
 
     var homeCategory: HomeCategoryEnum
-    @State var filterTags: [FilterTag]?
+    @State var filterTags: [FilterTag] = []
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -60,7 +60,7 @@ struct GameListView: View {
                 }
                 .padding(.bottom, 14)
             }
-            else if let filterTags = filterTags, !filterTags.isEmpty, homeCategory == .FILTER {
+            else if !filterTags.isEmpty, homeCategory == .FILTER {
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack {
                         Spacer().frame(width: 20)
@@ -164,12 +164,11 @@ struct GameListView: View {
             }
         }
         .sheet(isPresented: $isPresentSheet) {
-            // TODO: 이미 선택된 필터 넘겨주기
             GameFilterView(store: Store(
-                initialState: GameFilterFeature.State(),
+                initialState: GameFilterFeature.State(selectedGameTypes: filterTags),
                 reducer: {
                     GameFilterFeature()
-                }))
+                }), filterTags: $filterTags)
             .presentationDetents([.height(680)])
             .edgesIgnoringSafeArea(.bottom)
         }

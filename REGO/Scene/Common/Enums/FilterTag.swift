@@ -84,4 +84,8 @@ extension FilterTag {
     static var materailFilters: [FilterTag] {
         return [.NO_NEED_MATERIALS, .NEED_MATERIAL]
     }
+    
+    static var allFilters: [FilterTag] {
+        return [.TWO_FIVE, .FIVE_TEN, .NO_LIMIT, .TEN, .TWENTY, .THIRTY, .USE_BRAIN, .USE_BODY, .SPEED, .NEED_MC, .NO_NEED_MC, .NO_NEED_MATERIALS, .NEED_MATERIAL]
+    }
 }
