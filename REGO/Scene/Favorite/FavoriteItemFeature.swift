@@ -13,12 +13,12 @@ struct FavoriteItemFeature: Reducer {
     struct State: Equatable, Identifiable {
         var id: UUID
 
-        var name: String = ""
-        var isSelected: Bool = false
+        var game: LikeGame
+        var isSelected: Bool = true // 기본은 선택된것(관심 게임 리스트)
     }
 
     enum Action: Equatable {
-        case loadGameInfo(GameData)
+        case loadGameInfo(LikeGame)
         case sendSelectItem
         case setselectItem
     }
@@ -26,7 +26,7 @@ struct FavoriteItemFeature: Reducer {
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
         case .loadGameInfo(let game):
-            state.name = game.title
+            state.game = game // MARK: name state 대신 LikeGame 모델로 바꿔봄!
             return .none
         case .sendSelectItem:
             // TODO: API 통신

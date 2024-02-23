@@ -10,7 +10,7 @@ import ComposableArchitecture
 
 struct FavoriteEmptyView: View {
     @Environment(\.dismiss) private var dismiss
-    
+
     var body: some View {
         ZStack {
             Color.gray900

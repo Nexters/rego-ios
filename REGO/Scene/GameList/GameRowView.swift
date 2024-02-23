@@ -17,7 +17,27 @@ struct GameRowView: View {
     init(gameData: GameData) {
         self.gameData = gameData
         self.rank = gameData.rank
-        self._like = .init(initialValue: gameData.likeCount)
+        self._like = .init(initialValue: Int(gameData.likeCount))
+    }
+
+    var likeButton: some View {
+        Button {
+            isLiked.toggle()
+            if isLiked {
+                like += 1
+                Task {
+                    try await NetworkManager.shared.request(api: .likeGame(id: gameData.gameUuid))
+                }
+            }
+            else {
+                like -= 1
+                Task {
+                    try await NetworkManager.shared.request(api: .unlikeGame(id: gameData.gameUuid))
+                }
+            }
+        } label: {
+            LikeButtonView(isLiked: $isLiked, likeCnt: $like)
+        }
     }
 
     var body: some View {
@@ -41,7 +61,7 @@ struct GameRowView: View {
                                 H2Text(gameData.title)
                                     .lineLimit(1)
                                 Spacer()
-                                LikeButtonView(isLiked: $isLiked, likeCnt: $like)
+                                likeButton
                             }
                         }
                     }
@@ -53,7 +73,7 @@ struct GameRowView: View {
                             Subtitle2Text("\(gameData.title)")
                                 .lineLimit(1)
                             Spacer()
-                            LikeButtonView(isLiked: $isLiked, likeCnt: $like)
+                            likeButton
                         }
                     }
                 }
@@ -62,7 +82,7 @@ struct GameRowView: View {
                         Subtitle2Text("\(gameData.title)")
                             .lineLimit(1)
                         Spacer()
-                        LikeButtonView(isLiked: $isLiked, likeCnt: $like)
+                        likeButton
                     }
                 }
 
@@ -81,11 +101,3 @@ struct GameRowView: View {
         .background(Color.gray900)
     }
 }
-
-// #Preview {
-//    VStack {
-//        GameRowView(gameInfo: GameInfo(gameUUID: "", title: "좀비게임", gameSummary: GameSummary(gameTime: "30m", gamePeople: "5~10명"), like: 10, iconType: .KNOWLEDGE, rank: 1))
-//        GameRowView(gameInfo: GameInfo(gameUUID: "", title: "좀비게임2", gameSummary: GameSummary(gameTime: "30m", gamePeople: "5~10명"), like: 10, iconType: .MISSION, rank: 2))
-//        GameRowView(gameInfo: GameInfo(gameUUID: "", title: "좀비게임3", gameSummary: GameSummary(gameTime: "30m", gamePeople: "5~10명"), like: 10, iconType: .MISSION, rank: nil))
-//    }
-// }

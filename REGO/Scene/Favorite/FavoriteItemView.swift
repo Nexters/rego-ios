@@ -16,13 +16,14 @@ struct FavoriteItemView: View {
             HStack(alignment: .center) {
                 Spacer().frame(width: 20)
                 Image(uiImage: ._3DSpeed)
+//                 store.game.iconType.image // TODO: 컴파일 오류 수정
                     .resizable()
                     .frame(width: 36, height: 36)
                     .background(Color.gray700)
                     .cornerRadius(8)
                 Spacer().frame(width: 10)
                 Button(action: {}, label: {
-                    ButtonText(viewStore.name)
+                    ButtonText(viewStore.game.title)
                         .foregroundColor(Color.white)
                 })
                 Spacer()
@@ -42,7 +43,7 @@ struct FavoriteItemView: View {
 
 #Preview {
     FavoriteItemView(store: Store(
-        initialState: FavoriteItemFeature.State(id: UUID(), name: "이름"),
+        initialState: FavoriteItemFeature.State(id: UUID(), game: LikeGame(heartID: 1, gameUuid: 1, iconType: .ACTIVE, title: "액티브브")),
         reducer: {
             FavoriteItemFeature()
         }))

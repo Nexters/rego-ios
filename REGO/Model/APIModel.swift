@@ -10,7 +10,7 @@ import SwiftUI
 
 // MARK: - FetchGamesModel
 struct FetchGamesModel: Codable {
-    let userLikeCount: Int
+    let userLikeCount: Int64
     let games: [Game]
 }
 
@@ -23,19 +23,19 @@ struct Game: Codable {
 // MARK: - GameData
 struct GameData: Codable, Identifiable, Equatable {
     static func == (lhs: GameData, rhs: GameData) -> Bool {
-        lhs.gameUUID == rhs.gameUUID
+        lhs.gameUuid == rhs.gameUuid
     }
 
-    let gameUUID: Int64
+    let gameUuid: Int64
     let title: String
     let rank: Int?
     let gameSummary: GameSummary
-    let likeCount: Int
+    let likeCount: Int64
     let iconType: IconType
     let like: Bool
 
     var id: Int64 {
-        return gameUUID
+        return gameUuid
     }
 }
 
@@ -44,14 +44,14 @@ struct GameSummary: Codable {
     let gameTime, gamePeople: String
 }
 
-struct FetchDetailModel {
-    let userCountLike: Int
+struct FetchDetailModel: Codable {
+    let userCountLike: Int64
     let games: [GameDetail]
 }
 
 // MARK: - Game
 struct GameDetail: Codable {
-    let gameUUID: Int64
+    let gameUuid: Int64
     let title, gameDescription: String
     let iconType: IconType
     let tag: [TagEnum]
@@ -125,4 +125,15 @@ enum IconType: String, Codable {
             return .coral15
         }
     }
+}
+
+// MARK: 관심 게임
+struct LikeGames: Codable {
+    let like: [LikeGame]
+}
+
+struct LikeGame: Codable, Equatable {
+    let heartID, gameUuid: Int64
+    let iconType: IconType
+    let title: String
 }
