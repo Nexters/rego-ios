@@ -133,7 +133,8 @@ struct LikeGames: Codable {
 }
 
 struct LikeGame: Codable, Equatable {
-    let heartID, gameUuid: Int64
+    let heartId: Int64
+    let gameUuid: Int64
     let iconType: IconType
     let title: String
 }

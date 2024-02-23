@@ -11,7 +11,7 @@ import ComposableArchitecture
 
 struct FavoriteView: View {
     let store: StoreOf<FavoriteViewFeature>
-    
+
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             ZStack {
@@ -22,22 +22,21 @@ struct FavoriteView: View {
                         Spacer().frame(width: 20)
                         H1Text("관심 게임")
                         Spacer().frame(width: 6)
-                        H3Text("\(viewStore.favoriteItems.count)").foregroundColor(.gray200)
+                        H3Text("\(viewStore.likeGames.count)").foregroundColor(.gray200)
                         Spacer()
                     }
                     peopleFilterView()
-                        .opacity(viewStore.favoriteItems.isEmpty ? 0 : 1)
+                        .opacity(viewStore.likeGames.isEmpty ? 0 : 1)
                     FavoriteEmptyView()
-                        .opacity(viewStore.favoriteItems.isEmpty ? 1 : 0)
+                        .opacity(viewStore.likeGames.isEmpty ? 1 : 0)
                 }
             }
             .edgesIgnoringSafeArea(.all)
-            .toolbarBackground(Color.gray900)            
+            .toolbarBackground(Color.gray900)
             .toolbarColorScheme(.dark, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
             .onAppear {
-//                viewStore.send(.loadGameList)
-                // TODO: async await 부분 바꾸고 해보기..
+                viewStore.send(.fetchLikeGames)
             }
         }
     }

@@ -15,8 +15,7 @@ struct FavoriteItemView: View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             HStack(alignment: .center) {
                 Spacer().frame(width: 20)
-                Image(uiImage: ._3DSpeed)
-//                 store.game.iconType.image // TODO: 컴파일 오류 수정
+                viewStore.game.iconType.image
                     .resizable()
                     .frame(width: 36, height: 36)
                     .background(Color.gray700)
@@ -28,7 +27,7 @@ struct FavoriteItemView: View {
                 })
                 Spacer()
                 Button(action: {
-                    viewStore.send(.sendSelectItem)
+                    viewStore.state.isSelected ? viewStore.send(.unlikeGame) : viewStore.send(.likeGame)
                 }, label: {
                     Image(.icon24Liked)
                         .renderingMode(.template)
@@ -43,7 +42,8 @@ struct FavoriteItemView: View {
 
 #Preview {
     FavoriteItemView(store: Store(
-        initialState: FavoriteItemFeature.State(id: UUID(), game: LikeGame(heartID: 1, gameUuid: 1, iconType: .ACTIVE, title: "액티브브")),
+        initialState: FavoriteItemFeature.State(id: UUID(),
+                                                game: LikeGame(heartId: 1, gameUuid: 1, iconType: .ACTIVE, title: "액티브브")),
         reducer: {
             FavoriteItemFeature()
         }))

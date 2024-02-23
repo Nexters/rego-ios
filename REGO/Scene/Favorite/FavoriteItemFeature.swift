@@ -14,23 +14,43 @@ struct FavoriteItemFeature: Reducer {
         var id: UUID
 
         var game: LikeGame
-        var isSelected: Bool = true // 기본은 선택된것(관심 게임 리스트)
+        var isSelected: Bool = true
     }
 
     enum Action: Equatable {
         case loadGameInfo(LikeGame)
-        case sendSelectItem
+        case likeGame
+        case unlikeGame
         case setselectItem
     }
 
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
         case .loadGameInfo(let game):
-            state.game = game // MARK: name state 대신 LikeGame 모델로 바꿔봄!
+            state.game = game
             return .none
-        case .sendSelectItem:
-            // TODO: API 통신
-            return .send(.setselectItem)
+        case .likeGame:
+            let game = state.game
+            return .run { send in
+                do {
+                    try await NetworkManager.shared.request(api: .likeGame(id: game.gameUuid))
+                    await send(.setselectItem)
+                }
+                catch {
+                    print("@@@@@ network error")
+                }
+            }
+        case .unlikeGame:
+            let game = state.game
+            return .run { send in
+                do {
+                    try await NetworkManager.shared.request(api: .unlikeGame(id: game.gameUuid))
+                    await send(.setselectItem)
+                }
+                catch {
+                    print("@@@@@ network error")
+                }
+            }
         case .setselectItem:
             state.isSelected.toggle()
             return .none
