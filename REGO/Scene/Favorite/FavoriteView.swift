@@ -11,7 +11,7 @@ import ComposableArchitecture
 
 struct FavoriteView: View {
     let store: StoreOf<FavoriteViewFeature>
-
+    
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             ZStack {
@@ -32,7 +32,7 @@ struct FavoriteView: View {
                 }
             }
             .edgesIgnoringSafeArea(.all)
-            .toolbarBackground(Color.gray900)
+            .toolbarBackground(Color.gray900)            
             .toolbarColorScheme(.dark, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
             .onAppear {

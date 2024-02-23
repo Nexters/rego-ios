@@ -126,7 +126,7 @@ struct HomeView: View {
                 case .gameListView(let homeCategory):
                     GameListView(homeCategory: homeCategory)
                 case .allGameList:
-                    GameListView(homeCategory: .FILTER,
+                    GameListView(homeCategory: .FILTER, 
                                  filterTags: [.TWO_FIVE, .FIVE_TEN, .NO_LIMIT, .SPEED, .TWENTY])
                 case .favoriteView:
                     FavoriteView(store: Store(

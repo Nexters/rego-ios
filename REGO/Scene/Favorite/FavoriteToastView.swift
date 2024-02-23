@@ -9,11 +9,11 @@ import SwiftUI
 
 struct FavoriteToastView: View {
     @State var didAdd: Bool
-
+    
     init(didAdd: Bool) {
         self.didAdd = didAdd
     }
-
+    
     var body: some View {
         ZStack {
             Color.gray800
@@ -43,7 +43,7 @@ extension FavoriteToastView {
             Spacer().frame(width: 14)
         }
     }
-
+    
     @ViewBuilder
     func deleteToastView() -> some View {
         HStack {
