@@ -25,11 +25,14 @@ struct GameDetailView: View {
                 .frame(width: UIScreen.main.bounds.size.width, height: 570)
                 HStack(spacing: 2){
                     Body3Text("\(currentIndex+1)")
-                    Body4Text("/\(fetchDetailGames.games.count)")
+                    Body4Text("/")
+                        .foregroundStyle(Color.gray200)
+                    Body4Text("\(fetchDetailGames.games.count)")
                         .foregroundStyle(Color.gray200)
                 }
                 .padding(.vertical, 2)
                 .padding(.horizontal, 12)
+                .frame(height: 26)
                 .background(
                     Capsule()
                         .foregroundStyle(.white.opacity(0.1))

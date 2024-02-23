@@ -21,5 +21,6 @@ struct NavToolbarModifier: ViewModifier {
                     NavLikeButtonView(likeCnt: likeCnt) // TODO: API 연결
                 }
             })
+            .background(Color.gray900)
     }
 }

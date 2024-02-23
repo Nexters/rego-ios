@@ -8,7 +8,7 @@
 import Foundation
 
 struct Mock {
-    static let fetchGamesMock = FetchGamesModel(userLikeCount: 10, games: [
+    static let fetchGamesMock = FetchGamesModel(userLikeCount: 8, games: [
         Game(category: "인기", data: [
             GameData(gameUUID: 100, title: "스파이는 누구인가", rank: 1, gameSummary: GameSummary(gameTime: "20m", gamePeople: "5-10명"), likeCount: 1000, iconType: .KNOWLEDGE, like: false),
             GameData(gameUUID: 101, title: "바뀐 모습 찾기", rank: 2, gameSummary: GameSummary(gameTime: "20m", gamePeople: "5-10명"), likeCount: 999, iconType: .SPEED, like: false),

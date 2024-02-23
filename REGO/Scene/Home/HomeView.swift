@@ -110,11 +110,11 @@ struct HomeView: View {
                     }) {
                         HStack {
                             Image(.icon24Menu)
-                                .renderingMode(.template)
-                                .foregroundColor(.gray100)
+                                .foregroundStyle(.white)
                             Subtitle4Text("전체 게임 목록")
-                                .foregroundColor(.gray100)
+                                .foregroundStyle(.white)
                         }
+                        .background(Color(uiColor: .init(hex: 0x33375D)))
                     }
                     .frame(width: 144, height: 44)
                     .background(Color.gray600)
@@ -135,6 +135,16 @@ struct HomeView: View {
                             FavoriteViewFeature()
                         })
                     )
+                case .gameListView(let homeCategory):
+                    GameListView(homeCategory: homeCategory)
+                case .allGameList:
+                    GameListView(homeCategory: .FILTER, filterTags: [.TWO_FIVE, .FIVE_TEN, .NO_LIMIT, .SPEED, .TWENTY])
+                case .gameFilterView:
+                    GameFilterView(store: Store(
+                        initialState: GameFilterFeature.State(),
+                        reducer: {
+                            GameFilterFeature()
+                        }))
                 }
             }
         }
