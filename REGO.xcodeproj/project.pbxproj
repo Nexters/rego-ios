@@ -24,6 +24,7 @@
 		046F0FD82B67935A0091DA50 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F0FD72B67935A0091DA50 /* CarouselView.swift */; };
 		0478291F2B7B463E00E33041 /* NavBackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0478291E2B7B463E00E33041 /* NavBackButtonView.swift */; };
 		0488EEF22B67E5D30026DAE8 /* GameDetailCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488EEF12B67E5D30026DAE8 /* GameDetailCardView.swift */; };
+		048DD37B2B889483009755EC /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DD37A2B889483009755EC /* View+.swift */; };
 		04A79B562B6B9CD4007A4BF3 /* NavLikeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A79B552B6B9CD4007A4BF3 /* NavLikeButtonView.swift */; };
 		04AD137D2B839BC5009EED82 /* rank1_lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 04AD137C2B839BC5009EED82 /* rank1_lottie.json */; };
 		04AD137F2B83B7D5009EED82 /* HomeCategoryEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD137E2B83B7D5009EED82 /* HomeCategoryEnum.swift */; };
@@ -82,6 +83,7 @@
 		046F0FD72B67935A0091DA50 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		0478291E2B7B463E00E33041 /* NavBackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBackButtonView.swift; sourceTree = "<group>"; };
 		0488EEF12B67E5D30026DAE8 /* GameDetailCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailCardView.swift; sourceTree = "<group>"; };
+		048DD37A2B889483009755EC /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		04A79B552B6B9CD4007A4BF3 /* NavLikeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavLikeButtonView.swift; sourceTree = "<group>"; };
 		04AD137C2B839BC5009EED82 /* rank1_lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rank1_lottie.json; sourceTree = "<group>"; };
 		04AD137E2B83B7D5009EED82 /* HomeCategoryEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCategoryEnum.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				04CBFBFD2B7E751D0051397E /* Modifier */,
 				04CBFBFB2B7E74980051397E /* NavigationController+.swift */,
 				04CBFC0E2B835F690051397E /* Utils.swift */,
+				048DD37A2B889483009755EC /* View+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				0488EEF22B67E5D30026DAE8 /* GameDetailCardView.swift in Sources */,
 				042C402C2B62850B0017F9F3 /* NetworkManager.swift in Sources */,
 				04CBFC012B7E75AD0051397E /* NavToolbarModifier.swift in Sources */,
+				048DD37B2B889483009755EC /* View+.swift in Sources */,
 				0478291F2B7B463E00E33041 /* NavBackButtonView.swift in Sources */,
 				04CBFC062B8232E70051397E /* CommonButton.swift in Sources */,
 				042C40232B62839E0017F9F3 /* GameListView.swift in Sources */,

@@ -36,7 +36,8 @@ struct FavoriteView: View {
             .toolbarColorScheme(.dark, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
             .onAppear {
-                viewStore.send(.loadGameList)
+//                viewStore.send(.loadGameList)
+                // TODO: async await 부분 바꾸고 해보기..
             }
         }
     }

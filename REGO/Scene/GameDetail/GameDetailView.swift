@@ -10,7 +10,11 @@ import SwiftUI
 struct GameDetailView: View {
     @State var currentIndex: Int = 0
 
-    @State private var fetchDetailGames: FetchDetailModel = Mock.detailGameMock
+    @State private var fetchDetailGames: FetchDetailModel =
+    Mock.detailGameMock
+//    FetchDetailModel(userCountLike: 0, games: [])
+
+    @State private var isLoading: Bool = true
 
     var gameUuids: [Int64]
     var selectedGameUuid: Int64
@@ -41,23 +45,25 @@ struct GameDetailView: View {
             }
             .background(Color.gray900)
         }
+        .overlayIf($isLoading,
+            LottieView(filename: "loading_lottie")
+                .frame(width: 60, height: 60)
+        )
         .onAppear {
             Task{
-//                let fetchDetails = try await NetworkManager.shared.request(type: FetchGamesModel.self, api: .fetchDetails(ids: gameUuids))
-//                print("fetchDetails", fetchDetails)
-
+                let fetchDetails = try await NetworkManager.shared.request(type: FetchDetailModel.self, api: .fetchDetails(ids: gameUuids))
+                print("fetchDetails", fetchDetails)
+                self.fetchDetailGames = fetchDetails
+                isLoading = false
                 currentIndex = fetchDetailGames.games.firstIndex { gameDetail in
-                    gameDetail.gameUUID == selectedGameUuid
+                    gameDetail.gameUuid == selectedGameUuid
                 } ?? 0
-
-                print(fetchDetailGames.games.map({$0.gameUUID}))
-                print("selectedGameUuid", selectedGameUuid)
-                print("currentIndex", currentIndex)
 
             }
         }
-        .modifier(NavToolbarModifier(likeCnt: fetchDetailGames.userCountLike))
+        .modifier(NavToolbarModifier(likeCnt: Int(fetchDetailGames.userCountLike)))
         .navigationTitle("게임 설명")
+        .font(.subtitle3)
     }
 }
 

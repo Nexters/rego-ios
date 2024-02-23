@@ -17,13 +17,13 @@ final class NetworkManager {
     func request<T: Decodable>(type: T.Type, api: Router) async throws -> T {
 
         let dataTask = try AF.request(api.asURLRequest()).serializingDecodable(type)
+        await print(String(data: dataTask.response.data!, encoding: .utf8))
 
         switch await dataTask.result {
         case .success(let result):
             guard let response = await dataTask.response.response else {
                 throw RequestError.unknown
             }
-            print("response", response)
             print("result", result)
             return result
         case .failure(let error):
@@ -31,6 +31,15 @@ final class NetworkManager {
             throw error
         }
     }
+
+    func request(api: Router) async throws {
+        let req = try AF.request(api.asURLRequest())
+        print(req.response?.statusCode)
+        req.response { data in // response가 nil이라서 필요가 없음..
+            print("request data", data)
+        }
+    }
+
 }
 
 enum RequestError: Error {

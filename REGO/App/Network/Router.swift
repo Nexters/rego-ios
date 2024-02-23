@@ -14,8 +14,9 @@ final class Network {
 
 enum Router: URLRequestConvertible {
 
-    case fetchGames(tags: [String], category: String)
+    case fetchGames(tags: [FilterTagEnum], category: HomeCategoryEnum?)
     case fetchDetails(ids: [Int64])
+    case fetchLikeGames
     case likeGame(id: Int64)
     case unlikeGame(id: Int64)
 
@@ -25,10 +26,13 @@ enum Router: URLRequestConvertible {
             return "games"
         case .fetchDetails:
             return "games/detail"
+        case .fetchLikeGames:
+            return "like"
         case .likeGame:
             return "like"
         case .unlikeGame:
             return "like"
+
         }
     }
 
@@ -43,14 +47,14 @@ enum Router: URLRequestConvertible {
         ]
 
         switch self {
-        case .fetchGames, .fetchDetails, .likeGame, .unlikeGame:
+        case .fetchGames, .fetchDetails, .fetchLikeGames, .likeGame, .unlikeGame:
             return defaultHeader
         }
     }
 
     var method: HTTPMethod {
         switch self {
-        case .fetchGames, .fetchDetails:
+        case .fetchGames, .fetchDetails, .fetchLikeGames:
             return .get
         case .likeGame:
             return .post
@@ -63,8 +67,12 @@ enum Router: URLRequestConvertible {
         switch self {
         case .fetchGames(let tags, let category):
             return [
-                "tagTypes": tags.joined(separator: ","),
-                "homeCategory": category
+                "tagTypes": tags.map { $0.rawValue }.joined(separator: ","),
+                "homeCategory": category?.rawValue ?? ""
+            ]
+        case .fetchLikeGames:
+            return [
+                :
             ]
         case .fetchDetails(ids: let ids):
             return [
@@ -84,7 +92,10 @@ enum Router: URLRequestConvertible {
     func asURLRequest() throws -> URLRequest {
         var request = try URLRequest(url: url, method: method, headers: headers)
 
-        if method == .post || method == .put {
+        if method == .post || method == .delete {
+            var components = URLComponents(string: url.appendingPathComponent(path).absoluteString)
+            request.url = components?.url
+
             let jsonData = try? JSONSerialization.data(withJSONObject: parameters)
             request.httpBody = jsonData
         }
@@ -92,11 +103,10 @@ enum Router: URLRequestConvertible {
             let queryParams = parameters.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
             var components = URLComponents(string: url.appendingPathComponent(path).absoluteString)
             components?.queryItems = queryParams
-            print("queryParams", queryParams)
             request.url = components?.url
         }
 
-        print("request is ", request, request.headers)
+        print("❗️ request, headers, body", request, request.headers, request.httpBody)
 
         return request
     }

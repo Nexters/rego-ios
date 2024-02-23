@@ -44,7 +44,26 @@ struct CardBackView: View {
                         H3Text(gameDetail.title)
                             .lineLimit(2)
                         Spacer()
-                        GameDetailLikeButton(isLiked: $isLiked, isShowLottie: $isShowLottie)
+                        Button {
+                            isLiked.toggle()
+                            if isLiked {
+                                isShowLottie = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                    isShowLottie = false
+                                }
+                                Task {
+                                    try await NetworkManager.shared.request(api: .likeGame(id: gameDetail.gameUuid))
+                                }
+                            }
+                            else {
+                                isShowLottie = false
+                                Task {
+                                    try await NetworkManager.shared.request(api: .unlikeGame(id: gameDetail.gameUuid))
+                                }
+                            }
+                        } label: {
+                            GameDetailLikeButton(isLiked: $isLiked, isShowLottie: $isShowLottie)
+                        }
                     }
                 }
                 Spacer().frame(height: 20)

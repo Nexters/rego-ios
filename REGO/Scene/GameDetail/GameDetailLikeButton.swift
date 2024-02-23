@@ -13,28 +13,38 @@ struct GameDetailLikeButton: View {
 
     var body: some View {
         VStack {
-            Button(action: {
-                isLiked.toggle()
+//            Button(action: {
+//                isLiked.toggle()
+//                if isLiked {
+//                    isShowLottie = true
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                        isShowLottie = false
+//                    }
+//                }
+//                else {
+//                    isShowLottie = false
+//                }
+//            }, label: {
+//                ZStack {
+//                    Image(.icon24Liked)
+//                        .frame(width: 28, height: 28)
+//                        .foregroundStyle(isLiked ? Color(.primary500) : Color(.gray200))
+//                    if isLiked {
+//                        LottieView(filename: "like_small_lottie", loopMode: .playOnce)
+//                            .frame(width: 28, height: 28)
+//                    }
+//                }
+//            })
+
+            ZStack {
+                Image(.icon24Liked)
+                    .frame(width: 28, height: 28)
+                    .foregroundStyle(isLiked ? Color(.primary500) : Color(.gray200))
                 if isLiked {
-                    isShowLottie = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        isShowLottie = false
-                    }
-                }
-                else {
-                    isShowLottie = false
-                }
-            }, label: {
-                ZStack {
-                    Image(.icon24Liked)
+                    LottieView(filename: "like_small_lottie", loopMode: .playOnce)
                         .frame(width: 28, height: 28)
-                        .foregroundStyle(isLiked ? Color(.primary500) : Color(.gray200))
-                    if isLiked {
-                        LottieView(filename: "like_small_lottie", loopMode: .playOnce)
-                            .frame(width: 28, height: 28)
-                    }
                 }
-            })
+            }
         }
     }
 }

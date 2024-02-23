@@ -10,10 +10,11 @@ import ComposableArchitecture
 import Combine
 
 struct GameListView: View {
-    @State private var fetchGames: FetchGamesModel = Mock.fetchGamesMock
+    @State private var fetchGames: FetchGamesModel = .init(userLikeCount: 0, games: []) /*= Mock.fetchGamesMock*/
     //    @State private var selectedIndex: Int = 0
     @State private var selectedCategory: String = "" //
 
+    @State private var isLoading: Bool = true
     /// 필터 bottom sheet present 여부
     @State private var isPresentSheet: Bool = false
 
@@ -27,7 +28,6 @@ struct GameListView: View {
                 Spacer()
                 if homeCategory == .FILTER {
                     Button(action: {
-                        // TODO: Filter View 띄우기
                         self.isPresentSheet.toggle()
                     }, label: {
                         Image(.icon24Filter)
@@ -102,11 +102,11 @@ struct GameListView: View {
                             Section {
                                 VStack {
                                     VStack(alignment: .leading, spacing: 24, content: {
-                                        ForEach(game.data, id: \.gameUUID) { gameData in
+                                        ForEach(game.data, id: \.gameUuid) { gameData in
                                             NavigationLink {
                                                 GameDetailView(gameUuids: fetchGames.games.flatMap({ game in
-                                                    game.data.map { $0.gameUUID }
-                                                }), selectedGameUuid: gameData.gameUUID)
+                                                    game.data.map { $0.gameUuid }
+                                                }), selectedGameUuid: gameData.gameUuid)
                                             } label: {
                                                 GameRowView(gameData: gameData)
                                             }.buttonStyle(.plain)
@@ -143,13 +143,28 @@ struct GameListView: View {
             }) // reader
         }
         .background(Color.gray900)
+        .overlayIf($isLoading,
+            LottieView(filename: "loading_lottie")
+                .frame(width: 60, height: 60)
+        )
         .onAppear {
             Task {
-                let fetchGames = try await NetworkManager.shared.request(type: FetchGamesModel.self, api: .fetchGames(tags: ["type1", "type2", "type3"], category: "aaaa"))
-                print("fetchGames", fetchGames)
+                if homeCategory == .FILTER {
+                    let fetchGames = try await NetworkManager.shared.request(type: FetchGamesModel.self, api: .fetchGames(tags: filterTags ?? [], category: nil))
+//                    print("fetchGames FILTER", fetchGames)
+                    self.fetchGames = fetchGames
+                    isLoading = false
+                }
+                else {
+                    let fetchGames = try await NetworkManager.shared.request(type: FetchGamesModel.self, api: .fetchGames(tags: filterTags ?? [], category: homeCategory))
+//                    print("fetchGames CATEGORY", fetchGames)
+                    self.fetchGames = fetchGames
+                    isLoading = false
+                }
             }
         }
         .sheet(isPresented: $isPresentSheet) {
+            // TODO: 이미 선택된 필터 넘겨주기
             GameFilterView(store: Store(
                 initialState: GameFilterFeature.State(),
                 reducer: {
@@ -158,7 +173,7 @@ struct GameListView: View {
             .presentationDetents([.height(680)])
             .edgesIgnoringSafeArea(.bottom)
         }
-        .modifier(NavToolbarModifier(likeCnt: fetchGames.userLikeCount))
+        .modifier(NavToolbarModifier(likeCnt: Int(fetchGames.userLikeCount)))
     }
 }
 

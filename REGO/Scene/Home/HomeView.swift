@@ -135,16 +135,6 @@ struct HomeView: View {
                             FavoriteViewFeature()
                         })
                     )
-                case .gameListView(let homeCategory):
-                    GameListView(homeCategory: homeCategory)
-                case .allGameList:
-                    GameListView(homeCategory: .FILTER, filterTags: [.TWO_FIVE, .FIVE_TEN, .NO_LIMIT, .SPEED, .TWENTY])
-                case .gameFilterView:
-                    GameFilterView(store: Store(
-                        initialState: GameFilterFeature.State(),
-                        reducer: {
-                            GameFilterFeature()
-                        }))
                 }
             }
         }
