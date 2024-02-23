@@ -10,13 +10,13 @@ import SwiftUI
 
 struct GameFilterFeature: Reducer {
     struct State: Equatable {
-        var selectedGameTypes: [GameType] = []
+        var selectedGameTypes: [FilterTag] = []
 
-        var peopleState = GameFilterItemFeature.State(title: "인원 수", allGameTypes: GameType.peopleTypes)
-        var minState = GameFilterItemFeature.State(title: "소요시간", allGameTypes: GameType.minuateTypes)
-        var useState = GameFilterItemFeature.State(title: "게임 종류", allGameTypes: GameType.useTypes)
-        var mcState = GameFilterItemFeature.State(title: "진행자 여부", allGameTypes: GameType.mcTypes)
-        var materialState = GameFilterItemFeature.State(title: "진행자 여부", allGameTypes: GameType.materialTypes)
+        var peopleState = GameFilterItemFeature.State(title: "인원 수", allGameTypes: FilterTag.peopleFilters)
+        var minState = GameFilterItemFeature.State(title: "소요시간", allGameTypes: FilterTag.timeFilters)
+        var useState = GameFilterItemFeature.State(title: "게임 종류", allGameTypes: FilterTag.gameFilters)
+        var mcState = GameFilterItemFeature.State(title: "진행자 여부", allGameTypes: FilterTag.mcFilters)
+        var materialState = GameFilterItemFeature.State(title: "준비물 여부", allGameTypes: FilterTag.materailFilters)
     }
 
     enum Action: Equatable {
@@ -26,7 +26,7 @@ struct GameFilterFeature: Reducer {
         case mcFilter(GameFilterItemFeature.Action)
         case materialFilter(GameFilterItemFeature.Action)
 
-        case selectGame(GameType)
+        case selectGame(FilterTag)
         case reset
     }
 

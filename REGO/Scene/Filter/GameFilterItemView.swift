@@ -20,9 +20,9 @@ struct GameFilterItemView: View {
                     Spacer()
                 }
                 Spacer().frame(height: 14)
-                ScrollView(.horizontal) {
+                ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack(spacing: 14) {
-                        Spacer().frame(width: 20)
+                        Spacer().frame(width: 6)
                         ForEach(viewStore.allGameTypes, id: \.self) { type in
                             Button(action: {
                                 viewStore.send(.selectGameType(type))
@@ -31,7 +31,7 @@ struct GameFilterItemView: View {
                                     .foregroundColor(.gray100)
                             })
                             .padding(.horizontal, 14).padding(.vertical, 8)
-                            .background(viewStore.selectedGameTypes.contains(type) ? Color.primary500 : Color.gray400)
+                            .background(viewStore.selectedGameTypes.contains(type) ? Color.primary500 : Color.gray700)
                             .cornerRadius(10)
                         }
                     }
@@ -43,7 +43,8 @@ struct GameFilterItemView: View {
 
 #Preview {
     GameFilterItemView(store: Store(
-        initialState: GameFilterItemFeature.State(title: "인원 수", allGameTypes: GameType.peopleTypes),
+        initialState: GameFilterItemFeature.State(title: "인원 수",
+                                                  allGameTypes: FilterTag.peopleFilters),
         reducer: {
             GameFilterItemFeature()
         }))

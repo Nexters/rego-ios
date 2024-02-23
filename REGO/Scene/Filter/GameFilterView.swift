@@ -62,8 +62,8 @@ struct GameFilterView: View {
                         .padding(.horizontal, 14).padding(.vertical, 12)
                         .background(Color(uiColor: .gray700))
                         .cornerRadius(14)
-                        // TODO: 컴포넌트 수정
                         Button(action: {
+                            // TODO: 필터 선택한 값 전달
                             dismiss()
                         }, label: {
                             Subtitle4Text("적용하기")

@@ -14,7 +14,7 @@ final class Network {
 
 enum Router: URLRequestConvertible {
 
-    case fetchGames(tags: [FilterTagEnum], category: HomeCategoryEnum?)
+    case fetchGames(tags: [FilterTag], category: HomeCategoryEnum?)
     case fetchDetails(ids: [Int64])
     case fetchLikeGames
     case likeGame(id: Int64)

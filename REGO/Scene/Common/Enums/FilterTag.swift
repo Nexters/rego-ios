@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum FilterTagEnum: String {
+enum FilterTag: String {
     case TWO_FIVE
     case FIVE_TEN
     case NO_LIMIT
@@ -64,13 +64,24 @@ enum FilterTagEnum: String {
     }
 }
 
-extension FilterTagEnum {
-    static var peopleFilters: [FilterTagEnum] {
+extension FilterTag {
+    static var peopleFilters: [FilterTag] {
         return [.TWO_FIVE, .FIVE_TEN, .NO_LIMIT]
     }
 
-    static var timeFilters: [FilterTagEnum] {
+    static var timeFilters: [FilterTag] {
         return [.TEN, .TWENTY, .THIRTY]
     }
-
+    
+    static var gameFilters: [FilterTag] {
+        return [.USE_BRAIN, .USE_BODY, .SPEED]
+    }
+    
+    static var mcFilters: [FilterTag] {
+        return [.NEED_MC, .NO_NEED_MC]
+    }
+    
+    static var materailFilters: [FilterTag] {
+        return [.NO_NEED_MATERIALS, .NEED_MATERIAL]
+    }
 }

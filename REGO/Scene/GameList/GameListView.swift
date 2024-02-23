@@ -19,7 +19,7 @@ struct GameListView: View {
     @State private var isPresentSheet: Bool = false
 
     var homeCategory: HomeCategoryEnum
-    @State var filterTags: [FilterTagEnum]?
+    @State var filterTags: [FilterTag]?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
