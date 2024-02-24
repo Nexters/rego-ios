@@ -11,19 +11,22 @@ struct GameRowView: View {
     let gameData: GameData
     let rank: Int?
 
-    @State private var isLiked = false
+    @State private var isLike: Bool = true
     @State private var like: Int
+    @State private var showLottie: Bool = false
 
     init(gameData: GameData) {
         self.gameData = gameData
         self.rank = gameData.rank
         self._like = .init(initialValue: Int(gameData.likeCount))
+        self._isLike = .init(initialValue: gameData.like)
     }
 
     var likeButton: some View {
         Button {
-            isLiked.toggle()
-            if isLiked {
+            isLike.toggle()
+            showLottie = true
+            if isLike {
                 like += 1
                 Task {
                     try await NetworkManager.shared.request(api: .likeGame(id: gameData.gameUuid))
@@ -36,7 +39,7 @@ struct GameRowView: View {
                 }
             }
         } label: {
-            LikeButtonView(isLiked: $isLiked, likeCnt: $like)
+            LikeButtonView(isLiked: $isLike, likeCnt: $like, showLottie: $showLottie)
         }
     }
 

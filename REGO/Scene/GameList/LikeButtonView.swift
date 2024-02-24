@@ -11,6 +11,7 @@ struct LikeButtonView: View {
 
     @Binding var isLiked: Bool
     @Binding var likeCnt: Int
+    @Binding var showLottie: Bool
 
     var body: some View {
         VStack(spacing: -2) {
@@ -18,7 +19,7 @@ struct LikeButtonView: View {
                 Image(.icon24Liked)
                     .frame(width: 24, height: 24)
                     .foregroundStyle(isLiked ? Color(.primary500) : Color(.gray200))
-                if isLiked {
+                if isLiked && showLottie {
                     LottieView(filename: "like_small_lottie", loopMode: .playOnce)
                         .frame(width: 24, height: 24)
                 }
@@ -29,6 +30,6 @@ struct LikeButtonView: View {
     }
 }
 
-#Preview {
-    LikeButtonView(isLiked: .constant(false), likeCnt: .constant(100))
-}
+// #Preview {
+//    LikeButtonView(isLiked: .constant(false), likeCnt: .constant(100))
+// }
