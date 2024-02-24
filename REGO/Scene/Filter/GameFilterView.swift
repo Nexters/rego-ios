@@ -10,7 +10,7 @@ import ComposableArchitecture
 
 struct GameFilterView: View {
     let store: StoreOf<GameFilterFeature>
-    
+
     @Binding var filterTags: [FilterTag]
     @Environment(\.dismiss) private var dismiss
     @Environment(\.presentationMode) var presentationMode
@@ -26,8 +26,7 @@ struct GameFilterView: View {
                         H1Text("상세필터")
                         Spacer()
                         Button(action: {
-                            self.filterTags = viewStore.state.selectedGameTypes.isEmpty ? FilterTag.allFilters : viewStore.state.selectedGameTypes
-                            self.presentationMode.wrappedValue.dismiss()
+                            dismiss()
                         }, label: {
                             Image(.icon24Close)
                                 .renderingMode(.template)
@@ -66,7 +65,8 @@ struct GameFilterView: View {
                         .background(Color(uiColor: .gray700))
                         .cornerRadius(14)
                         Button(action: {
-                            dismiss()
+                            self.filterTags = viewStore.state.selectedGameTypes.isEmpty ? FilterTag.allFilters : viewStore.state.selectedGameTypes
+                            self.presentationMode.wrappedValue.dismiss()
                         }, label: {
                             Subtitle4Text("적용하기")
                                 .foregroundColor(Color.white)
@@ -127,11 +127,11 @@ extension GameFilterView {
     }
 }
 
-//#Preview {
+// #Preview {
 //    @State var test: [FilterTag] = []
 //    GameFilterView(store: Store(
 //        initialState: GameFilterFeature.State(),
 //        reducer: {
 //            GameFilterFeature()
 //        }), filterTags: $test)
-//}
+// }
