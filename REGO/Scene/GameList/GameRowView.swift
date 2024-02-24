@@ -56,7 +56,11 @@ struct GameRowView: View {
                 if let rank = gameData.rank {
                     if rank == 1 {
                         VStack(alignment: .leading, spacing: 4) {
-                            H3Text("\(rank)위")
+                            HStack{
+                                H3Text("\(rank)위")
+                                LottieView(filename: "rank1_lottie")
+                                    .frame(width: 30, height: 30)
+                            }
                             HStack {
                                 H2Text(gameData.title)
                                     .lineLimit(1)

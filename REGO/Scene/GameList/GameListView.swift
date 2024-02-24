@@ -151,13 +151,11 @@ struct GameListView: View {
             Task {
                 if homeCategory == .FILTER {
                     let fetchGames = try await NetworkManager.shared.request(type: FetchGamesModel.self, api: .fetchGames(tags: filterTags ?? [], category: nil))
-//                    print("fetchGames FILTER", fetchGames)
                     self.fetchGames = fetchGames
                     isLoading = false
                 }
                 else {
                     let fetchGames = try await NetworkManager.shared.request(type: FetchGamesModel.self, api: .fetchGames(tags: filterTags ?? [], category: homeCategory))
-//                    print("fetchGames CATEGORY", fetchGames)
                     self.fetchGames = fetchGames
                     isLoading = false
                 }
