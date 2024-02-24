@@ -54,7 +54,7 @@ struct GameDetail: Codable {
     let gameUuid: Int64
     let title, gameDescription: String
     let iconType: IconType
-    let tag: [TagEnum]
+    let tag: [Tag]
     let uiType: UIType
     let gameHow: GameHow
     let gameImageExample: GameImageExample?

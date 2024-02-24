@@ -20,7 +20,7 @@
 		043BF9402B7CEC090011F7D0 /* CardFrontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BF93F2B7CEC090011F7D0 /* CardFrontView.swift */; };
 		043BF9422B7CEC470011F7D0 /* CardBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BF9412B7CEC470011F7D0 /* CardBackView.swift */; };
 		046996AF2B6E0C4C00F6D5C4 /* GameDetailTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046996AE2B6E0C4C00F6D5C4 /* GameDetailTagView.swift */; };
-		046996B32B6E141800F6D5C4 /* TagEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046996B22B6E141800F6D5C4 /* TagEnum.swift */; };
+		046996B32B6E141800F6D5C4 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046996B22B6E141800F6D5C4 /* Tag.swift */; };
 		046F0FD82B67935A0091DA50 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F0FD72B67935A0091DA50 /* CarouselView.swift */; };
 		0478291F2B7B463E00E33041 /* NavBackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0478291E2B7B463E00E33041 /* NavBackButtonView.swift */; };
 		0488EEF22B67E5D30026DAE8 /* GameDetailCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488EEF12B67E5D30026DAE8 /* GameDetailCardView.swift */; };
@@ -79,7 +79,7 @@
 		043BF93F2B7CEC090011F7D0 /* CardFrontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFrontView.swift; sourceTree = "<group>"; };
 		043BF9412B7CEC470011F7D0 /* CardBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackView.swift; sourceTree = "<group>"; };
 		046996AE2B6E0C4C00F6D5C4 /* GameDetailTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailTagView.swift; sourceTree = "<group>"; };
-		046996B22B6E141800F6D5C4 /* TagEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagEnum.swift; sourceTree = "<group>"; };
+		046996B22B6E141800F6D5C4 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		046F0FD72B67935A0091DA50 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		0478291E2B7B463E00E33041 /* NavBackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBackButtonView.swift; sourceTree = "<group>"; };
 		0488EEF12B67E5D30026DAE8 /* GameDetailCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailCardView.swift; sourceTree = "<group>"; };
@@ -298,7 +298,7 @@
 		046996B12B6E140400F6D5C4 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				046996B22B6E141800F6D5C4 /* TagEnum.swift */,
+				046996B22B6E141800F6D5C4 /* Tag.swift */,
 				04AD13802B84954D009EED82 /* FilterTag.swift */,
 				04AD137E2B83B7D5009EED82 /* HomeCategoryEnum.swift */,
 			);
@@ -518,7 +518,7 @@
 				04AE72FE2B78C6DC00F10F47 /* APIMockData.swift in Sources */,
 				04AD13812B84954D009EED82 /* FilterTag.swift in Sources */,
 				04CBFC042B822BF40051397E /* CategoryButton.swift in Sources */,
-				046996B32B6E141800F6D5C4 /* TagEnum.swift in Sources */,
+				046996B32B6E141800F6D5C4 /* Tag.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

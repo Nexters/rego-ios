@@ -16,7 +16,7 @@ struct CardFrontView: View {
 
     var flipFunction: () -> Void
 
-    var tagList: [TagEnum]
+    var tagList: [Tag]
 
     init(gameDetail: GameDetail, degree: Binding<Double>, isLiked: Binding<Bool>, isShowLottie: Binding<Bool>, flipFunction: @escaping () -> Void) {
         self._degree = degree
