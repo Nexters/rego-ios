@@ -64,29 +64,31 @@ struct GameListView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack {
                         Spacer().frame(width: 20)
-                        ForEach(filterTags, id: \.rawValue) { tag in
-                            HStack(spacing: 2) {
-                                Body3Text(tag.title)
-                                    .foregroundStyle(.white)
-                                Button(action: {
-                                    self.filterTags = filterTags.filter { $0.rawValue != tag.rawValue
-                                    }
-                                }, label: {
-                                    Image(.icon24Close)
-                                        .renderingMode(.original)
-                                        .resizable()
-                                        .foregroundColor(.white)
-                                        .tint(.white)
-                                        .frame(width: 14, height: 14)
-                                })
+                        if Set(filterTags) != Set(FilterTag.allFilters) {
+                            ForEach(filterTags, id: \.rawValue) { tag in
+                                HStack(spacing: 2) {
+                                    Body3Text(tag.title)
+                                        .foregroundStyle(.white)
+                                    Button(action: {
+                                        self.filterTags = filterTags.filter { $0.rawValue != tag.rawValue
+                                        }
+                                    }, label: {
+                                        Image(.icon24Close)
+                                            .renderingMode(.original)
+                                            .resizable()
+                                            .foregroundColor(.white)
+                                            .tint(.white)
+                                            .frame(width: 14, height: 14)
+                                    })
+                                }
+                                .padding(.horizontal, 14)
+                                .padding(.vertical, 6)
+                                .frame(height: 34)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .foregroundStyle(Color.primary500)
+                                )
                             }
-                            .padding(.horizontal, 14)
-                            .padding(.vertical, 6)
-                            .frame(height: 34)
-                            .background(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .foregroundStyle(Color.primary500)
-                            )
                         }
                         Spacer().frame(width: 20)
                     }

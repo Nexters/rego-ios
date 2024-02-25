@@ -71,8 +71,8 @@ struct CardBackView: View {
                 switch gameDetail.uiType {
                 case .IMAGE_EXAMPLE:
                     VStack(alignment: .leading) {
-                        Image(.mainGame) // TODO: 이미지 변경
-                            .resizable()
+                        AsyncImage(url: URL(string: gameDetail.gameImageExample!.image))
+                            .cornerRadius(12)
                         HStack(spacing: 10) {
                             Body2Text("정답예시")
                             Body5Text(gameDetail.gameImageExample?.answer ?? "")

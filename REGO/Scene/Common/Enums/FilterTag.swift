@@ -20,7 +20,7 @@ enum FilterTag: String {
     case NEED_MC
     case NO_NEED_MC
     case NO_NEED_MATERIALS
-    case NEED_MATERIAL
+    case NEED_MATERIALS
 //    case SKETCHBOOK
 //    case PPT
 //    case ETC
@@ -58,7 +58,7 @@ enum FilterTag: String {
             "진행자 불필요"
         case .NO_NEED_MATERIALS:
             "준비물 불필요"
-        case .NEED_MATERIAL:
+        case .NEED_MATERIALS:
             "준비물 필요"
         }
     }
@@ -82,10 +82,10 @@ extension FilterTag {
     }
 
     static var materailFilters: [FilterTag] {
-        return [.NO_NEED_MATERIALS, .NEED_MATERIAL]
+        return [.NO_NEED_MATERIALS, .NEED_MATERIALS]
     }
 
     static var allFilters: [FilterTag] {
-        return [.TWO_FIVE, .FIVE_TEN, .NO_LIMIT, .TEN, .TWENTY, .THIRTY, .USE_BRAIN, .USE_BODY, .SPEED, .NEED_MC, .NO_NEED_MC, .NO_NEED_MATERIALS, .NEED_MATERIAL]
+        return [.TWO_FIVE, .FIVE_TEN, .NO_LIMIT, .TEN, .TWENTY, .THIRTY, .USE_BRAIN, .USE_BODY, .SPEED, .NEED_MC, .NO_NEED_MC, .NO_NEED_MATERIALS, .NEED_MATERIALS]
     }
 }

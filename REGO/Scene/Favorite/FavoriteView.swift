@@ -32,9 +32,13 @@ struct FavoriteView: View {
                 }
             }
             .edgesIgnoringSafeArea(.all)
-            .toolbarBackground(Color.gray900)
-            .toolbarColorScheme(.dark, for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
+            .navigationBarBackButtonHidden()
+            .toolbar(content: {
+                ToolbarItem(placement: .topBarLeading) {
+                    NavBackButtonView()
+                }
+            })
+            .background(Color.gray900)
             .onAppear {
                 viewStore.send(.fetchLikeGames)
             }

@@ -127,7 +127,7 @@ struct HomeView: View {
                     GameListView(homeCategory: homeCategory)
                 case .allGameList:
                     GameListView(homeCategory: .FILTER,
-                                 filterTags: [.TWO_FIVE, .FIVE_TEN, .NO_LIMIT, .SPEED, .TWENTY])
+                                 filterTags: [])
                 case .favoriteView:
                     FavoriteView(store: Store(
                         initialState: FavoriteViewFeature.State(),
