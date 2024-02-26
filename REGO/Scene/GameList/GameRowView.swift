@@ -14,18 +14,23 @@ struct GameRowView: View {
     @State private var isLike: Bool = true
     @State private var like: Int
     @State private var showLottie: Bool = false
+    @Binding var isShowToast: Bool
+    @Binding var isAddToast: Bool
 
-    init(gameData: GameData) {
+    init(gameData: GameData, isShowToast: Binding<Bool>, isAddToast: Binding<Bool>) {
         self.gameData = gameData
         self.rank = gameData.rank
         self._like = .init(initialValue: Int(gameData.likeCount))
         self._isLike = .init(initialValue: gameData.like)
+        self._isShowToast = isShowToast
+        self._isAddToast = isAddToast
     }
 
     var likeButton: some View {
         Button {
             isLike.toggle()
             showLottie = true
+            isAddToast = isLike
             if isLike {
                 like += 1
                 Task {
@@ -38,6 +43,12 @@ struct GameRowView: View {
                     try await NetworkManager.shared.request(api: .unlikeGame(id: gameData.gameUuid))
                 }
             }
+
+            isShowToast = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                isShowToast = false
+            }
+
         } label: {
             LikeButtonView(isLiked: $isLike, likeCnt: $like, showLottie: $showLottie)
         }

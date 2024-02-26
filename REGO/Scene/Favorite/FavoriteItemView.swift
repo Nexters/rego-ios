@@ -21,10 +21,8 @@ struct FavoriteItemView: View {
                     .background(Color.gray700)
                     .cornerRadius(8)
                 Spacer().frame(width: 10)
-                Button(action: {}, label: {
-                    ButtonText(viewStore.game.title)
-                        .foregroundColor(Color.white)
-                })
+                ButtonText(viewStore.game.title)
+                    .foregroundColor(Color.white)
                 Spacer()
                 Button(action: {
                     viewStore.state.isSelected ? viewStore.send(.unlikeGame) : viewStore.send(.likeGame)

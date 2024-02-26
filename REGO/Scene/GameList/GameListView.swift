@@ -15,6 +15,8 @@ struct GameListView: View {
     @State private var selectedCategory: String = "" //
 
     @State private var isLoading: Bool = true
+    @State private var isShowToast: Bool = false
+    @State private var isAddToast: Bool = false
     /// 필터 bottom sheet present 여부
     @State private var isPresentSheet: Bool = false
 
@@ -22,49 +24,49 @@ struct GameListView: View {
     @State var filterTags: [FilterTag] = []
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            HStack {
-                H1Text(homeCategory.title)
-                Spacer()
-                if homeCategory == .FILTER {
-                    Button(action: {
-                        self.isPresentSheet.toggle()
-                    }, label: {
-                        Image(.icon24Filter)
-                            .renderingMode(.template)
-                            .resizable()
-                            .foregroundColor(.white)
-                            .tint(.white)
-                            .frame(width: 20, height: 20)
-                            .padding(7)
-                            .background(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .foregroundStyle(Color.primary500)
-                            )
-                    })
-                }
-            }
-            .padding(.horizontal, 20)
-            .padding(.vertical, 20)
-
-            if [.ENTERTAINMENT, .THEME, .MATERIALS].contains(homeCategory) {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHStack(spacing: 14) {
-                        Spacer().frame(width: 6)
-                        ForEach(fetchGames.games.map({$0.category}), id: \.self) { category in
-                            CategoryButton(selectedCategory: $selectedCategory, title: category, selectedColor: .primary500, deSelectedColor: .gray800)
-                        }
-                        Spacer().frame(width: 6)
+        ZStack {
+            VStack(alignment: .leading, spacing: 0) {
+                HStack {
+                    H1Text(homeCategory.title)
+                    Spacer()
+                    if homeCategory == .FILTER {
+                        Button(action: {
+                            self.isPresentSheet.toggle()
+                        }, label: {
+                            Image(.icon24Filter)
+                                .renderingMode(.template)
+                                .resizable()
+                                .foregroundColor(.white)
+                                .tint(.white)
+                                .frame(width: 20, height: 20)
+                                .padding(7)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .foregroundStyle(Color.primary500)
+                                )
+                        })
                     }
-                    .frame(height: 34)
                 }
-                .padding(.bottom, 14)
-            }
-            else if !filterTags.isEmpty, homeCategory == .FILTER {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHStack {
-                        Spacer().frame(width: 20)
-                        if Set(filterTags) != Set(FilterTag.allFilters) {
+                .padding(.horizontal, 20)
+                .padding(.vertical, 20)
+
+                if [.ENTERTAINMENT, .THEME, .MATERIALS].contains(homeCategory) {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        LazyHStack(spacing: 14) {
+                            Spacer().frame(width: 6)
+                            ForEach(fetchGames.games.map({$0.category}), id: \.self) { category in
+                                CategoryButton(selectedCategory: $selectedCategory, title: category, selectedColor: .primary500, deSelectedColor: .gray800)
+                            }
+                            Spacer().frame(width: 6)
+                        }
+                        .frame(height: 34)
+                    }
+                    .padding(.bottom, 14)
+                }
+                else if !filterTags.isEmpty, homeCategory == .FILTER {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        LazyHStack {
+                            Spacer().frame(width: 20)
                             ForEach(filterTags, id: \.rawValue) { tag in
                                 HStack(spacing: 2) {
                                     Body3Text(tag.title)
@@ -89,90 +91,111 @@ struct GameListView: View {
                                         .foregroundStyle(Color.primary500)
                                 )
                             }
+                            Spacer().frame(width: 20)
                         }
-                        Spacer().frame(width: 20)
                     }
+                    .frame(height: 34)
+                    .padding(.bottom, 14)
                 }
-                .frame(height: 34)
-                .padding(.bottom, 14)
-            }
 
-            ScrollViewReader(content: { proxy in
-                ScrollView(.vertical, showsIndicators: false) {
-                    VStack(alignment: .leading, spacing: 24) { // section과 header사이의 간격
-                        ForEach(fetchGames.games, id: \.category) { game in
-                            Section {
-                                VStack {
-                                    VStack(alignment: .leading, spacing: 24, content: {
-                                        ForEach(game.data, id: \.gameUuid) { gameData in
-                                            NavigationLink {
-                                                GameDetailView(gameUuids: fetchGames.games.flatMap({ game in
-                                                    game.data.map { $0.gameUuid }
-                                                }), selectedGameUuid: gameData.gameUuid)
-                                            } label: {
-                                                GameRowView(gameData: gameData)
-                                            }.buttonStyle(.plain)
+                ScrollViewReader(content: { proxy in
+                    ScrollView(.vertical, showsIndicators: false) {
+                        VStack(alignment: .leading, spacing: 24) { // section과 header사이의 간격
+                            ForEach(fetchGames.games, id: \.category) { game in
+                                if !game.data.isEmpty {
+                                    Section {
+                                        VStack {
+                                            VStack(alignment: .leading, spacing: 24, content: {
+                                                ForEach(game.data, id: \.gameUuid) { gameData in
+                                                    NavigationLink {
+                                                        GameDetailView(gameUuids: fetchGames.games.flatMap({ game in
+                                                            game.data.map { $0.gameUuid }
+                                                        }), selectedGameUuid: gameData.gameUuid)
+                                                    } label: {
+                                                        GameRowView(gameData: gameData, isShowToast: $isShowToast, isAddToast: $isAddToast)
+                                                    }.buttonStyle(.plain)
+                                                }
+                                            })
+                                            Spacer().frame(height: 10) // 34를 맞추기 위해
                                         }
-                                    })
-                                    Spacer().frame(height: 10) // 34를 맞추기 위해
-                                }
-                            } header: {
-                                if game.category == "인기" {
-                                    HStack(spacing: 4) {
-                                        Spacer().frame(width: 16)
-                                        H4Text("인기 TOP")
-                                        H4Text("5")
-                                            .foregroundStyle(Color.primary500)
+                                    } header: {
+                                        if game.category == "인기" {
+                                            HStack(spacing: 4) {
+                                                Spacer().frame(width: 16)
+                                                H4Text("인기 TOP")
+                                                H4Text("5")
+                                                    .foregroundStyle(Color.primary500)
+                                            }
+                                        }
+                                        else {
+                                            HStack {
+                                                Spacer().frame(width: 20)
+                                                Subtitle1Text(game.category)
+                                            }
+                                        }
                                     }
-                                }
-                                else {
-                                    HStack {
-                                        Spacer().frame(width: 20)
-                                        Subtitle1Text(game.category)
-                                    }
+                                    .id(game.category)
                                 }
                             }
-                            .id(game.category)
-                        }
-                    }// vstack
-                    .onReceive(selectedCategory.publisher, perform: { _ in
-                        withAnimation {
-                            proxy.scrollTo(selectedCategory, anchor: .top)
-                        }
-                    })
-                    .padding(.top, 20)
-                } // ScrollView
-            }) // reader
-        }
-        .background(Color.gray900)
-        .overlayIf($isLoading,
-            LottieView(filename: "loading_lottie")
+                        }// vstack
+                        .onReceive(selectedCategory.publisher, perform: { _ in
+                            withAnimation {
+                                proxy.scrollTo(selectedCategory, anchor: .top)
+                            }
+                        })
+                        .padding(.top, 20)
+                    } // ScrollView
+                }) // reader
+            }
+            .background(Color.gray900)
+            .overlayIf($isLoading,
+                       LottieView(filename: "loading_lottie")
                 .frame(width: 60, height: 60)
-        )
-        .onAppear {
-            Task {
-                if homeCategory == .FILTER {
-                    let fetchGames = try await NetworkManager.shared.request(type: FetchGamesModel.self, api: .fetchGames(tags: filterTags ?? [], category: nil))
-                    self.fetchGames = fetchGames
-                    isLoading = false
+            )
+            .onChange(of: filterTags, perform: { tags in
+                Task {
+                    if homeCategory == .FILTER {
+                        let fetchGames = try await NetworkManager.shared.request(type: FetchGamesModel.self, api: .fetchGames(tags: tags, category: nil))
+                        self.fetchGames = fetchGames
+                        isLoading = false
+                    }
                 }
-                else {
-                    let fetchGames = try await NetworkManager.shared.request(type: FetchGamesModel.self, api: .fetchGames(tags: filterTags ?? [], category: homeCategory))
-                    self.fetchGames = fetchGames
-                    isLoading = false
+            })
+            .onAppear {
+                Task {
+                    if homeCategory == .FILTER {
+                        let fetchGames = try await NetworkManager.shared.request(type: FetchGamesModel.self, api: .fetchGames(tags: filterTags, category: nil))
+                        self.fetchGames = fetchGames
+                        isLoading = false
+                    }
+                    else {
+                        let fetchGames = try await NetworkManager.shared.request(type: FetchGamesModel.self, api: .fetchGames(tags: filterTags, category: homeCategory))
+                        self.fetchGames = fetchGames
+                        isLoading = false
+                    }
                 }
             }
-        }
-        .sheet(isPresented: $isPresentSheet) {
-            GameFilterView(store: Store(
-                initialState: GameFilterFeature.State(selectedGameTypes: filterTags),
-                reducer: {
-                    GameFilterFeature()
-                }), filterTags: $filterTags)
-            .presentationDetents([.height(680)])
-            .edgesIgnoringSafeArea(.bottom)
-        }
-        .modifier(NavToolbarModifier(likeCnt: Int(fetchGames.userLikeCount)))
+            .sheet(isPresented: $isPresentSheet) {
+                GameFilterView(store: Store(
+                    initialState: GameFilterFeature.State(selectedGameTypes: filterTags),
+                    reducer: {
+                        GameFilterFeature()
+                    }), filterTags: $filterTags)
+                .presentationDetents([.height(680)])
+                .edgesIgnoringSafeArea(.bottom)
+            }
+            .modifier(NavToolbarModifier(likeCnt: Int(fetchGames.userLikeCount)))
+            // Vstack
+            if isShowToast {
+                VStack {
+                    Spacer()
+                    FavoriteToastView(didAdd: isAddToast)
+                        .padding(.horizontal, 20)
+                    Spacer().frame(height: 30)
+                }
+            }
+        } // Zstack
+
     }
 }
 

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct FavoriteToastView: View {
     @State var didAdd: Bool
@@ -34,12 +35,22 @@ extension FavoriteToastView {
             Spacer().frame(width: 4)
             Body1Text("관심 게임에 추가했어요!")
             Spacer()
-            Button(action: {}, label: {
-                Body5Text("관심 게임").foregroundColor(Color.white)
-                Image(.icon24ArrowRight)
-                    .resizable().frame(width: 16, height: 16)
-                    .foregroundColor(Color.white)
-            })
+            NavigationLink {
+                FavoriteView(store: Store(
+                    initialState: FavoriteViewFeature.State(),
+                    reducer: {
+                        FavoriteViewFeature()
+                    })
+                )
+            } label: {
+                HStack(spacing: 2){
+                    Body5Text("관심 게임").foregroundColor(Color.gray100)
+                    Image(.icon24ArrowRight)
+                        .resizable().frame(width: 16, height: 16)
+                        .foregroundColor(Color.gray200)
+                }
+            }
+            .buttonStyle(.plain)
             Spacer().frame(width: 14)
         }
     }
