@@ -37,6 +37,7 @@ struct FavoriteViewFeature: Reducer {
                     }
                 case .setLikeGames(let items):
                     state.likeGames = items
+                    state.rows = []
                     for likeGame in state.likeGames {
                         state.rows.append(FavoriteItemFeature.State(id: UUID(), game: likeGame))
                     }

@@ -53,7 +53,14 @@ extension FavoriteView {
             ForEachStore(
                 self.store.scope(state: \.rows, action: { .row(id: $0, action: $1) })
             ) { childStore in
-                FavoriteItemView(store: childStore)
+                NavigationLink {
+                    WithViewStore(store, observe: { $0 }) { viewStore in
+                        GameDetailView(gameUuids: viewStore.likeGames.map { $0.gameUuid }, selectedGameUuid: childStore.game.gameUuid)
+                    }
+
+                } label: {
+                    FavoriteItemView(store: childStore)
+                }
             }
         }
     }

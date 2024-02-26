@@ -10,7 +10,13 @@ import ComposableArchitecture
 import SwiftUI
 
 struct FavoriteItemFeature: Reducer {
-    struct State: Equatable, Identifiable {
+    struct State: Equatable, Identifiable, ObservableState {
+        var _$id: ComposableArchitecture.ObservableStateID = .init()
+
+        mutating func _$willModify() {
+
+        }
+
         var id: UUID
 
         var game: LikeGame
