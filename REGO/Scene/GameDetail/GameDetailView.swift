@@ -11,7 +11,7 @@ struct GameDetailView: View {
     @State var currentIndex: Int = 0
 
     @State private var fetchDetailGames: FetchDetailModel =
-    Mock.detailGameMock
+        .init(userCountLike: 0, games: [])
 //    FetchDetailModel(userCountLike: 0, games: [])
 
     @State private var isLoading: Bool = true
@@ -52,7 +52,6 @@ struct GameDetailView: View {
         .onAppear {
             Task{
                 let fetchDetails = try await NetworkManager.shared.request(type: FetchDetailModel.self, api: .fetchDetails(ids: gameUuids))
-                print("fetchDetails", fetchDetails)
                 self.fetchDetailGames = fetchDetails
                 isLoading = false
                 currentIndex = fetchDetailGames.games.firstIndex { gameDetail in

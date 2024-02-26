@@ -78,7 +78,7 @@ struct CardFrontView: View {
                         }
                     }
                 }
-                Spacer(minLength: 20)
+                Spacer().frame(height: 20)
                 Subtitle3Text("게임방법")
 
                 // 게임 설명 View

@@ -30,18 +30,16 @@ struct HomeView: View {
                     HStack {
                         Spacer()
                             .frame(width: 20)
-                        Button(action: {}, label: {
-                            LottieView(filename: "logo_lottie")
-                                .frame(width: 77, height: 28)
-                        })
+                        LottieView(filename: "logo_lottie")
+                            .frame(width: 77, height: 28)
                         Spacer()
-                        Button(action: {}, label: {
-                            Body6Text("게임 제안하기")
-                                .foregroundColor(Color.white)
-                        })
-                        .frame(width: 86, height: 30)
-                        .background(Color.gray700)
-                        .cornerRadius(6)
+//                        Button(action: {}, label: {
+//                            Body6Text("게임 제안하기")
+//                                .foregroundColor(Color.white)
+//                        })
+//                        .frame(width: 86, height: 30)
+//                        .background(Color.gray700)
+//                        .cornerRadius(6)
                         Spacer()
                             .frame(width: 12)
                         Button(action: {
