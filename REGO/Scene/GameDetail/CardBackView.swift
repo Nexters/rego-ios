@@ -71,8 +71,16 @@ struct CardBackView: View {
                 switch gameDetail.uiType {
                 case .IMAGE_EXAMPLE:
                     VStack(alignment: .leading) {
-                        AsyncImage(url: URL(string: gameDetail.gameImageExample!.image))
-                            .cornerRadius(12)
+                        AsyncImage(url: URL(string: gameDetail.gameImageExample!.image)) { image in
+                            image
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxWidth: Utils.deviceWidth - 70 - 40)
+                                .cornerRadius(12)
+                        } placeholder: {
+                            LottieView(filename: "loading_lottie")
+                        }
+
                         HStack(spacing: 10) {
                             Body2Text("정답예시")
                             Body5Text(gameDetail.gameImageExample?.answer ?? "")
