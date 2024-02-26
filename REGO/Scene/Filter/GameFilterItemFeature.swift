@@ -17,6 +17,7 @@ struct GameFilterItemFeature: Reducer {
 
     enum Action: Equatable {
         case selectGameType(FilterTag)
+        case selectGameTypes([FilterTag])
         case reset
     }
 
@@ -32,6 +33,12 @@ struct GameFilterItemFeature: Reducer {
                 }
             }
             return .none
+        case .selectGameTypes(let tags):
+            var actions: [ Effect<Action>] = []
+            tags.forEach {
+                actions.append( Effect<Action>.send(.selectGameType($0)))
+            }
+            return .merge(actions)
         case .reset:
             state.selectedGameTypes = []
             return .none

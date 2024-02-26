@@ -65,7 +65,8 @@ struct GameFilterView: View {
                         .background(Color(uiColor: .gray700))
                         .cornerRadius(14)
                         Button(action: {
-                            self.filterTags = viewStore.state.selectedGameTypes.isEmpty ? FilterTag.allFilters : viewStore.state.selectedGameTypes
+//                            self.filterTags = viewStore.state.selectedGameTypes.isEmpty ? [] : viewStore.state.selectedGameTypes
+                            self.filterTags = viewStore.state.selectedGameTypes
                             self.presentationMode.wrappedValue.dismiss()
                         }, label: {
                             Subtitle4Text("적용하기")
@@ -80,6 +81,9 @@ struct GameFilterView: View {
                     }
                     Spacer().frame(height: 14)
                 }
+            }
+            .onAppear {
+                viewStore.send(.fetchSelectGame(filterTags))
             }
         }
     }

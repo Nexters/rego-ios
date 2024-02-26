@@ -26,6 +26,7 @@ struct GameFilterFeature: Reducer {
         case mcFilter(GameFilterItemFeature.Action)
         case materialFilter(GameFilterItemFeature.Action)
 
+        case fetchSelectGame([FilterTag])
         case selectGame(FilterTag)
         case reset
     }
@@ -69,6 +70,15 @@ struct GameFilterFeature: Reducer {
                     }
                 }
                 return .none
+            case .fetchSelectGame(let tags):
+                return .merge(
+                    .send(.peopleFilter(.selectGameTypes(tags))),
+                    .send(.minFilter(.selectGameTypes(tags))),
+                    .send(.useFilter(.selectGameTypes(tags))),
+                    .send(.mcFilter(.selectGameTypes(tags))),
+                    .send(.materialFilter(.selectGameTypes(tags)))
+                )
+
             case .reset:
                 state.selectedGameTypes = []
                 return .merge(
