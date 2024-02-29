@@ -10,9 +10,21 @@ import SwiftUI
 struct GameDetailBackgroundView: View {
     var body: some View {
         ZStack {
-            Color.gray900
-            // TODO: 디자이너에게 이미지 받아서 수정
+            Image(.bgCircle)
+                .resizable()
+                .frame(width: 240, height: 240)
+                .position(x: -20, y: 120)
+            Image(.bgClover)
+                .resizable()
+                .frame(width: 240, height: 240)
+                .rotationEffect(.degrees(15))
+            Image(.bgHexa)
+                .resizable()
+                .frame(width: 240, height: 240)
+                .position(x: Utils.deviceWidth + 40, y: 520)
+                .rotationEffect(.degrees(15))
         }
+        .background(Color.gray900)
     }
 }
 

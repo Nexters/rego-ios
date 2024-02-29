@@ -21,6 +21,7 @@ struct GameDetailView: View {
 
     var body: some View {
         ZStack {
+            GameDetailBackgroundView()
             VStack(alignment: .center, spacing: 20) {
                 Spacer()
                 Carousel(gameDetails: fetchDetailGames.games, pageCount: fetchDetailGames.games.count, visibleEdgeSpace: 14, spacing: 14, currentIndex: $currentIndex) { idx in
@@ -43,7 +44,6 @@ struct GameDetailView: View {
                 )
                 Spacer()
             }
-            .background(Color.gray900)
         }
         .overlayIf($isLoading,
             LottieView(filename: "loading_lottie")
@@ -67,5 +67,5 @@ struct GameDetailView: View {
 }
 
 #Preview {
-    GameDetailView(gameUuids: [], selectedGameUuid: 1)
+    GameDetailView(gameUuids: [3, 5], selectedGameUuid: 3)
 }
