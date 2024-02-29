@@ -13,6 +13,7 @@ struct GameDetailView: View {
     @State private var fetchDetailGames: FetchDetailModel =
         .init(userCountLike: 0, games: [])
 //    FetchDetailModel(userCountLike: 0, games: [])
+    @State private var userLikeCount: Int64 = 0
 
     @State private var isLoading: Bool = true
 
@@ -60,7 +61,7 @@ struct GameDetailView: View {
 
             }
         }
-        .modifier(NavToolbarModifier(likeCnt: Int(fetchDetailGames.userCountLike)))
+        .modifier(NavToolbarModifier(likeCnt: $userLikeCount))
         .navigationTitle("게임 설명")
         .font(.subtitle3)
     }

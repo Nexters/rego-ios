@@ -17,6 +17,7 @@ struct GameListView: View {
     @State private var isLoading: Bool = true
     @State private var isShowToast: Bool = false
     @State private var isAddToast: Bool = false
+    @State private var userLikeCount: Int64 = 0
     /// 필터 bottom sheet present 여부
     @State private var isPresentSheet: Bool = false
 
@@ -157,6 +158,7 @@ struct GameListView: View {
                     if homeCategory == .FILTER {
                         let fetchGames = try await NetworkManager.shared.request(type: FetchGamesModel.self, api: .fetchGames(tags: tags, category: nil))
                         self.fetchGames = fetchGames
+                        self.userLikeCount = fetchGames.userLikeCount
                         isLoading = false
                     }
                 }
@@ -166,11 +168,13 @@ struct GameListView: View {
                     if homeCategory == .FILTER {
                         let fetchGames = try await NetworkManager.shared.request(type: FetchGamesModel.self, api: .fetchGames(tags: filterTags, category: nil))
                         self.fetchGames = fetchGames
+                        self.userLikeCount = fetchGames.userLikeCount
                         isLoading = false
                     }
                     else {
                         let fetchGames = try await NetworkManager.shared.request(type: FetchGamesModel.self, api: .fetchGames(tags: filterTags, category: homeCategory))
                         self.fetchGames = fetchGames
+                        self.userLikeCount = fetchGames.userLikeCount
                         isLoading = false
                     }
                 }
@@ -184,7 +188,17 @@ struct GameListView: View {
                 .presentationDetents([.height(680)])
                 .edgesIgnoringSafeArea(.bottom)
             }
-            .modifier(NavToolbarModifier(likeCnt: Int(fetchGames.userLikeCount)))
+            .modifier(NavToolbarModifier(likeCnt: $userLikeCount))
+            .onChange(of: isShowToast) { _ in
+                if isShowToast {
+                    if isAddToast {
+                        self.userLikeCount += 1
+                    }
+                    else {
+                        self.userLikeCount -= 1
+                    }
+                }
+            }
             // Vstack
             if isShowToast {
                 VStack {

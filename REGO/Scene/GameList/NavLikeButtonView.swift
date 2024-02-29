@@ -9,11 +9,11 @@ import SwiftUI
 import ComposableArchitecture
 
 struct NavLikeButtonView: View {
-    @State var likeCnt: Int
+    @Binding var likeCnt: Int64
 
-    init(likeCnt: Int) {
-        self.likeCnt = likeCnt
-    }
+//    init(likeCnt: Int64) {
+//        self.likeCnt = likeCnt
+//    }
 
     var body: some View {
         NavigationLink {
@@ -45,5 +45,5 @@ struct NavLikeButtonView: View {
 }
 
 #Preview {
-    NavLikeButtonView(likeCnt: 30)
+    NavLikeButtonView(likeCnt: .constant(30))
 }

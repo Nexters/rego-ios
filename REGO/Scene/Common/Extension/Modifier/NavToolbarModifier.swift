@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct NavToolbarModifier: ViewModifier {
-    let likeCnt: Int
+//    let likeCnt: Int
+    @Binding var likeCnt: Int64
 
     func body(content: Content) -> some View {
         content
@@ -18,7 +19,7 @@ struct NavToolbarModifier: ViewModifier {
                     NavBackButtonView()
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    NavLikeButtonView(likeCnt: likeCnt) // TODO: API 연결
+                    NavLikeButtonView(likeCnt: $likeCnt) // TODO: API 연결
                 }
             })
             .background(Color.gray900)
