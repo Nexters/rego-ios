@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GameDetailCardView: View {
-    @State private var backDegree: Double = -90.001
+    @State private var backDegree: Double = -90.00
     @State private var frontDegree: Double = 0.001
     @State private var isFlipped = false
     @State private var isLiked: Bool
@@ -27,7 +27,7 @@ struct GameDetailCardView: View {
         isFlipped = !isFlipped
         if isFlipped {
             withAnimation(.linear(duration: durationAndDelay)) {
-                frontDegree = 90.001
+                frontDegree = 90.00
             }
             withAnimation(
                 .easeInOut(duration: durationAndDelay).delay(durationAndDelay)){
@@ -36,7 +36,7 @@ struct GameDetailCardView: View {
         }
         else {
             withAnimation(.linear(duration: durationAndDelay)) {
-                backDegree = 90.001
+                backDegree = 90.00
             }
 
             withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
@@ -44,7 +44,7 @@ struct GameDetailCardView: View {
             }
 
             frontDegree = 0.001
-            backDegree = -90.001
+            backDegree = -90.00
         }
     }
 
@@ -57,14 +57,16 @@ struct GameDetailCardView: View {
                 isShowLottie: $isShowLottie,
                 flipFunction: flipCard
             )
-            CardBackView(
-                gameDetail: gameDetail,
-                degree: $backDegree,
-                rotation: $isFlipped,
-                isLiked: $isLiked,
-                isShowLottie: $isShowLottie,
-                flipFunction: flipCard
-            )
+            if gameDetail.gameImageExample != nil || gameDetail.gameExample != nil {
+                CardBackView(
+                    gameDetail: gameDetail,
+                    degree: $backDegree,
+                    rotation: $isFlipped,
+                    isLiked: $isLiked,
+                    isShowLottie: $isShowLottie,
+                    flipFunction: flipCard
+                )
+            }
         }
     }
 }
