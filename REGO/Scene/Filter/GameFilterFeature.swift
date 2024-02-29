@@ -61,6 +61,7 @@ struct GameFilterFeature: Reducer {
             case .materialFilter(.selectGameType(let type)):
                 return .send(.selectGame(type))
             case .selectGame(let type):
+                print("✅전체 적용전", state.selectedGameTypes, type)
                 if !state.selectedGameTypes.contains(type) {
                     state.selectedGameTypes.append(type)
                 }
@@ -69,14 +70,26 @@ struct GameFilterFeature: Reducer {
                         state.selectedGameTypes.remove(at: index)
                     }
                 }
+                print("✅전체 적용후", state.selectedGameTypes, type)
                 return .none
             case .fetchSelectGame(let tags):
+                state.selectedGameTypes = []
                 return .merge(
-                    .send(.peopleFilter(.selectGameTypes(tags))),
-                    .send(.minFilter(.selectGameTypes(tags))),
-                    .send(.useFilter(.selectGameTypes(tags))),
-                    .send(.mcFilter(.selectGameTypes(tags))),
-                    .send(.materialFilter(.selectGameTypes(tags)))
+                    .send(.peopleFilter(.selectGameTypes(tags.filter{
+                        FilterTag.peopleFilters.contains($0)
+                    }))),
+                    .send(.minFilter(.selectGameTypes(tags.filter{
+                        FilterTag.timeFilters.contains($0)
+                    }))),
+                    .send(.useFilter(.selectGameTypes(tags.filter{
+                        FilterTag.gameFilters.contains($0)
+                    }))),
+                    .send(.mcFilter(.selectGameTypes(tags.filter{
+                        FilterTag.mcFilters.contains($0)
+                    }))),
+                    .send(.materialFilter(.selectGameTypes(tags.filter{
+                        FilterTag.materailFilters.contains($0)
+                    })))
                 )
 
             case .reset:

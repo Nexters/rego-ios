@@ -67,6 +67,7 @@ struct GameFilterView: View {
                         Button(action: {
 //                            self.filterTags = viewStore.state.selectedGameTypes.isEmpty ? [] : viewStore.state.selectedGameTypes
                             self.filterTags = viewStore.state.selectedGameTypes
+                            print("적용하기 이후", self.filterTags)
                             self.presentationMode.wrappedValue.dismiss()
                         }, label: {
                             Subtitle4Text("적용하기")

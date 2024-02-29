@@ -36,6 +36,9 @@ struct GameFilterItemView: View {
                         }
                     }
                 }.frame(height: 38)
+                    .onAppear(perform: {
+                        print("필터 한줄..", viewStore.selectedGameTypes)
+                    })
             }
         }
     }
