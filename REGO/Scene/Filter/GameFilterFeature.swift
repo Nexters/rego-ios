@@ -62,14 +62,15 @@ struct GameFilterFeature: Reducer {
                 return .send(.selectGame(type))
             case .selectGame(let type):
                 print("✅전체 적용전", state.selectedGameTypes, type)
-                if !state.selectedGameTypes.contains(type) {
-                    state.selectedGameTypes.append(type)
+
+//                state.selectedGameTypes = []
+                var tmp: [FilterTag] = []
+                [state.peopleState, state.minState, state.useState, state.mcState, state.materialState].forEach {
+                    print("❗️", $0.selectedGameTypes)
+                    tmp.append(contentsOf: $0.selectedGameTypes)
                 }
-                else {
-                    if let index = state.selectedGameTypes.firstIndex(of: type) {
-                        state.selectedGameTypes.remove(at: index)
-                    }
-                }
+
+                state.selectedGameTypes = tmp
                 print("✅전체 적용후", state.selectedGameTypes, type)
                 return .none
             case .fetchSelectGame(let tags):

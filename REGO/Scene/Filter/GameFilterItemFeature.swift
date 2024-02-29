@@ -26,6 +26,7 @@ struct GameFilterItemFeature: Reducer {
         case .selectGameType(let type):
             print("✅ 부분 select 이전", state.selectedGameTypes, type)
             if !state.selectedGameTypes.contains(type) {
+                state.selectedGameTypes = []
                 state.selectedGameTypes.append(type)
             }
             else {

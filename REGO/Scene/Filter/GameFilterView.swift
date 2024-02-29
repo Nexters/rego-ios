@@ -65,7 +65,6 @@ struct GameFilterView: View {
                         .background(Color(uiColor: .gray700))
                         .cornerRadius(14)
                         Button(action: {
-//                            self.filterTags = viewStore.state.selectedGameTypes.isEmpty ? [] : viewStore.state.selectedGameTypes
                             self.filterTags = viewStore.state.selectedGameTypes
                             print("적용하기 이후", self.filterTags)
                             self.presentationMode.wrappedValue.dismiss()
